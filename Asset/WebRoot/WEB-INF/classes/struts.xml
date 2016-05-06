@@ -2,18 +2,20 @@
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
 	<constant name="struts.devMode" value="true" />
-	<package name="login" extends="struts-default">
+	<package name="admin_login" extends="struts-default" namespace="/pages">
+			
+			
+			<action name="login" class="com.action.LoginAction" method="login">
+				<result name="success">/pages/main.jsp</result>
+			</action>
 		
-		<action name="index">
-            <result >/index.jsp</result>
-      	</action>
-     
-    	<action name="login.action" 
-            class="com.action.LoginAction" 
-            method="execute">
-            <result name="success">/index.jsp</result>
-<!--             <result name="error">/AccessDenied.jsp</result> -->
-      	</action>
-   </package>
+
+
+<!-- 			<action name="my_*_*" class="{1}Action" method="{2}">
+				<result name="main">/main.jsp</result>
+				<result name="page">/page.jsp</result>
+			</action> -->
+		
+		</package>
 
 </struts>    

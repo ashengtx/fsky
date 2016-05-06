@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.beans.UserInfo;
+import com.dao.IUserInfoDAO;
 
 /**
  * A data access object (DAO) providing persistence and search support for
@@ -21,7 +22,7 @@ import com.beans.UserInfo;
  * @see com.beans.UserInfo
  * @author MyEclipse Persistence Tools
  */
-public class UserInfoDAO extends BaseHibernateDAO {
+public class UserInfoDAO extends BaseHibernateDAO implements IUserInfoDAO{
 	private static final Logger log = LoggerFactory
 			.getLogger(UserInfoDAO.class);
 	// property constants
