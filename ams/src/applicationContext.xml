@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd"
+    >
+
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/sshdb">
+		</property>
+		<property name="username" value="root"></property>
+		<property name="password" value=""></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
+		</bean>
+	
+
+	<!-- 事务管理器 -->
+	<bean id="myHibTransactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+		
+	<!-- 事务通知，注意：注入事务管理器对象 -->
+	<tx:advice id="txAdvice" transaction-manager="myHibTransactionManager">
+	   <tx:attributes>
+		<tx:method name="create*" propagation="REQUIRED"  />
+		<tx:method name="add*" propagation="REQUIRED"  />
+		<tx:method name="saveOrUpdate*" propagation="REQUIRED" />
+		<tx:method name="update*" propagation="REQUIRED" />
+		<tx:method name="delete*" propagation="REQUIRED"  />
+		<tx:method name="deleteSelected*" propagation="REQUIRED"  />	
+		<tx:method name="assign*" propagation="REQUIRED"  />
+		<tx:method name="logTurndetail" propagation="REQUIRED"  />
+		<tx:method name="*" propagation="SUPPORTS"   ></tx:method>
+	        </tx:attributes>
+	</tx:advice>
+
+	<aop:config>
+		<!-- 定义切入点！（设置织入切面的位置） -->
+	    <aop:pointcut id="bizMethods" 
+	    expression="execution(* com.service.impl.service.*.*(..))" />
+	    <!-- 定义advisor（通知+切入点） -->
+	    <aop:advisor advice-ref="txAdvice" 
+	    pointcut-ref="bizMethods"  />
+	</aop:config>
+	
+	<!-- Dao -->
+	<bean id="baseDao" class="com.dao.impl.BaseDao" >
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="userInfoDao" class="com.dao.impl.UserInfoDao" >
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- <bean id="sectionDao" class="com.dao.impl.SectionDao" >
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="settingDao" class="com.dao.impl.SettingDao" >
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="assetDao" class="com.dao.impl.AssetDao" >
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="purchaseDao" class="com.dao.impl.PurchaseDao" >
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>	
+	<bean id="assetTypeDao" class="com.dao.impl.AssetTypeDao" >
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>	
+	<bean id="assetReturnDao" class="com.dao.impl.AssetReturnDao" >
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>	 -->
+	
+	
+	<!-- Service -->
+	<bean id="userInfoService" class="com.service.impl.UserInfoService" autowire="byName">
+		<property name="userInfoDao" ref="userInfoDao"></property>
+	</bean>
+	<!-- <bean id="sectionService" class="com.service.impl.SectionService" autowire="byName">
+		<property name="sectionDao" ref="sectionDao"></property>
+	</bean>
+	<bean id="settingService" class="com.service.impl.SettingService" autowire="byName">
+		<property name="setDao" ref="settingDao"></property>
+	</bean>
+	<bean id="assetService" class="com.service.impl.AssetService" autowire="byName">
+		<property name="assetDao" ref="assetDao"></property>
+	</bean>	
+	<bean id="purchaseService" class="com.service.impl.PurchaseService" autowire="byName">
+		<property name="pDao" ref="purchaseDao"></property>
+	</bean>	
+	<bean id="assetTypeService" class="com.service.impl.AssetTypeService" autowire="byName">
+		<property name="assetTypeDao" ref="assetTypeDao"></property>
+	</bean>	
+	<bean id="assetReturnService" class="com.service.impl.AssetReturnService" autowire="byName">
+		<property name="assetreturnDao" ref="assetReturnDao"></property>
+	</bean>	 -->
+	
+	<!-- Action -->
+	
+	<bean id="Login" class="com.action.LoginAction" autowire="byName">
+	</bean>
+	
+	<!-- Ajax
+	<bean id="sectionAjax" class="com.action.ajax.SectionAjax" autowire="byName">
+		<property name="sectionService" ref="sectionService"></property>
+	</bean>
+	<bean id="userAjax" class="com.action.ajax.UserAjax" autowire="byName">
+		<property name="userService" ref="userService"></property>
+	</bean>
+	<bean id="settingAjax" class="com.action.ajax.SettingAjax" >
+		<property name="settingService" ref="settingService"></property>
+	</bean>
+	<bean id="assetAjax" class="com.action.ajax.AssetAjax" >
+		<property name="assetService" ref="assetService"></property>
+	</bean>
+	
+	<bean id="purchaseAjax" class="com.action.ajax.PurchaseAjax" >
+		<property name="pService" ref="purchaseService"></property>
+		<property name="assetService" ref="assetService"></property>
+	</bean>	
+	
+	<bean id="assetTypeAjax" class="com.action.ajax.AssetTypeAjax" >
+		<property name="typeService" ref="assetTypeService"></property>
+	</bean>	
+	<bean id="assetReturnAjax" class="com.action.ajax.AssetReturnAjax" >
+		<property name="returnService" ref="assetReturnService"></property>
+		<property name="userService" ref="userService"></property>
+		<property name="assetService" ref="assetService"></property>
+	</bean>	 -->
+</beans>
