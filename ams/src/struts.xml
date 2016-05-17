@@ -27,7 +27,7 @@
 
 	<package name="user" namespace="/pages" extends="struts-default">
 		<action name="login" class="Login" method="login">
-			<result name="success">/pages/main.jsp</result>
+			<result name="success">/pages/dashboard.jsp</result>
 		</action>
 		
 		<action name="section" class="sectionAction">
