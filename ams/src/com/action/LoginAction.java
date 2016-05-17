@@ -4,6 +4,10 @@ import com.model.UserInfo;
 import com.opensymphony.xwork2.ActionSupport;
 import com.service.impl.UserInfoService;
 
+/*
+ * @author 林连升
+ *  
+ * */
 public class LoginAction extends ActionSupport{
 
 	private String username;
@@ -11,18 +15,16 @@ public class LoginAction extends ActionSupport{
 	private UserInfoService userInfoService;
 
 	public String login(){
-		//System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
-		//return SUCCESS;
+
 		System.out.println("login");
 		UserInfo user = userInfoService.getByName(this.getUsername());
 		if(user!=null){
-//			HttpServletRequest request=ServletActionContext.getRequest();
-//			HttpSession session=request.getSession();
-//			session.setAttribute("user", user);
-//			return "success";
 			System.out.println(user.getUsername());
 			System.out.println(user.getPassword());
-			return SUCCESS;
+			System.out.println("user input: " + this.getPassword());
+			if (user.getPassword().equals(this.getPassword())) {
+				return SUCCESS;
+			}				
 		}
 	
 		return "fail";
