@@ -4,15 +4,15 @@ import java.util.List;
 
 import org.hibernate.Query;
 
-import com.dao.IUserInfoDao;
-import com.model.UserInfo;
+import com.dao.IUserDao;
+import com.model.Userinformation;
 
-public class UserInfoDao extends BaseDao implements IUserInfoDao {
+public class UserDao extends BaseDao implements IUserDao {
 
 	@Override
-	public UserInfo get(int id) {
+	public Userinformation get(int id) {
 		try {
-			return super.getHibernateTemplate().get(UserInfo.class, id);
+			return super.getHibernateTemplate().get(Userinformation.class, id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -20,9 +20,9 @@ public class UserInfoDao extends BaseDao implements IUserInfoDao {
 	}
 
 	@Override
-	public UserInfo findUserInfoByName(String name) {
+	public Userinformation findUserByName(String name) {
 		// name = "%"+name+"%";
-		String hql = "from UserInfo where username='" + name + "'";
+		String hql = "from Userinformation where username='" + name + "'";
 		System.out.println(hql);
 
 		try {
@@ -30,7 +30,7 @@ public class UserInfoDao extends BaseDao implements IUserInfoDao {
 			List list = query.list();
 			if (list == null || list.size() == 0)
 				return null;
-			return (UserInfo) list.get(0);
+			return (Userinformation) list.get(0);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -38,8 +38,8 @@ public class UserInfoDao extends BaseDao implements IUserInfoDao {
 	}
 
 	@Override
-	public List<UserInfo> findAllUserInfo() {
-		String hql = "from UserInfo where status!=-1 order by id desc";
+	public List<Userinformation> findAllUser() {
+		String hql = "from Userinformation where userstate!=-1 order by id desc";
 		try {
 			return getHibernateTemplate().find(hql);
 		} catch (Exception e) {
@@ -49,9 +49,9 @@ public class UserInfoDao extends BaseDao implements IUserInfoDao {
 	}
 
 	@Override
-	public List<UserInfo> findUserLikeName(String name) {
+	public List<Userinformation> findUserLikeName(String name) {
 		// name = "%"+name+"%";
-		String hql = "from UserInfo where name like '%" + name + "%'";
+		String hql = "from Userinformation where username like '%" + name + "%'";
 		System.out.println(hql);
 
 		try {

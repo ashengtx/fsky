@@ -3,97 +3,106 @@ package com.model;
 import java.util.HashSet;
 import java.util.Set;
 
-
 /**
  * Department entity. @author MyEclipse Persistence Tools
  */
 
-public class Department  implements java.io.Serializable {
+public class Department implements java.io.Serializable {
 
+	// Fields
 
-    // Fields    
+	private Integer departmentid;
+	private String departmentname;
+	private Integer deleteflag;
+	private Set transbillsForDcdid = new HashSet(0);
+	private Set assets = new HashSet(0);
+	private Set userinformations = new HashSet(0);
+	private Set transbillsForDrdid = new HashSet(0);
+	private Set purchases = new HashSet(0);
 
-     private Integer dpmId;
-     private String dpmName;
-     private Set dispatchListsForExportDpmId = new HashSet(0);
-     private Set userInfos = new HashSet(0);
-     private Set dispatchListsForImportDpmId = new HashSet(0);
-     private Set assets = new HashSet(0);
+	// Constructors
 
+	/** default constructor */
+	public Department() {
+	}
 
-    // Constructors
+	/** full constructor */
+	public Department(String departmentname, Integer deleteflag,
+			Set transbillsForDcdid, Set assets, Set userinformations,
+			Set transbillsForDrdid, Set purchases) {
+		this.departmentname = departmentname;
+		this.deleteflag = deleteflag;
+		this.transbillsForDcdid = transbillsForDcdid;
+		this.assets = assets;
+		this.userinformations = userinformations;
+		this.transbillsForDrdid = transbillsForDrdid;
+		this.purchases = purchases;
+	}
 
-    /** default constructor */
-    public Department() {
-    }
+	// Property accessors
 
-    
-    /** full constructor */
-    public Department(String dpmName, Set dispatchListsForExportDpmId, Set userInfos, Set dispatchListsForImportDpmId, Set assets) {
-        this.dpmName = dpmName;
-        this.dispatchListsForExportDpmId = dispatchListsForExportDpmId;
-        this.userInfos = userInfos;
-        this.dispatchListsForImportDpmId = dispatchListsForImportDpmId;
-        this.assets = assets;
-    }
+	public Integer getDepartmentid() {
+		return this.departmentid;
+	}
 
-   
-    // Property accessors
+	public void setDepartmentid(Integer departmentid) {
+		this.departmentid = departmentid;
+	}
 
-    public Integer getDpmId() {
-        return this.dpmId;
-    }
-    
-    public void setDpmId(Integer dpmId) {
-        this.dpmId = dpmId;
-    }
+	public String getDepartmentname() {
+		return this.departmentname;
+	}
 
-    public String getDpmName() {
-        return this.dpmName;
-    }
-    
-    public void setDpmName(String dpmName) {
-        this.dpmName = dpmName;
-    }
+	public void setDepartmentname(String departmentname) {
+		this.departmentname = departmentname;
+	}
 
-    public Set getDispatchListsForExportDpmId() {
-        return this.dispatchListsForExportDpmId;
-    }
-    
-    public void setDispatchListsForExportDpmId(Set dispatchListsForExportDpmId) {
-        this.dispatchListsForExportDpmId = dispatchListsForExportDpmId;
-    }
+	public Integer getDeleteflag() {
+		return this.deleteflag;
+	}
 
-    public Set getUserInfos() {
-        return this.userInfos;
-    }
-    
-    public void setUserInfos(Set userInfos) {
-        this.userInfos = userInfos;
-    }
+	public void setDeleteflag(Integer deleteflag) {
+		this.deleteflag = deleteflag;
+	}
 
-    public Set getDispatchListsForImportDpmId() {
-        return this.dispatchListsForImportDpmId;
-    }
-    
-    public void setDispatchListsForImportDpmId(Set dispatchListsForImportDpmId) {
-        this.dispatchListsForImportDpmId = dispatchListsForImportDpmId;
-    }
+	public Set getTransbillsForDcdid() {
+		return this.transbillsForDcdid;
+	}
 
-    public Set getAssets() {
-        return this.assets;
-    }
-    
-    public void setAssets(Set assets) {
-        this.assets = assets;
-    }
-   
+	public void setTransbillsForDcdid(Set transbillsForDcdid) {
+		this.transbillsForDcdid = transbillsForDcdid;
+	}
 
+	public Set getAssets() {
+		return this.assets;
+	}
 
+	public void setAssets(Set assets) {
+		this.assets = assets;
+	}
 
+	public Set getUserinformations() {
+		return this.userinformations;
+	}
 
+	public void setUserinformations(Set userinformations) {
+		this.userinformations = userinformations;
+	}
 
+	public Set getTransbillsForDrdid() {
+		return this.transbillsForDrdid;
+	}
 
+	public void setTransbillsForDrdid(Set transbillsForDrdid) {
+		this.transbillsForDrdid = transbillsForDrdid;
+	}
 
+	public Set getPurchases() {
+		return this.purchases;
+	}
+
+	public void setPurchases(Set purchases) {
+		this.purchases = purchases;
+	}
 
 }
