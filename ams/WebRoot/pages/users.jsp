@@ -43,7 +43,6 @@
 
 		<table class="table table-striped m-b-none" id="user_table">
 
-			<thead>
 				<!-- 标签定义表格的表头。该标签用于组合 HTML 表格的表头内容。 thead 元素应该与 tbody 和
 					tfoot 元素结合起来使用。 tbody 元素用于对 HTML 表格中的主体内容进行分组，而 tfoot 元素用于对 HTML
 					表格中的表注（页脚）内容进行分组。 -->
