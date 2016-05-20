@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.model.Userinformation;
 
-public interface IUserService {
+public interface IUserService extends IBaseService{
 	public Userinformation get(int id);
 	
 	public Userinformation getByName(String name);

@@ -6,7 +6,7 @@ import org.hibernate.Session;
 
 public interface IBaseDao {
 	
-	public Object create(Object obj);
+	public <T> boolean create(T t);
 	
 	public Object update(Object obj);
 	

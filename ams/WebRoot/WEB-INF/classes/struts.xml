@@ -29,6 +29,9 @@
 		<action name="login" class="Login" method="login">
 			<result name="success">/pages/dashboard.jsp</result>
 		</action>
+		<action name="purchase" class="Purchase" method="addPurchase">
+			<result name="success">/success.jsp</result>
+		</action>
 		
 		<action name="section" class="sectionAction">
 			<result name="none">/none.jsp</result>

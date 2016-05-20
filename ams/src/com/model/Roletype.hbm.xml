@@ -8,7 +8,7 @@
     <class name="com.model.Roletype" table="roletype" catalog="ams">
         <id name="roleid" type="integer">
             <column name="roleid" />
-            <generator class="native" />
+            <generator class="identity" />
         </id>
         <property name="rolename" type="string">
             <column name="rolename" length="50" />

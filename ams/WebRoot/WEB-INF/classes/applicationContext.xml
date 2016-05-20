@@ -65,6 +65,9 @@
 	<bean id="userDao" class="com.dao.impl.UserDao" >
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
+	<bean id="purchaseDao" class="com.dao.impl.PurchaseDao" >
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
 	<!-- <bean id="sectionDao" class="com.dao.impl.SectionDao" >
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
@@ -87,8 +90,14 @@
 	
 	
 	<!-- Service -->
-	<bean id="userInfoService" class="com.service.impl.UserService" autowire="byName">
+	<bean id="baseService" class="com.service.impl.BaseService" autowire="byName">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	<bean id="userService" class="com.service.impl.UserService" autowire="byName">
 		<property name="userDao" ref="userDao"></property>
+	</bean>
+	<bean id="purchaseService" class="com.service.impl.PurchaseService" autowire="byName">
+		<property name="purchaseDao" ref="purchaseDao"></property>
 	</bean>
 	<!-- <bean id="sectionService" class="com.service.impl.SectionService" autowire="byName">
 		<property name="sectionDao" ref="sectionDao"></property>
@@ -112,6 +121,10 @@
 	<!-- Action -->
 	
 	<bean id="Login" class="com.action.LoginAction" autowire="byName">
+		<property name="userService" ref="userService"></property>
+	</bean>
+	<bean id="Purchase" class="com.action.PurchaseAction" autowire="byName">
+		<property name="purchaseService" ref="purchaseService"></property>
 	</bean>
 	
 	<!-- Ajax

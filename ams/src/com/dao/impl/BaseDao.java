@@ -22,14 +22,16 @@ public class BaseDao extends HibernateDaoSupport implements IBaseDao{
 	}*/
 
 	@Override
-	public Object create(Object obj) {
+	public <T> boolean create(T t) {
 		try{
-			getHibernateTemplate().save(obj);
-			return obj;
+			System.out.println("BaseDao Create");
+			super.getHibernateTemplate().save(t);
+			System.out.println("BaseDao Create 2");
+			return true;
 		}catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
-		return null;
 	}
 
 	@Override

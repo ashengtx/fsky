@@ -16,7 +16,7 @@ public class LoginAction extends ActionSupport{
 
 	public String login(){
 
-		System.out.println("login");
+		System.out.println("LoginAction");
 		Userinformation user = userService.getByName(this.getUsername());
 		if(user!=null){
 			System.out.println(user.getUsername());
@@ -50,7 +50,7 @@ public class LoginAction extends ActionSupport{
 		return userService;
 	}
 
-	public void setUserInfoService(UserService userService) {
+	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
 }

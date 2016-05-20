@@ -8,7 +8,7 @@
     <class name="com.model.Transbill" table="transbill" catalog="ams">
         <id name="tbid" type="integer">
             <column name="tbid" />
-            <generator class="native" />
+            <generator class="identity" />
         </id>
         <many-to-one name="userinformationByDcuid" class="com.model.Userinformation" fetch="select">
             <column name="dcuid" />

@@ -8,7 +8,7 @@
     <class name="com.model.Checked" table="checked" catalog="ams">
         <id name="checkid" type="integer">
             <column name="checkid" />
-            <generator class="native" />
+            <generator class="identity" />
         </id>
         <many-to-one name="userinformation" class="com.model.Userinformation" fetch="select">
             <column name="userid" />

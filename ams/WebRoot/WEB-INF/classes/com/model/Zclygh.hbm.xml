@@ -8,7 +8,7 @@
     <class name="com.model.Zclygh" table="zclygh" catalog="ams">
         <id name="lyghid" type="integer">
             <column name="lyghid" />
-            <generator class="native" />
+            <generator class="identity" />
         </id>
         <many-to-one name="userinformationByLyuserid" class="com.model.Userinformation" fetch="select">
             <column name="lyuserid" />

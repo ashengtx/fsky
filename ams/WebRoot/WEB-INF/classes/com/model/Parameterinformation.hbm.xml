@@ -8,7 +8,7 @@
     <class name="com.model.Parameterinformation" table="parameterinformation" catalog="ams">
         <id name="parameterinfoid" type="integer">
             <column name="parameterinfoid" />
-            <generator class="native" />
+            <generator class="identity" />
         </id>
         <property name="parametername" type="string">
             <column name="parametername" length="50" />

@@ -8,7 +8,7 @@
     <class name="com.model.Assetclass" table="assetclass" catalog="ams">
         <id name="assetclassid" type="integer">
             <column name="assetclassid" />
-            <generator class="native" />
+            <generator class="identity" />
         </id>
         <property name="assetclasscoding" type="string">
             <column name="assetclasscoding" length="500" />

@@ -8,7 +8,7 @@
     <class name="com.model.Baofei" table="baofei" catalog="ams">
         <id name="bfid" type="integer">
             <column name="bfid" />
-            <generator class="native" />
+            <generator class="identity" />
         </id>
         <many-to-one name="userinformationByCheckuid" class="com.model.Userinformation" fetch="select">
             <column name="checkuid" />

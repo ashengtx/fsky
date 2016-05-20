@@ -8,7 +8,7 @@
     <class name="com.model.Purchasedetail" table="purchasedetail" catalog="ams">
         <id name="pdid" type="integer">
             <column name="pdid" />
-            <generator class="native" />
+            <generator class="identity" />
         </id>
         <many-to-one name="assetclassByPassetclassid" class="com.model.Assetclass" fetch="select">
             <column name="passetclassid" />

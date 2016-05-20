@@ -6,7 +6,7 @@ import com.dao.impl.UserDao;
 import com.model.Userinformation;
 import com.service.IUserService;
 
-public class UserService implements IUserService {
+public class UserService extends BaseService implements IUserService {
 
 	private UserDao userDao;
 	

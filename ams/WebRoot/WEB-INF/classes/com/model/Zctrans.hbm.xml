@@ -8,7 +8,7 @@
     <class name="com.model.Zctrans" table="zctrans" catalog="ams">
         <id name="transid" type="integer">
             <column name="transid" />
-            <generator class="native" />
+            <generator class="identity" />
         </id>
         <many-to-one name="userinformationByJsuserid" class="com.model.Userinformation" fetch="select">
             <column name="jsuserid" />
