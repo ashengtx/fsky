@@ -6,10 +6,10 @@ import com.dao.impl.UserDao;
 import com.model.Userinformation;
 import com.service.IUserService;
 
-public class UserService implements IUserService {
+public class UserService extends BaseService implements IUserService {
 
 	private UserDao userDao;
-	
+
 	@Override
 	public Userinformation get(int id) {
 		return userDao.get(id);
@@ -22,22 +22,22 @@ public class UserService implements IUserService {
 
 	@Override
 	public int create(Userinformation user) {
-		if(user.getUsername()==null || user.getUsername().equals(""))
+		if (user.getUsername() == null || user.getUsername().equals(""))
 			return 2;
-		if(getByName(user.getUsername())!=null)
+		if (getByName(user.getUsername()) != null)
 			return 1;
-		
-		if(userDao.create(user) !=null)
+
+		if (userDao.create(user) != null)
 			return 0;
-	
+
 		return 3;
 	}
 
 	@Override
 	public int update(Userinformation user) {
-		if(userDao.findUserByName(user.getUsername())==null)
+		if (userDao.findUserByName(user.getUsername()) == null)
 			return 1;
-		if(userDao.update(user)==null)
+		if (userDao.update(user) == null)
 			return 2;
 		return 0;
 	}
@@ -45,9 +45,10 @@ public class UserService implements IUserService {
 	@Override
 	public int delete(int userID) {
 		Userinformation user = userDao.get(userID);
-		if(user == null) return 2;
+		if (user == null)
+			return 2;
 		user.setUserstate(-1);
-		if(userDao.update(user)==null)
+		if (userDao.update(user) == null)
 			return 1;
 		return 0;
 	}
@@ -68,6 +69,12 @@ public class UserService implements IUserService {
 
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
+	}
+
+	@Override
+	public Userinformation getUser(Integer userid) {
+		// TODO Auto-generated method stub
+		return this.userDao.getUser(userid);
 	}
 
 }

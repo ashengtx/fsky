@@ -8,7 +8,7 @@
     <class name="com.model.Department" table="department" catalog="ams">
         <id name="departmentid" type="integer">
             <column name="departmentid" />
-            <generator class="native" />
+            <generator class="identity" />
         </id>
         <property name="departmentname" type="string">
             <column name="departmentname" length="50" />

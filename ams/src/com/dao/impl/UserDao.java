@@ -51,7 +51,8 @@ public class UserDao extends BaseDao implements IUserDao {
 	@Override
 	public List<Userinformation> findUserLikeName(String name) {
 		// name = "%"+name+"%";
-		String hql = "from Userinformation where username like '%" + name + "%'";
+		String hql = "from Userinformation where username like '%" + name
+				+ "%'";
 		System.out.println(hql);
 
 		try {
@@ -64,6 +65,13 @@ public class UserDao extends BaseDao implements IUserDao {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public Userinformation getUser(Integer userid) {
+		// TODO Auto-generated method stub
+		return (Userinformation) this.getHibernateTemplate().get(
+				Userinformation.class, userid);
 	}
 
 }

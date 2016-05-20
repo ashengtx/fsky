@@ -234,7 +234,7 @@
 						<li><a href="#">参数信息配置</a></li>
 						<li><a href="#">人员管理<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
-								<li><a href="#">用户管理</a></li>
+								<li><a href="users.jsp">用户管理</a></li>
 								<li><a href="#">角色管理</a></li>
 							</ul></li>
 					</ul> <!-- /.nav-second-level --></li>

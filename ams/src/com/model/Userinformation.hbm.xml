@@ -8,7 +8,7 @@
     <class name="com.model.Userinformation" table="userinformation" catalog="ams">
         <id name="userid" type="integer">
             <column name="userid" />
-            <generator class="native" />
+            <generator class="identity" />
         </id>
         <many-to-one name="department" class="com.model.Department" fetch="select">
             <column name="departmentid" />
