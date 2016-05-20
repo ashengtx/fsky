@@ -15,7 +15,7 @@
 			<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
 			<span class="icon-bar"></span> <span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="index.html">资产管理系统</a>
+		<a class="navbar-brand" href="<%=basePath %>pages/dashboard.jsp">资产管理系统</a>
 	</div>
 	<!-- /.navbar-header -->
 
@@ -211,9 +211,9 @@
 				<li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>资产管理<span
 						class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
-						<li><a href="#">采购入库</a></li>
+						<li><a href="<%=basePath %>pages/purchase.jsp">采购入库</a></li>
 						<li><a href="#">财务入账</a></li>
-						<li><a href="#">资产列表</a></li>
+						<li><a href="<%=basePath %>pages/asset.jsp">资产列表</a></li>
 						<li><a href="#">资产归还</a></li>
 						<li><a href="#">资产调拨</a></li>
 						<li><a href="#">资产报废</a></li>

@@ -17,9 +17,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
-<meta name="author" content="ashengtx">
+<meta name="author" content="林连升">
 
-<title>这是模板</title>
+<title>资产列表</title>
 
 <jsp:include page="../header.jsp" />
 <jsp:include page="../navigation.jsp" />
@@ -29,7 +29,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">这是模板</h1>
+				<h1 class="page-header">资产列表</h1>
 			</div>
 			<!-- /.col-lg-12 -->
 		</div>
@@ -38,8 +38,5 @@
 	<!-- /.container-fluid -->
 </div>
 <!-- /#page-wrapper -->
-
-</div>
-<!-- /#wrapper -->
 
 <jsp:include page="../footer.jsp" />

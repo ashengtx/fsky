@@ -5,8 +5,7 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-</div>
-	<!-- /#wrapper -->
+
 
 	<!-- jQuery -->
 	<script src="../bower_components/jquery/dist/jquery.min.js"></script>
@@ -19,6 +18,9 @@
 
 	<!-- Custom Theme JavaScript -->
 	<script src="../dist/js/sb-admin-2.js"></script>
+	
+	<!-- laydate -->
+	<script src="../laydate/laydate.js"></script>
 
 </body>
 
