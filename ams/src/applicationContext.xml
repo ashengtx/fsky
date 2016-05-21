@@ -60,7 +60,9 @@
 	<bean id="userDao" class="com.dao.impl.UserDao" parent="iBaseDao">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-
+    <bean id="assetClassDao" class="com.dao.impl.AssetClassDao" parent="iBaseDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
 	<bean id="iBaseDao" class="com.dao.impl.BaseDao">
 		<property name="sessionFactory">
 			<ref local="sessionFactory" />
@@ -92,6 +94,11 @@
 	<bean id="iUserService" class="com.service.impl.UserService"
 		parent="baseService">
 		<property name="userDao" ref="userDao" />
+	</bean>
+	<!-- fyy -->
+	<bean id="assetClassService" class="com.service.impl.AssetClassService"
+		parent="baseService">
+		<property name="assetClassDao" ref="assetClassDao" />
 	</bean>
 	<!-- <bean id="sectionService" class="com.service.impl.SectionService" autowire="byName"> 
 		<property name="sectionDao" ref="sectionDao"></property> </bean> <bean id="settingService" 
@@ -131,6 +138,14 @@
 	</bean>
 	<bean id="UserList" class="com.action.UserManageAction" scope="prototype">
 		<property name="iUserService" ref="iUserService" />
+	</bean>
+	
+	<!-- fyy -->
+	<bean id="AddAssetClass" class="com.action.AssetClassAction" scope="prototype">
+		<property name="assetClassService" ref="assetClassService" />
+	</bean>
+	<bean id="AssetClassList" class="com.action.AssetClassAction" scope="prototype">
+		<property name="assetClassService" ref="assetClassService" />
 	</bean>
 	<!-- dh -->
 	<!-- Ajax <bean id="sectionAjax" class="com.action.ajax.SectionAjax" autowire="byName"> 
