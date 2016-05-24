@@ -38,7 +38,7 @@ public class BaseDao extends HibernateDaoSupport implements IBaseDao {
 		}
 	}
 
-	@Override
+	
 	public Object update(Object obj) {
 		try {
 			getHibernateTemplate().saveOrUpdate(obj);
