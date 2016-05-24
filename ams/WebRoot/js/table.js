@@ -24,8 +24,8 @@ $(document)
 												"sLast" : " <i class=\"fa fa-angle-double-right\"></i> "
 											}
 										},
-										"aLengthMenu" : [ [ 10, 15, 20 ],
-												[ 10, 15, 20 ] ],
+										"aLengthMenu" : [ [10, 15, 20 ],
+												[10, 15, 20 ] ],
 										"bStateSave" : false,
 										"bProcessing" : true,
 										"bServerSide" : true,
@@ -155,11 +155,20 @@ $(document)
 																	+ '" class="text-info support-details" title="删除" data-id="'
 																	+ row.userid
 																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 删除</a>';
-/*															userstate_btn += '<a href="/myasset/ableUser.action?userid='
-																	+ row.userid
-																	+ '" class="text-info support-details" title="解禁" data-id="'
-																	+ row.userid
-																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 解禁</a>';*/
+															/*
+															 * userstate_btn += '<a
+															 * href="/myasset/ableUser.action?userid=' +
+															 * row.userid + '"
+															 * class="text-info
+															 * support-details"
+															 * title="解禁"
+															 * data-id="' +
+															 * row.userid + '"
+															 * data-toggle="modal"><i
+															 * class="fa
+															 * fa-file-text-o"></i>
+															 * 解禁</a>';
+															 */
 															break;
 														case 1:
 															userstate_btn += '<a href="/myasset/getUser.action?userid='
@@ -172,11 +181,20 @@ $(document)
 																	+ '" class="text-info support-details" title="删除" data-id="'
 																	+ row.userid
 																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 删除</a>';
-/*															userstate_btn += '<a href="/myasset/disableUser.action?userid='
-																	+ row.userid
-																	+ '" class="text-info support-details" title="禁用" data-id="'
-																	+ row.userid
-																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 禁用</a>';*/
+															/*
+															 * userstate_btn += '<a
+															 * href="/myasset/disableUser.action?userid=' +
+															 * row.userid + '"
+															 * class="text-info
+															 * support-details"
+															 * title="禁用"
+															 * data-id="' +
+															 * row.userid + '"
+															 * data-toggle="modal"><i
+															 * class="fa
+															 * fa-file-text-o"></i>
+															 * 禁用</a>';
+															 */
 															break;
 
 														default:

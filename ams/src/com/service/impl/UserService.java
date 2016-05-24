@@ -27,7 +27,7 @@ public class UserService extends BaseService implements IUserService {
 		if (getByName(user.getUsername()) != null)
 			return 1;
 
-		if (userDao.create(user) != null)
+		if (!userDao.create(user))
 			return 0;
 
 		return 3;

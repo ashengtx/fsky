@@ -60,6 +60,9 @@
 	<bean id="userDao" class="com.dao.impl.UserDao" parent="iBaseDao">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
+	<bean id="departmentDao" class="com.dao.impl.DepartmentDao" parent="iBaseDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
 
 	<bean id="iBaseDao" class="com.dao.impl.BaseDao">
 		<property name="sessionFactory">
@@ -92,6 +95,11 @@
 	<bean id="iUserService" class="com.service.impl.UserService"
 		parent="baseService">
 		<property name="userDao" ref="userDao" />
+	</bean>
+	
+	<bean id="iDepartmentService" class="com.service.impl.DepartmentService"
+		parent="baseService">
+		<property name="departmentDao" ref="departmentDao" />
 	</bean>
 	<!-- <bean id="sectionService" class="com.service.impl.SectionService" autowire="byName"> 
 		<property name="sectionDao" ref="sectionDao"></property> </bean> <bean id="settingService" 
@@ -147,4 +155,24 @@
 		> <property name="returnService" ref="assetReturnService"></property> <property 
 		name="userService" ref="userService"></property> <property name="assetService" 
 		ref="assetService"></property> </bean> -->
+	<!-- Guohui Li -->	
+	<bean id="AddDepartment" class="com.action.DepartmentManageAction" scope="prototype">
+		<property name="iDepartmentService" ref="iDepartmentService" />
+	</bean>
+
+	<bean id="UpdateDepartment" class="com.action.DepartmentManageAction" scope="prototype">
+		<property name="iDepartmentService" ref="iDepartmentService" />
+	</bean>
+
+	<bean id="DeleteDepartment" class="com.action.DepartmentManageAction" scope="prototype">
+		<property name="iDepartmentService" ref="iDepartmentService" />
+	</bean>
+
+	<bean id="GetDepartmentInfo" class="com.action.DepartmentManageAction" scope="prototype">
+		<property name="iDepartmentService" ref="iDepartmentService" />
+	</bean>
+	<bean id="DepartmentList" class="com.action.DepartmentManageAction" scope="prototype">
+		<property name="iDepartmentService" ref="iDepartmentService" />
+	</bean>
+		
 </beans>
