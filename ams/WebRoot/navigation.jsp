@@ -211,7 +211,12 @@
 				<li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>资产管理<span
 						class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
-						<li><a href="<%=basePath %>pages/purchase.jsp">采购入库</a></li>
+						<li><a href="#">采购入库<span class="fa arrow"></span></a>
+							<ul class="nav nav-third-level">
+								<li><a href="<%=basePath %>pages/add-purchase.jsp">添加采购单</a></li>
+								<li><a href="<%=basePath %>pages/purchase-list.jsp">查看采购单列表</a></li>
+							</ul>
+						</li>
 						<li><a href="#">财务入账</a></li>
 						<li><a href="<%=basePath %>pages/asset.jsp">资产列表</a></li>
 						<li><a href="#">资产归还</a></li>

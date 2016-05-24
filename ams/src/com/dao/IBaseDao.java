@@ -8,10 +8,7 @@ import org.hibernate.Session;
 public interface IBaseDao {
 	
 	public <T> boolean create(T t);
-	
-	public Object update(Object obj);
-
-	public boolean delete(Object obj);
+	public <T> boolean delete(T t);
 
 	public <T> T get(Class<T> entry, Serializable id);
 	//dingh

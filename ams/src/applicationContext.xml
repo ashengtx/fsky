@@ -120,6 +120,9 @@
 	<bean id="Purchase" class="com.action.PurchaseAction" autowire="byName">
 		<property name="purchaseService" ref="purchaseService"></property>
 	</bean>
+	<bean id="PurchaseDetail" class="com.action.PurchaseAction" scope="prototype">
+		<property name="purchaseService" ref="purchaseService"></property>
+	</bean>
 	<!-- dh -->
 	<bean id="AddUser" class="com.action.UserManageAction" scope="prototype">
 		<property name="iUserService" ref="iUserService" />
