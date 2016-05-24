@@ -9,7 +9,7 @@
 %>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
 
@@ -22,24 +22,38 @@
 <title>这是模板</title>
 
 <jsp:include page="../header.jsp" />
-<jsp:include page="../navigation.jsp" />
+<!-- stylesheet here -->
 
-<!-- Page Content -->
-<div id="page-wrapper">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header">这是模板</h1>
+<!-- stylesheet end -->
+
+</head>
+
+<body>
+
+	<div id="wrapper">
+		<jsp:include page="../navigation.jsp" />
+
+		<!-- Page Content -->
+		<div id="page-wrapper">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<h1 class="page-header">这是模板</h1>
+					</div>
+					<!-- /.col-lg-12 -->
+				</div>
+				<!-- /.row -->
 			</div>
-			<!-- /.col-lg-12 -->
+			<!-- /.container-fluid -->
 		</div>
-		<!-- /.row -->
+		<!-- /#page-wrapper -->
+
 	</div>
-	<!-- /.container-fluid -->
-</div>
-<!-- /#page-wrapper -->
+	<!-- /#wrapper -->
 
-</div>
-<!-- /#wrapper -->
+	<jsp:include page="../footer.jsp" />
+	<!-- script here -->
 
-<jsp:include page="../footer.jsp" />
+	<!-- script end -->
+</body>
+</html>
