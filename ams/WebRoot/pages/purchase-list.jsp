@@ -131,10 +131,16 @@
 <script type="text/javascript" src="../js/jquery.nicescroll.min.js"></script> --%>
 <script type="text/javascript" src="../datatable/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="../js/purchaseTable.js"></script>
-<%-- <script type="text/javascript"
+<script type="text/javascript"
 	src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
 <script type="text/javascript">
-	$(function() {
+
+	/* $(function(){
+		$("#purchase_table_filter").click(function (event) {
+    		alert("success");
+		});
+	})  */
+	/* $(function() {
 		$(".ad-menu").niceScroll({
 			cursorborder : "0 none",
 			cursorcolor : "#1a1a19",
@@ -151,9 +157,9 @@
 		var dd = document.getElementById('purchase2');
 		li.setAttribute("class", "over2 over");
 		dd.setAttribute("class", "on");
-	});
-</script> --%>
+	}); */
+</script>
 
-<!-- script end -->>
+<!-- script end -->
 </body>
 </html>

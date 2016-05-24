@@ -46,13 +46,13 @@
                 <param name="root">dataMap</param>  
             </result> 
 		</action>
-		<action name="addPurchaseDetail" class="Purchase" method="addPurchaseDetail">
+		<action name="addPurchasedetail" class="Purchase" method="addPurchasedetail">
 			<result name="success">/pages/purchase-detail-list.jsp</result>
 		</action> 
 		<action name="getPurD" class="Purchase" method="getPurD">
 			<result name="success">/pages/purchase-detail.jsp</result>
 		</action>
-		<action name="purchaseDetailList" class="Purchase" method="purchaseDetailList">
+		<action name="purchasedetailList" class="Purchase" method="purchasedetailList">
 			<result type="json">  
                 <param name="root">dataMap</param>  
             </result> 

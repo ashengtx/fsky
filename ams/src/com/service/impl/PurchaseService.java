@@ -30,15 +30,15 @@ public class PurchaseService extends BaseService implements IPurchaseService {
 	}
 
 	@Override
-	public List<Purchasedetail> getPurchaseDetailList(Integer purid) {
-		return this.purchaseDao.getPurchaseDetailList(purid);
+	public List<Purchasedetail> getPurchasedetailList(Integer purid) {
+		System.out.println("PurchaseService getPurchasedetailList");
+		return this.purchaseDao.getPurchasedetailList(purid);
 	}
 
 	@Override
-	public List<Purchasedetail> findPurchaseDetail(Integer purid,
+	public List<Purchasedetail> findPurchasedetail(Integer purid,
 			String assetname) {
-		return this.purchaseDao.findPurchaseDetail(purid, assetname);
+		return this.purchaseDao.findPurchasedetail(purid, assetname);
 	}
-	
 	
 }

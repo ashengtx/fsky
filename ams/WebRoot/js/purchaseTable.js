@@ -121,8 +121,8 @@ $(document).ready(function () {
         datatables.ajax.reload();
     }
 
-    $("#investor_search_btn").bind("click", function () {
-        datatables.ajax.reload();
-    });
+    /*$("#purchase_table_filter").click(function (event) {
+    	datatables['bServerSide'] = false;
+    });*/
    
 });

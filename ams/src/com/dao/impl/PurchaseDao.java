@@ -4,6 +4,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.SessionFactory;
+import org.hibernate.classic.Session;
+//import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dao.IPurchaseDao;
@@ -17,6 +22,7 @@ import com.model.Purchasedetail;
 @Transactional
 public class PurchaseDao extends BaseDao implements IPurchaseDao {
 
+	private SessionFactory sessionFactory;
 	/*@Override
 	public boolean create(Purchase purchase) {
 		try {
@@ -55,23 +61,42 @@ public class PurchaseDao extends BaseDao implements IPurchaseDao {
 	}
 
 	@Override
-	public List<Purchasedetail> getPurchaseDetailList(Integer purid) {
-		Object o[]={purid};
-		return this.getHibernateTemplate().find(
-			"select purchasedetail from Purchasedetail as purchasedetail where purchasedetail.purchase.purid=? ", o);
+	public List<Purchasedetail> getPurchasedetailList(Integer purid) {
+		List<Object> condList = new ArrayList<Object>();
+		String selection = "from Purchasedetail as purchasedetail";
+		/*if (purid != null) {
+			condList.add(purid);
+			selection += "where purchasedetail.purchase.purid=?";
+		}*/
+		System.out.println("PurchaseDao getPurchasedetailList");
+/*		Session session = sessionFactory.openSession();
+		System.out.println(session);
+		Criteria criteria = session.createCriteria(Purchasedetail.class);
+		
+		criteria.add(Restrictions.eq("purid", purid));
+		return criteria.list();*/
+		
+		return this.getHibernateTemplate().find(selection);
+		/*return this.getHibernateTemplate().find(
+			"select purchasedetail from Purchasedetail as purchasedetail where purchasedetail.purchase.purid=? ", o);*/
 	}
 
 	@Override
-	public List<Purchasedetail> findPurchaseDetail(Integer purid, String assetname) {
+	public List<Purchasedetail> findPurchasedetail(Integer purid, String assetname) {
+		System.out.println("PurchaseDao findPurchasedetail");
 		List<Object> condList = new ArrayList<Object>();
 		condList.add(purid);
-		String selection="select purchasedetail from Purchasedetail as purchasedetail where purchasedetail.purchase.purid=?";
+		String selection="from Purchasedetail where purchasedetail.purchase.purid=?";
 		if(assetname != null){
 			condList.add("%"+assetname+"%");
 			selection =selection+" and purchasedetail.assetname like ?";
 		}
 		Object o[] = condList.toArray();
 		return this.getHibernateTemplate().find(selection, o);
+	}
+	
+	public List<Purchasedetail> findAllPD() {
+		return this.getHibernateTemplate().find("select from Purchasedetail");
 	}
 
 }

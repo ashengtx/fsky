@@ -22,13 +22,13 @@ $(document).ready(function () {
         "bServerSide": true,
         
         "ajax": {
-            "url": "purchaseDetailList.action",
+            "url": "purchasedetailList.action",
             "data": function (data) {
             	data.purid=$("#purid").val();
-            	data.assetname=$("#assetname").val();
+            	//data.assetname=$("#assetname").val();
             }
         },
-
+        
         "aoColumns": [
       
             {"mData": "pdid"},
@@ -50,5 +50,12 @@ $(document).ready(function () {
         ],
         
     });
-   
+    $("#purchase_table_filter").click(function (event) {
+    	alert('ahhahahhahahah');
+    });
 });
+$(function(){
+	$("#purchase_table_filter").click(function (event) {
+		alert("success");
+	});
+}) 

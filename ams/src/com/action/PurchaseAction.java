@@ -23,13 +23,13 @@ public class PurchaseAction extends ActionSupport{
 	
 	private PurchaseService purchaseService;
 	private Purchase purchase;
-	private Purchasedetail purchaseDetail;
+	private Purchasedetail purchasedetail;
 	private Userinformation userinformation;
 	private Department department;
 	private Assetclass assetclass;
 	
 	private List<Purchase> purchases;
-	private List<Purchasedetail> purchaseDetails;
+	private List<Purchasedetail> purchasedetails;
 	private int start;  
     private int length; 
 	private Map<String,Object> dataMap;  
@@ -41,7 +41,7 @@ public class PurchaseAction extends ActionSupport{
 	private Integer departmentid;	// 部门
 	private Integer purstate;		// 采购状态
 	
-	// purchaseDetail
+	// purchasedetail
 	private Integer assetclassid;
 	private Integer passetclassid;
 	private Integer purid;
@@ -103,9 +103,9 @@ public class PurchaseAction extends ActionSupport{
 		purchaseService.saveOrUpdate(purchase);
 		return SUCCESS;
 	}
-	public String addPurchaseDetail() {
-		System.out.println("addPurchaseDetail");
-		Purchasedetail purchaseDetail = new Purchasedetail();
+	public String addPurchasedetail() {
+		System.out.println("addPurchasedetail");
+		Purchasedetail purchasedetail = new Purchasedetail();
 		Purchase purchase = new Purchase();
 		Assetclass assetclass = new Assetclass();
 		Assetclass passetclass = new Assetclass();
@@ -114,25 +114,25 @@ public class PurchaseAction extends ActionSupport{
 		assetclass.setAssetclassid(assetclassid);
 		passetclass.setAssetclassid(passetclassid);
         userinformation.setUserid(userid);
-		purchaseDetail.setAssetclassByAssetclassid(assetclass);
-		purchaseDetail.setAssetclassByPassetclassid(passetclass);
-		purchaseDetail.setUserinformation(userinformation);
-		purchaseDetail.setPurchase(purchase);
-		purchaseDetail.setAmount(amount);
-		purchaseDetail.setAssetname(assetname);
-		purchaseDetail.setManufacturer(manufacturer);
-		purchaseDetail.setPrice(price);
-		purchaseDetail.setProvider(provider);
-		purchaseDetail.setPunit(punit);
-		purchaseDetail.setRemark(remark);
-		purchaseDetail.setZcxh(zcxh);
-		purchaseService.create(purchaseDetail);
+		purchasedetail.setAssetclassByAssetclassid(assetclass);
+		purchasedetail.setAssetclassByPassetclassid(passetclass);
+		purchasedetail.setUserinformation(userinformation);
+		purchasedetail.setPurchase(purchase);
+		purchasedetail.setAmount(amount);
+		purchasedetail.setAssetname(assetname);
+		purchasedetail.setManufacturer(manufacturer);
+		purchasedetail.setPrice(price);
+		purchasedetail.setProvider(provider);
+		purchasedetail.setPunit(punit);
+		purchasedetail.setRemark(remark);
+		purchasedetail.setZcxh(zcxh);
+		purchaseService.create(purchasedetail);
 		return SUCCESS;
 	}
 	
 	public String getPurD() throws Exception {
 		System.out.println("getPurD");
-		this.purchaseDetail = purchaseService.findById(Purchasedetail.class, pdid);
+		this.purchasedetail = purchaseService.findById(Purchasedetail.class, pdid);
 		return SUCCESS;
 	}
 	
@@ -173,32 +173,36 @@ public class PurchaseAction extends ActionSupport{
         return SUCCESS;  
     }
 	
-	public String purchaseDetailList() {
-		System.out.println("purchaseDetailList");
+	public String purchasedetailList() {
+		System.out.println("purchasedetailList");
 		System.out.println(purid);
-		this.purchaseDetails = purchaseService.getPurchaseDetailList(purid);
+		//System.out.println(assetname);
+		/*this.purchasedetails = purchaseService.findPurchasedetail(purid,assetname);*/
+		this.purchasedetails = purchaseService.getPurchasedetailList(purid);
 	    List<Object> aaData = new ArrayList<Object>();
-	    for(int i = 0; i < this.purchaseDetails.size(); i++)
-	    {    
-	    	Purchasedetail purchaseDetail = new Purchasedetail();
+	    System.out.println(this.purchasedetails.size());
+	    for(int i = 0; i < this.purchasedetails.size(); i++)
+	    {   
+	    	System.out.println();
+	    	Purchasedetail purchasedetail = new Purchasedetail();
 	    	Purchase purchase = new Purchase();
 			Assetclass assetclass = new Assetclass();
 			Assetclass passetclass = new Assetclass();
 		    Userinformation userinformation = new Userinformation();
-		    purchase.setPurid(this.purchaseDetails.get(i).getPurchase().getPurid());
-		    assetclass.setAssetclassid(this.purchaseDetails.get(i).getAssetclassByAssetclassid().getAssetclassid());
-		    passetclass.setAssetclassid(this.purchaseDetails.get(i).getAssetclassByPassetclassid().getAssetclassid());
-			userinformation.setUserid(this.purchaseDetails.get(i).getUserinformation().getUserid());
+		    purchase.setPurid(this.purchasedetails.get(i).getPurchase().getPurid());
+		    assetclass.setAssetclassid(this.purchasedetails.get(i).getAssetclassByAssetclassid().getAssetclassid());
+		    passetclass.setAssetclassid(this.purchasedetails.get(i).getAssetclassByPassetclassid().getAssetclassid());
+			userinformation.setUserid(this.purchasedetails.get(i).getUserinformation().getUserid());
 	       
-			purchaseDetail.setAssetclassByAssetclassid(assetclass);
-			purchaseDetail.setAssetclassByPassetclassid(passetclass);
-			purchaseDetail.setUserinformation(userinformation);
-			purchaseDetail.setPurchase(purchase);
-			purchaseDetail.setPdid(this.purchaseDetails.get(i).getPdid());
-			purchaseDetail.setAssetname(this.purchaseDetails.get(i).getAssetname());
-			purchaseDetail.setPrice(this.purchaseDetails.get(i).getPrice());
+			purchasedetail.setAssetclassByAssetclassid(assetclass);
+			purchasedetail.setAssetclassByPassetclassid(passetclass);
+			purchasedetail.setUserinformation(userinformation);
+			purchasedetail.setPurchase(purchase);
+			purchasedetail.setPdid(this.purchasedetails.get(i).getPdid());
+			purchasedetail.setAssetname(this.purchasedetails.get(i).getAssetname());
+			purchasedetail.setPrice(this.purchasedetails.get(i).getPrice());
 		
-	    	aaData.add(purchaseDetail);  	
+	    	aaData.add(purchasedetail);  	
 	    }
 	    int recordsTotal;
 	    int recordsFiltered;
@@ -226,20 +230,20 @@ public class PurchaseAction extends ActionSupport{
 		this.assetclass = assetclass;
 	}
 
-	public Purchasedetail getPurchaseDetail() {
-		return purchaseDetail;
+	public Purchasedetail getPurchasedetail() {
+		return purchasedetail;
 	}
 
-	public void setPurchaseDetail(Purchasedetail purchaseDetail) {
-		this.purchaseDetail = purchaseDetail;
+	public void setPurchasedetail(Purchasedetail purchasedetail) {
+		this.purchasedetail = purchasedetail;
 	}
 
-	public List<Purchasedetail> getPurchaseDetails() {
-		return purchaseDetails;
+	public List<Purchasedetail> getPurchasedetails() {
+		return purchasedetails;
 	}
 
-	public void setPurchaseDetails(List<Purchasedetail> purchaseDetails) {
-		this.purchaseDetails = purchaseDetails;
+	public void setPurchasedetails(List<Purchasedetail> purchasedetails) {
+		this.purchasedetails = purchasedetails;
 	}
 
 	public Integer getAssetclassid() {
