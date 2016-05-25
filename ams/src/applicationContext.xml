@@ -54,7 +54,7 @@
 	<bean id="baseDao" class="com.dao.impl.BaseDao">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	<bean id="purchaseDao" class="com.dao.impl.PurchaseDao" >
+	<bean id="purchaseDao" class="com.dao.impl.PurchaseDao">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<bean id="assetDao" class="com.dao.impl.AssetDao">
@@ -64,7 +64,14 @@
 	<bean id="userDao" class="com.dao.impl.UserDao" parent="iBaseDao">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-    <bean id="assetClassDao" class="com.dao.impl.AssetClassDao" parent="iBaseDao">
+	<bean id="departmentDao" class="com.dao.impl.DepartmentDao"
+		parent="iBaseDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+
+	<bean id="assetClassDao" class="com.dao.impl.AssetClassDao"
+		parent="iBaseDao">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<bean id="iBaseDao" class="com.dao.impl.BaseDao">
@@ -74,14 +81,17 @@
 	</bean>
 
 	<!-- Service -->
-	<bean id="baseService" class="com.service.impl.BaseService" autowire="byName">
+	<bean id="baseService" class="com.service.impl.BaseService"
+		autowire="byName">
 		<property name="baseDao" ref="baseDao"></property>
 		<property name="iBaseDao" ref="iBaseDao"></property>
 	</bean>
-	<bean id="userService" class="com.service.impl.UserService" autowire="byName">
+	<bean id="userService" class="com.service.impl.UserService"
+		autowire="byName">
 		<property name="userDao" ref="userDao"></property>
 	</bean>
-	<bean id="purchaseService" class="com.service.impl.PurchaseService" autowire="byName">
+	<bean id="purchaseService" class="com.service.impl.PurchaseService"
+		autowire="byName">
 		<property name="purchaseDao" ref="purchaseDao"></property>
 	</bean>
 
@@ -93,13 +103,16 @@
 		parent="baseService">
 		<property name="assetDao" ref="assetDao" />
 	</bean>
+	<bean id="iDepartmentService" class="com.service.impl.DepartmentService"
+		parent="baseService">
+		<property name="departmentDao" ref="departmentDao" />
+	</bean>
 	<!-- fyy -->
 	<bean id="assetClassService" class="com.service.impl.AssetClassService"
 		parent="baseService">
 		<property name="assetClassDao" ref="assetClassDao" />
 	</bean>
 	
-
 	<!-- Action -->
 	<!-- lls -->
 	<bean id="Login" class="com.action.LoginAction" autowire="byName">
@@ -134,13 +147,41 @@
 	<bean id="UserList" class="com.action.UserManageAction" scope="prototype">
 		<property name="iUserService" ref="iUserService" />
 	</bean>
-	
+
 	<!-- fyy -->
-	<bean id="AddAssetClass" class="com.action.AssetClassAction" scope="prototype">
+	<bean id="AddAssetClass" class="com.action.AssetClassAction"
+		scope="prototype">
 		<property name="assetClassService" ref="assetClassService" />
 	</bean>
-	<bean id="AssetClassList" class="com.action.AssetClassAction" scope="prototype">
+	<bean id="AssetClassList" class="com.action.AssetClassAction"
+		scope="prototype">
 		<property name="assetClassService" ref="assetClassService" />
 	</bean>
-	
+
+	<!-- Guohui Li -->
+	<bean id="AddDepartment" class="com.action.DepartmentManageAction"
+		scope="prototype">
+		<property name="iDepartmentService" ref="iDepartmentService" />
+	</bean>
+
+	<bean id="UpdateDepartment" class="com.action.DepartmentManageAction"
+		scope="prototype">
+		<property name="iDepartmentService" ref="iDepartmentService" />
+	</bean>
+
+	<bean id="DeleteDepartment" class="com.action.DepartmentManageAction"
+		scope="prototype">
+		<property name="iDepartmentService" ref="iDepartmentService" />
+	</bean>
+
+	<bean id="GetDepartmentInfo" class="com.action.DepartmentManageAction"
+		scope="prototype">
+		<property name="iDepartmentService" ref="iDepartmentService" />
+	</bean>
+	<bean id="DepartmentList" class="com.action.DepartmentManageAction"
+		scope="prototype">
+		<property name="iDepartmentService" ref="iDepartmentService" />
+	</bean>
+
+>>>>>>> 77c29be6e53b66cf60a6e0e56c5c2f71e1efe222
 </beans>

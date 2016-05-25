@@ -9,7 +9,7 @@ public interface IBaseDao {
 	
 	public <T> boolean create(T t);
 	public <T> boolean delete(T t);
-
+	
 	public <T> T get(Class<T> entry, Serializable id);
 	//dingh
 	public <T> void doCreate(T t);

@@ -234,7 +234,11 @@
 				<li><a href="#"><i class="fa fa-sitemap fa-fw"></i>系统配置<span
 						class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
-						<li><a href="#">部门配置</a></li>
+						<li><a href="#">部门配置<span class="fa arrow"></span></a>
+							<ul class="nav nav-third-level">
+								<li><a href="department.jsp">部门添加</a></li>
+								<li><a href="departments.jsp">部门列表</a></li>
+							</ul></li>
 						<li><a href="#">资产类别配置</a></li>
 						<li><a href="#">参数信息配置</a></li>
 						<li><a href="#">人员管理<span class="fa arrow"></span></a>
