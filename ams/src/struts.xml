@@ -35,22 +35,33 @@
 
 		<!-- dh -->
 		<action name="getUser" class="GetUser" method="getUser">
-			<result type="redirect">/pages/updateuser.jsp</result>
+			<result>/pages/updateuser.jsp</result>
 		</action>
 		<action name="addUser" class="AddUser" method="addUser">
 			<result type="redirect">/pages/success.jsp</result>
 		</action>
 		<action name="updateUser" class="UpdateUser" method="updateUser">
-			<result type="redirect">/pages/success.jsp</result>
+			<result type="redirect">/pages/users.jsp</result>
 		</action>
 		<action name="deleteUser" class="DeleteUser" method="deleteUser">
-			<result type="redirect">/pages/success.jsp</result>
+			<result type="redirect">/pages/users.jsp</result>
 		</action>
 		<action name="userList" class="UserList" method="userList">
 			<result type="json">
 				<param name="root">dataMap</param>
 			</result>
 		</action>
+
+		<action name="userSearch" class="UserSearch" method="userSearch">
+			<result type="redirect">/pages/searchusers.jsp</result>
+		</action>
+		<action name="assetList" class="AssetList" method="assetList">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+
+
 		<action name="addAssetClass" class="AddAssetClass" method="addAssetClass">
 			<result type="redirect">/pages/success.jsp</result>
 		</action>

@@ -4,7 +4,7 @@
 $(document)
 		.ready(
 				function() {
-					var datatables = $("#user_table")
+					var datatables = $("#asset_table")
 							.DataTable(
 									{
 										"oLanguage" : { // 汉化
@@ -29,12 +29,13 @@ $(document)
 										"bStateSave" : false,
 										"bProcessing" : true,
 										"bServerSide" : true,
+										"scrollX": "100%",
 										"sDom" : "t<'row'<'col-sm-4'i><'col-sm-2'l><'col-sm-6'p>>",
 										"sPaginationType" : "full_numbers",
 										sServerMethod : "POST",
 										// "sAjaxSource": "userList.action",
 										"ajax" : {
-											"url" : "userList.action",
+											"url" : "assetList.action",
 											"data" : function(data) {
 
 											}
@@ -52,92 +53,134 @@ $(document)
 												 * "bSortable": false },
 												 */
 												{
-													"mData" : "userid",
+													"mData" : "assetid",
 													'sClass' : '',
 													"bSortable" : false
 												},
 												{
-													"mData" : "username",
+													/*"mData" : "assetclassByAssetclassid.assetclassname",*/
+													"mData" : "assetclassByAssetclassid.assetclassid",
+													'sClass' : '',
+													"bSortable" : false
+												},
+												{
+													"mData" : "department.departmentid",
+													'sClass' : '',
+													"bSortable" : false
+												},
+												{
+													"mData" : "userinformationByUseruid.userid",
+													'sClass' : '',
+													"bSortable" : false
+												},
+												{
+													"mData" : "userinformationByUserid.userid",
+													'sClass' : '',
+													"bSortable" : false
+												},
+												{
+													"mData" : "assetclassByPassetclassid.assetclassid",
+													'sClass' : '',
+													"bSortable" : false
+												},
+												{
+													"mData" : "cardnum",
 													'sClass' : '',
 													"bSortable" : false
 												},
 												{
 													"mData" : function(row,
 															type, val) {
-														var usersex_str = "";
-														switch (row.usersex) {
+														var cwstate_str = "";
+														switch (row.cwstate) {
 														case 0:
-															usersex_str = "女";
+															cwstate_str = "是";
 															break;
 														case 1:
-															usersex_str = "男";
+															cwstate_str = "否";
 															break;
 
 														default:
 															break;
 														}
-														return usersex_str;
+														return cwstate_str;
 													},
 													"bSortable" : false
 												},
 												{
-													"mData" : function(row,
-															type, val) {
-														var userstate_str = "";
-														switch (row.userstate) {
-														case 0:
-															userstate_str = "禁用";
-															break;
-														case 1:
-															userstate_str = "正常";
-															break;
-
-														default:
-															break;
-														}
-														return userstate_str;
-													},
-													"bSortable" : false
-												},
-
-												{
-													"mData" : function(row,
-															type, val) {
-														var department_str = "";
-														switch (row.department.departmentid) {
-														case 1:
-															department_str = "市场部";
-															break;
-														case 2:
-															department_str = "财务部";
-															break;
-
-														default:
-															break;
-														}
-														return department_str;
-													},
+													"mData" : "ggxh",
+													'sClass' : '',
 													"bSortable" : false
 												},
 												{
-													"mData" : function(row,
-															type, val) {
-														var roletype_str = "";
-														switch (row.roletype.roleid) {
-														case 1:
-															roletype_str = "管理员";
-															break;
-														case 2:
-															roletype_str = "用户";
-															break;
-
-														default:
-															break;
-														}
-														return roletype_str;
-													},
+													"mData" : "usestate",
+													'sClass' : '',
 													"bSortable" : false
 												},
+												{
+													"mData" : "assetname",
+													'sClass' : '',
+													"bSortable" : false
+												},
+												{
+													"mData" : "cgbid",
+													'sClass' : '',
+													"bSortable" : false
+												},
+												
+												
+												
+												{
+													"mData" : "intodate",
+													'sClass' : '',
+													"bSortable" : false
+												},
+												{
+													"mData" : "cwcoding",
+													'sClass' : '',
+													"bSortable" : false
+												},
+												{
+													"mData" : "assetcoding",
+													'sClass' : '',
+													"bSortable" : false
+												},
+												{
+													"mData" : "manufacturer",
+													'sClass' : '',
+													"bSortable" : false
+												},
+												{
+													"mData" : "provider",
+													'sClass' : '',
+													"bSortable" : false
+												},
+												{
+													"mData" : "insertdate",
+													'sClass' : '',
+													"bSortable" : false
+												},
+												{
+													"mData" : "aunit",
+													'sClass' : '',
+													"bSortable" : false
+												},
+												{
+													"mData" : "amount",
+													'sClass' : '',
+													"bSortable" : false
+												},
+												{
+													"mData" : "remark",
+													'sClass' : '',
+													"bSortable" : false
+												},
+												{
+													"mData" : "price",
+													'sClass' : '',
+													"bSortable" : false
+												},
+								
 												{
 													"mData" : function(row,
 															type, val) {

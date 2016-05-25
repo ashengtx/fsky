@@ -74,4 +74,11 @@ public class UserDao extends BaseDao implements IUserDao {
 				Userinformation.class, userid);
 	}
 
+	@Override
+	public List<Userinformation> userSearch(Userinformation user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 }

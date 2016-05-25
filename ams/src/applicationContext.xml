@@ -54,13 +54,16 @@
 	<bean id="baseDao" class="com.dao.impl.BaseDao">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	<bean id="purchaseDao" class="com.dao.impl.PurchaseDao" >
+	<bean id="purchaseDao" class="com.dao.impl.PurchaseDao">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<bean id="userDao" class="com.dao.impl.UserDao" parent="iBaseDao">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-    <bean id="assetClassDao" class="com.dao.impl.AssetClassDao" parent="iBaseDao">
+	
+
+	<bean id="assetClassDao" class="com.dao.impl.AssetClassDao"
+		parent="iBaseDao">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<bean id="iBaseDao" class="com.dao.impl.BaseDao">
@@ -80,14 +83,17 @@
 
 
 	<!-- Service -->
-	<bean id="baseService" class="com.service.impl.BaseService" autowire="byName">
+	<bean id="baseService" class="com.service.impl.BaseService"
+		autowire="byName">
 		<property name="baseDao" ref="baseDao"></property>
 		<property name="iBaseDao" ref="iBaseDao"></property>
 	</bean>
-	<bean id="userService" class="com.service.impl.UserService" autowire="byName">
+	<bean id="userService" class="com.service.impl.UserService"
+		autowire="byName">
 		<property name="userDao" ref="userDao"></property>
 	</bean>
-	<bean id="purchaseService" class="com.service.impl.PurchaseService" autowire="byName">
+	<bean id="purchaseService" class="com.service.impl.PurchaseService"
+		autowire="byName">
 		<property name="purchaseDao" ref="purchaseDao"></property>
 	</bean>
 
@@ -139,12 +145,16 @@
 	<bean id="UserList" class="com.action.UserManageAction" scope="prototype">
 		<property name="iUserService" ref="iUserService" />
 	</bean>
-	
+	<bean id="UserSearch" class="com.action.UserManageAction" scope="prototype">
+		<property name="iUserService" ref="iUserService" />
+	</bean>
 	<!-- fyy -->
-	<bean id="AddAssetClass" class="com.action.AssetClassAction" scope="prototype">
+	<bean id="AddAssetClass" class="com.action.AssetClassAction"
+		scope="prototype">
 		<property name="assetClassService" ref="assetClassService" />
 	</bean>
-	<bean id="AssetClassList" class="com.action.AssetClassAction" scope="prototype">
+	<bean id="AssetClassList" class="com.action.AssetClassAction"
+		scope="prototype">
 		<property name="assetClassService" ref="assetClassService" />
 	</bean>
 	<!-- dh -->

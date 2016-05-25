@@ -77,4 +77,10 @@ public class UserService extends BaseService implements IUserService {
 		return this.userDao.getUser(userid);
 	}
 
+	@Override
+	public List<Userinformation> userSearch(Userinformation user) {
+		// TODO Auto-generated method stub
+		return this.userDao.userSearch(user);
+	}
+
 }

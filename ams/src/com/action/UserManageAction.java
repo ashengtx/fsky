@@ -5,11 +5,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.metamodel.SetAttribute;
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+
 import org.apache.struts2.json.annotations.JSON;
 
 import com.model.Department;
 import com.model.Roletype;
 import com.model.Userinformation;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.service.IUserService;
 import com.service.impl.UserService;
@@ -31,6 +35,7 @@ public class UserManageAction extends ActionSupport {
 	private Integer usersex;
 	private Integer departmentid;
 	private Integer roleid;
+
 	private Integer userid;
 	private Map<String, Object> dataMap;
 	private List<Userinformation> users;
@@ -39,6 +44,14 @@ public class UserManageAction extends ActionSupport {
 	private int total;
 	private int filter;
 	private String key = "Just see see";
+
+	public Integer getUserid() {
+		return userid;
+	}
+
+	public void setUserid(Integer userid) {
+		this.userid = userid;
+	}
 
 	public int getTotal() {
 		return total;
@@ -179,7 +192,8 @@ public class UserManageAction extends ActionSupport {
 
 	public String updateUser() throws Exception {
 		Userinformation userinformation = iUserService.findById(
-				Userinformation.class, 26);
+				Userinformation.class, userid);
+
 		Department department = new Department();
 		Roletype roletype = new Roletype();
 		department.setDepartmentid(departmentid);
@@ -191,24 +205,34 @@ public class UserManageAction extends ActionSupport {
 		userinformation.setDepartment(department);
 		userinformation.setRoletype(roletype);
 		iUserService.saveOrUpdate(userinformation);
+		System.out.println("userid:" + userid);
 		System.out.println(username + "!!!" + userpassword + "!!!" + userstate
 				+ "!!!" + usersex + "!!!" + departmentid + "!!!" + roleid
 				+ "!!!");
-		System.out.println("添加用户！");
+		System.out.println("更新用户！");
 		return SUCCESS;
 	}
 
 	public String deleteUser() throws Exception {
 		Userinformation userinformation = iUserService.findById(
-				Userinformation.class, 25);
+				Userinformation.class, userid);
 		iUserService.doDelete(userinformation);
-		System.out.println("删除用户！");
+		System.out.println("删除用户成功！");
 		return SUCCESS;
+
 	}
 
 	public String getUser() {
+
 		System.out.println("获取用户！");
 		this.userinformation = iUserService.getUser(userid);
+		// this.setUsername(userinformation.getUsername());
+		// this.setUserpassword(userinformation.getUserpwd());
+		System.out.println("userid" + userid);
+		System.out.println(userinformation.getUsername());
+		System.out.println(userinformation.getUserpwd());
+		// Map request = (Map) ActionContext.getContext().get("request");
+		// request.put("userinformation", userinformation);
 		return SUCCESS;
 	}
 
@@ -252,4 +276,51 @@ public class UserManageAction extends ActionSupport {
 		// 返回结果
 		return SUCCESS;
 	}
+
+	public String userSearch() throws Exception {
+		Userinformation userinformation = new Userinformation();
+		userinformation.setUsername(username);
+		Department department1 = new Department();
+		department1.setDepartmentid(departmentid);
+		userinformation.setDepartment(department1);
+		this.users = iUserService.userSearch(userinformation);
+		System.out.println("获取搜索用户列表！");
+
+		List<Userinformation> data = new ArrayList<Userinformation>();
+		for (int i = 0; i < users.size(); i++) {
+			Userinformation user = new Userinformation();
+			Department department = new Department();
+			Roletype roletype = new Roletype();
+			user.setUserid(this.users.get(i).getUserid());
+			user.setUsername(this.users.get(i).getUsername());
+			user.setUserpwd(this.users.get(i).getUserpwd());
+			user.setUsersex(this.users.get(i).getUsersex());
+			user.setUserstate(this.users.get(i).getUserstate());
+			department.setDepartmentid(this.users.get(i).getDepartment()
+					.getDepartmentid());
+			roletype.setRoleid(this.users.get(i).getRoletype().getRoleid());
+			user.setDepartment(department);
+			user.setRoletype(roletype);
+
+			data.add(user);
+		}
+
+		// dataMap中的数据将会被Struts2转换成JSON字符串，所以这里要先清空其中的数据
+		dataMap = new HashMap<String, Object>();
+		total = data.size();
+		System.out.println(total);
+		filter = total;
+		if (start + length > total) {
+			dataMap.put("aaData", data.subList(start, total));
+
+		} else {
+			dataMap.put("aaData", data.subList(start, length));
+		}
+		/* dataMap.put("aaData", aaData); */
+		dataMap.put("recordsTotal", total);
+		dataMap.put("recordsFiltered", filter);
+		// 返回结果
+		return SUCCESS;
+	}
+
 }
