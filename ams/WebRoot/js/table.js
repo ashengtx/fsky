@@ -24,8 +24,8 @@ $(document)
 												"sLast" : " <i class=\"fa fa-angle-double-right\"></i> "
 											}
 										},
-										"aLengthMenu" : [ [ 10, 15, 20 ],
-												[ 10, 15, 20 ] ],
+										"aLengthMenu" : [ [10, 15, 20 ],
+												[10, 15, 20 ] ],
 										"bStateSave" : false,
 										"bProcessing" : true,
 										"bServerSide" : true,
@@ -143,6 +143,7 @@ $(document)
 															type, val) {
 														var userstate_btn = "";
 
+
 														userstate_btn += '<a href="/ams/pages/getUser.action?userid='
 																+ row.userid
 																+ '" class="text-info support-details" title="编辑" data-id="'
@@ -166,6 +167,7 @@ $(document)
 														 * fa-file-text-o"></i>
 														 * 解禁</a>';
 														 */
+
 														return '<div class="toolmenu">'
 																+ userstate_btn
 																+ '</div>';

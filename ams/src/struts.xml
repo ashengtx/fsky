@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
+<constant name="struts.devMode" value="true" />
 	<package name="base" extends="struts-default" abstract="true">
 		<global-results>
 			<result name="login">/global/timeout.jsp</result>
@@ -26,11 +27,43 @@
 	</package>
 
 	<package name="user" namespace="/pages" extends="struts-default,json-default">
+		<!-- lls -->
 		<action name="login" class="Login" method="login">
 			<result name="success">/pages/dashboard.jsp</result>
 		</action>
-		<action name="purchase" class="Purchase" method="addPurchase">
-			<result name="success">/success.jsp</result>
+		<action name="addPurchase" class="Purchase" method="addPurchase">
+			<result name="success">/pages/purchase-list.jsp</result>
+		</action>
+		<action name="getPur" class="Purchase" method="getPur">
+			<result name="update">/pages/update-purchase.jsp</result>
+			<result name="check">/pages/purchase.jsp</result>
+		</action>
+		<action name="updatePurchase" class="Purchase" method="updatePurchase">
+			<result name="success">/pages/purchase-list.jsp</result>
+		</action>
+		<action name="purchaseList" class="Purchase" method="purchaseList">
+			<result type="json">  
+                <param name="root">dataMap</param>  
+            </result> 
+		</action>
+		<action name="addPurchasedetail" class="Purchase" method="addPurchasedetail">
+			<result name="success">/pages/purchase-detail-list.jsp</result>
+		</action> 
+		<action name="getPurD" class="Purchase" method="getPurD">
+			<result name="success">/pages/purchase-detail.jsp</result>
+		</action>
+		<action name="purchasedetailList" class="Purchase" method="purchasedetailList">
+			<result type="json">  
+                <param name="root">dataMap</param>  
+            </result> 
+		</action>
+		<action name="returnList" class="Asset" method="returnList">
+			<result type="json">  
+                <param name="root">dataMap</param>  
+            </result> 
+		</action>
+		<action name="assetReturn" class="Asset" method="assetReturn">
+			<result name="success">/pages/return-list.jsp</result>
 		</action>
 
 		<!-- dh -->
@@ -52,6 +85,7 @@
 			</result>
 		</action>
 
+
 		<action name="userSearch" class="UserSearch" method="userSearch">
 			<result type="redirect">/pages/searchusers.jsp</result>
 		</action>
@@ -62,18 +96,36 @@
 		</action>
 
 
+
+		
+		<!-- Guohui Li -->
+		<action name="addDepartment" class="AddDepartment" method="addDepartment">
+			<result type="redirect">/pages/success.jsp</result>
+		</action>
+		<action name="updateDepartment" class="UpdateDepartment" method="updateDepartment">
+			<result type="redirect">/pages/departments.jsp</result>
+		</action>
+		<action name="getDepartmentInfo" class="GetDepartmentInfo" method="getDepartmentInfo">
+			<result>/pages/updatedepartment.jsp</result>
+		</action>
+		<action name="deleteDepartment" class="DeleteDepartment" method="deleteDepartment">
+			<result type="redirect">/pages/departments.jsp</result>
+		</action>
+		
+		<action name="departmentList" class="DepartmentList" method="departmentList">
+		<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		
 		<action name="addAssetClass" class="AddAssetClass" method="addAssetClass">
 			<result type="redirect">/pages/success.jsp</result>
 		</action>
+		
 		<action name="assetClassList" class="AssetClassList" method="assetClassList">
 			<result type="json">
 				<param name="root">dataMap</param>
 			</result>
-		</action>
-		<action name="section" class="sectionAction">
-			<result name="none">/none.jsp</result>
-			<result name="createSuccess">/success.jsp</result>
-			<result name="createFail">/index.jsp</result>
 		</action>
 	</package>
 

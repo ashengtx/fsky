@@ -9,6 +9,10 @@
 %>
 
 <!DOCTYPE html>
+
+<html>
+
+<head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,21 +22,38 @@
 <title>资产管理系统</title>
 
 <jsp:include page="../header.jsp" />
-<jsp:include page="../navigation.jsp" />
+<!-- stylesheet here -->
 
-<!-- Page Content -->
-<div id="page-wrapper">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header">资产管理</h1>
+<!-- stylesheet end -->
+</head>
+
+<body>
+
+	<div id="wrapper">
+
+		<jsp:include page="../navigation.jsp" />
+
+		<!-- Page Content -->
+		<div id="page-wrapper">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<h1 class="page-header">资产管理</h1>
+					</div>
+					<!-- /.col-lg-12 -->
+				</div>
+				<!-- /.row -->
 			</div>
-			<!-- /.col-lg-12 -->
+			<!-- /.container-fluid -->
 		</div>
-		<!-- /.row -->
-	</div>
-	<!-- /.container-fluid -->
-</div>
-<!-- /#page-wrapper -->
+		<!-- /#page-wrapper -->
 
-<jsp:include page="../footer.jsp" />
+	</div>
+	<!-- /#wrapper -->
+
+	<jsp:include page="../footer.jsp" />
+	<!-- script here -->
+	
+	<!-- script end -->
+</body>
+</html>

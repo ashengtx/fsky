@@ -211,10 +211,16 @@
 				<li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>资产管理<span
 						class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
-						<li><a href="<%=basePath%>pages/purchase.jsp">采购入库</a></li>
+
+						<li><a href="#">采购入库<span class="fa arrow"></span></a>
+							<ul class="nav nav-third-level">
+								<li><a href="<%=basePath %>pages/add-purchase.jsp">添加采购单</a></li>
+								<li><a href="<%=basePath %>pages/purchase-list.jsp">查看采购单列表</a></li>
+							</ul>
+						</li>
 						<li><a href="#">财务入账</a></li>
-						<li><a href="<%=basePath%>pages/asset.jsp">资产列表</a></li>
-						<li><a href="#">资产归还</a></li>
+						<li><a href="<%=basePath %>pages/asset.jsp">资产列表</a></li>
+						<li><a href="<%=basePath %>pages/return-list.jsp">资产归还</a></li>
 						<li><a href="#">资产调拨</a></li>
 						<li><a href="#">资产报废</a></li>
 						<li><a href="#">资产维修</a></li>
@@ -229,7 +235,11 @@
 				<li><a href="#"><i class="fa fa-sitemap fa-fw"></i>系统配置<span
 						class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
-						<li><a href="#">部门配置</a></li>
+						<li><a href="#">部门配置<span class="fa arrow"></span></a>
+							<ul class="nav nav-third-level">
+								<li><a href="department.jsp">部门添加</a></li>
+								<li><a href="departments.jsp">部门列表</a></li>
+							</ul></li>
 						<li><a href="#">资产类别配置</a></li>
 						<li><a href="#">参数信息配置</a></li>
 						<li><a href="#">人员管理<span class="fa arrow"></span></a>

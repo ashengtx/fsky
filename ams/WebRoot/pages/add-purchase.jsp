@@ -38,7 +38,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">查看采购单</h1>
+				<h1 class="page-header">添加采购单</h1>
 			</div>
 			<!-- /.col-lg-12 -->
 		</div>
@@ -49,47 +49,41 @@
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-lg-12">
-							<form role="form">
-							<input name=purid type="hidden" value="<%=request.getParameter("purid")%>"></input>
-      						<input name=departmentid type="hidden" 
-      							value="<s:property value="purchase.department.departmentid"/>"></input>
+							<form action="addPurchase.action" role="form" method="post">
 							<fieldset>
 								<div class="form-group">
 									<label>经办人</label> 
 									<input class="form-control" type="text"	name="userid" 
-										value="<s:property value="purchase.userinformation.userid"/>" /> 
+										placeholder="" /> 
 								</div>
 								<div class="form-group">
 									<label>采购日期</label> 
-									<%-- <input class="form-control" onclick="laydate()" name="buydate" 
-										value="<s:date name="purchase.buydate" format="yyyy-MM-dd" />"/>  --%>
-									<input class="form-control" name="buydate" 
-										value="<s:date name="purchase.buydate" format="yyyy-MM-dd" />"/> 
+									<input class="form-control" onclick="laydate()" name="buydate" /> 
 								</div>
 								<div class="form-group">
 									<label>采购用途</label> 
 									<input class="form-control" type="text" name="cgyt"
-										value="<s:property value="purchase.cgyt"/>" />
+										placeholder="" />
 								</div>
-						<%-- 		<div class="form-group">
+								<div class="form-group">
 									<label>采购部门</label> 
 										<select class="form-control" name="departmentid">
 											<option value="1">市场部</option>
 											<option value="2">财务部</option>
 										</select>
-								</div> --%>
+								</div>
 								<div class="form-group">
 									<label style="width: 70px;">采购状态</label>
                                     <label class="radio-inline">
-                                    	<input type="radio" name="purstate" id="purstate1" value="1" checked />采购完成
+                                    	<input type="radio" name="purstate" id="purstate1" value="1">采购完成
                                     </label>
                                     <label class="radio-inline">
-                                    	<input type="radio" name="purstate" id="purstate2" value="0" disabled />尚未采购
+                                    	<input type="radio" name="purstate" id="purstate2" value="0">尚未采购
                                     </label>
                                 </div>
                                 <div class="form-actions">
-									<a href="<%=basePath %>pages/purchase-list.jsp">
-										<button type="button" class="btn btn-primary">返回</button></a>
+									<button type="submit" class="btn btn-primary">提交</button>
+                                	<button type="reset" class="btn btn-default">重置</button>
                                 </div>
                             </fieldset>
 							</form>
@@ -111,7 +105,6 @@
 
 </div>
 <!-- /#wrapper -->
-
 
 <jsp:include page="../footer.jsp" />
 	<!-- script here -->
