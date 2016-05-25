@@ -219,7 +219,7 @@
 						</li>
 						<li><a href="#">财务入账</a></li>
 						<li><a href="<%=basePath %>pages/asset.jsp">资产列表</a></li>
-						<li><a href="#">资产归还</a></li>
+						<li><a href="<%=basePath %>pages/return-list.jsp">资产归还</a></li>
 						<li><a href="#">资产调拨</a></li>
 						<li><a href="#">资产报废</a></li>
 						<li><a href="#">资产维修</a></li>

@@ -21,7 +21,7 @@ $(document).ready(function () {
         //"aLengthMenu": [[10, 15, 20], [10, 15, 20]],
         //"bStateSave": true,
         //"bProcessing": true,
-        //"bServerSide": true, //开启才能传数据到前端,但是关掉之后才能搜索，日
+        "bServerSide": true, //开启才能传数据到前端,但是关掉之后才能搜索，日
         //"sDom": "t<'row'<'col-sm-4'i><'col-sm-2'l><'col-sm-6'p>>",
         //"sPaginationType": "full_numbers",
         //sServerMethod: "POST",

@@ -57,6 +57,14 @@
                 <param name="root">dataMap</param>  
             </result> 
 		</action>
+		<action name="returnList" class="Asset" method="returnList">
+			<result type="json">  
+                <param name="root">dataMap</param>  
+            </result> 
+		</action>
+		<action name="assetReturn" class="Asset" method="assetReturn">
+			<result name="success">/pages/return-list.jsp</result>
+		</action>
 
 		<!-- dh -->
 		<action name="getUser" class="GetUser" method="getUser">
