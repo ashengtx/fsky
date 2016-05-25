@@ -24,8 +24,8 @@ $(document)
 												"sLast" : " <i class=\"fa fa-angle-double-right\"></i> "
 											}
 										},
-										"aLengthMenu" : [ [ 3, 5, 10 ],
-												[ 3, 5, 10 ] ],
+										"aLengthMenu" : [ [5, 10 ],
+												[ 5, 10 ] ],
 										"bStateSave" : false,
 										"bProcessing" : true,
 										"bServerSide" : true,
@@ -78,11 +78,19 @@ $(document)
 																+ '" class="text-info support-details" title="编辑" data-id="'
 																+ row.departmentid
 																+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 编辑</a>';
-														departmentstate_btn += '<a href="/ams/pages/deleteDepartment.action?departmentid='
-																+ row.departmentid
-																+ '" class="text-info support-details confirmDeleteBtn" title="删除" data-id="'
-																+ row.departmentid
-																+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 删除</a>';
+//														departmentstate_btn += '<a href="/ams/pages/deleteDepartment.action?departmentid='
+//																+ row.departmentid
+//																+ '" class="text-info support-details confirmDeleteBtn" title="删除" data-id="'
+//																+ row.departmentid
+//																+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 删除</a>';
+														
+														departmentstate_btn += '<a href="#" class="text-info support-details confirmDeleteBtn" title="删除" data-id="'
+															+ row.departmentid
+															+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 删除</a>';
+														
+														
+														
+														
 														return '<div class="toolmenu">'
 																+ departmentstate_btn
 																+ '</div>';
@@ -97,41 +105,47 @@ $(document)
 										}
 									});
 
-					// $(document).on('click', '.confirmDeleteBtn', function ()
-					// {
-					// var departmentid = $(this).attr("data-id");
-					// // alert("111");
-					// $.ajax({
-					// type: "POST",
-					// url: "updateDepartment",
-					// data: {
-					// departmentid: departmentid
-					// },
-					// success: function (data) {
-					// if("delete"==data){
-					// detailDatatables.ajax.reload();
-					// alert("删除成功");
-					// }else{
-					// alert("删除失败");
-					// }
-					//
-					//
-					// },
-					// error: function (XMLHttpRequest, textStatus, errorThrown)
-					// {
-					// }
-					// });
-					// });
-					//
-					//					
-					//					
-					$(document).on("click", ".confirmDeleteBtn", function() {
-						var r = confirm("Press a button!");
+					$(document).on('click', '.confirmDeleteBtn', function ()
+							{
+
+						var r = confirm("是否确认删除!");
 						if (r == true) {
-							alert("You pressed OK!");
+							var departmentid = $(this).attr("data-id");
+							// alert("111");
+							$.ajax({
+								type: "POST",
+								url: "/ams/pages/deleteDepartment.action",
+								data: {
+									departmentid: departmentid
+								},
+								success: function (data) {
+									datatables.ajax.reload();
+//									if("delete"==data){
+//										alert("删除成功");
+//									}else{
+//										alert("删除失败");
+//									}
+
+								},
+								error: function (XMLHttpRequest, textStatus, errorThrown)
+								{
+								}
+							});
 						} else {
-							alert("You pressed Cancel!");
 						}
-					});
+
+
+							});
+					//
+					//					
+					//					
+//					$(document).on("click", ".confirmDeleteBtn", function() {
+//						var r = confirm("Press a button!");
+//						if (r == true) {
+//							alert("You pressed OK!");
+//						} else {
+//							alert("You pressed Cancel!");
+//						}
+//					});
 
 				});

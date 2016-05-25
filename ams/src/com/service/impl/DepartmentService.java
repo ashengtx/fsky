@@ -69,6 +69,7 @@ public class DepartmentService extends BaseService implements
 
 	@Override
 	public int update(Department department) {
+		departmentDao.update(department);
 		return 0;
 	}
 

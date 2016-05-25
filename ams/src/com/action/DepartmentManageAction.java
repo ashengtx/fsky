@@ -85,7 +85,8 @@ public class DepartmentManageAction extends ActionSupport {
 	public String deleteDepartment() throws Exception {
 		Department department = iDepartmentService.findById(Department.class,
 				departmentid);
-		iDepartmentService.doDelete(department);
+		department.setDeleteflag(0);
+		iDepartmentService.update(department);
 		return SUCCESS;
 	}
 
@@ -97,13 +98,18 @@ public class DepartmentManageAction extends ActionSupport {
 		this.departments = iDepartmentService.getList(Department.class);
 		List<Department> data = new ArrayList<Department>();
 		for (int i = 0; i < departments.size(); i++) {
-			Department department = new Department();
-			department.setDepartmentid(this.departments.get(i)
-					.getDepartmentid());
-			department.setDepartmentname(this.departments.get(i)
-					.getDepartmentname());
-			department.setDeleteflag(this.departments.get(i).getDeleteflag());
-			data.add(department);
+			if(1==this.departments.get(i).getDeleteflag()){
+				Department department = new Department();
+				department.setDepartmentid(this.departments.get(i)
+						.getDepartmentid());
+				department.setDepartmentname(this.departments.get(i)
+						.getDepartmentname());
+				department.setDeleteflag(this.departments.get(i).getDeleteflag());
+				data.add(department);
+			}else{
+				
+			}
+			
 		}
 		// dataMap中的数据将会被Struts2转换成JSON字符串，所以这里要先清空其中的数据
 		dataMap = new HashMap<String, Object>();
