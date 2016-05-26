@@ -41,7 +41,7 @@ public class AssetAction extends ActionSupport {
 	private Integer cwuid;
 	private Integer pdid;
 	private String cardnum;
-	private Integer zkstate;
+	private Integer zkstate;		//在库状态 5 调出
 	private Integer cwstate;
 	private String ggxh;
 	private Integer usestate;
@@ -73,24 +73,39 @@ public class AssetAction extends ActionSupport {
 	private List<Zclygh> zclyghs;
 	private Asset asset;
 
+	/*
+	 * @author 林连升
+	 * 
+	 * @description 资产报废
+	 */
 	private Date bfdate;
 	private Date checkdate;
 	private Integer bfstate;
 	private Integer bfid;
 	private Integer checkuid;
 	private List<Baofei> baofeis;
-
+	
+	/*
+	 * @author 林连升
+	 * 
+	 * @description 资产维修
+	 */
 	private Integer rid;
-	private String shqk;
+	private String shqk;			// 使用情况
 	private Float rprice;
-	private Integer rstate;
-	private Integer beforestate;
+	private Integer rstate;			// 维修状态
+	private Integer beforestate;	// 送修前资产使用状态
 	private List<Repairs> repair;
 
+	/*
+	 * @author 林连升
+	 * 
+	 * @description 调拨单
+	 */
 	private Integer tbid;
 	private Date outdate;
-	private String outnote;
-	private Integer tbstate;
+	private String outnote;		// 调出事由
+	private Integer tbstate;	// 调拨状态  0 调出待确认
 	private Date inputdate;
 	private Integer dcuid;
 	private Integer dcdid;
@@ -223,8 +238,14 @@ public class AssetAction extends ActionSupport {
 		// 返回结果
 		return SUCCESS;
 	}
-
+	
+	/*
+	 * @author 林连升
+	 * 
+	 * @description 资产领用
+	 */
 	public String assetUse() throws Exception {
+		System.out.println("assetUse");
 		Zclygh zclygh = new Zclygh();
 		Userinformation userinformationByLyuserid = new Userinformation();
 		Asset asset = new Asset();
@@ -251,7 +272,12 @@ public class AssetAction extends ActionSupport {
 		return SUCCESS;
 
 	}
-
+	
+	/*
+	 * @author 林连升
+	 * 
+	 * @description 资产归还列表
+	 */
 	public String returnList() {
 		System.out.println("returnList");
 		this.zclyghs = assetService.getLyList(0);
@@ -289,27 +315,24 @@ public class AssetAction extends ActionSupport {
 		// 返回结果
 		return SUCCESS;
 	}
-
+	
+	/*
+	 * @author 林连升
+	 * 
+	 * @description 资产归还
+	 */
 	public String assetReturn() throws Exception {
 		Zclygh zclygh = assetService.findById(Zclygh.class, lyghid);
 		this.assetid = zclygh.getAsset().getAssetid();
 
-		Userinformation userinformationByGhuserid = new Userinformation();
-		userinformationByGhuserid.setUserid(ghuserid);
-		zclygh.setUserinformationByGhuserid(userinformationByGhuserid);
+		Userinformation user = new Userinformation();
+		user.setUserid(ghuserid);
+		zclygh.setUserinformationByGhuserid(user);
 		zclygh.setGhdate(ghdate);
 		zclygh.setLyghstate(1);
 		assetService.saveOrUpdate(zclygh);
 
 		Asset ghasset = assetService.findById(Asset.class, this.assetid);
-		// System.out.print(ghasset);
-		// Userinformation userinformationByUseruid = new Userinformation();
-		// ghasset.setUserinformationByUseruid(userinformationByUseruid);
-		// Department department=new Department();
-		// department.setDepartmentid(null);
-		// userinformationByUseruid.setUserid(7);
-		// ghasset.setDepartment(department);
-		// System.out.print(department.getDepartmentid());
 		ghasset.setUsestate(2);
 		ghasset.setZkstate(2);
 		assetService.saveOrUpdate(ghasset);
@@ -379,8 +402,13 @@ public class AssetAction extends ActionSupport {
 
 		return SUCCESS;
 	}
-
-	public String scrapAsset() throws Exception {
+	/*
+	 * @author 林连升
+	 * 
+	 * @description 资产报废
+	 */
+	public String assetScrap() throws Exception {
+		System.out.println("assetScrap");
 		Baofei baofei = new Baofei();
 		Userinformation userinformationByUserid = new Userinformation();
 		Asset asset = new Asset();
@@ -396,9 +424,14 @@ public class AssetAction extends ActionSupport {
 		return SUCCESS;
 
 	}
-
+	
+	/*
+	 * @author 林连升
+	 * 
+	 * @description 资产报废列表
+	 */
 	public String scrapList() {
-
+		System.out.println("scrapList");
 		this.baofeis = assetService.getBaofeiList(0);
 		List<Object> aaData = new ArrayList<Object>();
 		for (int i = 0; i < this.baofeis.size(); i++) {
@@ -435,8 +468,13 @@ public class AssetAction extends ActionSupport {
 		return SUCCESS;
 	}
 
+	/*
+	 * @author 林连升
+	 * 
+	 * @description 资产报废审核
+	 */
 	public String scrapCheck() throws Exception {
-
+		System.out.println("scrapCheck");
 		Baofei baofei = assetService.findById(Baofei.class, bfid);
 		this.assetid = baofei.getAsset().getAssetid();
 		Userinformation userinformationByCheckuid = new Userinformation();
@@ -455,8 +493,14 @@ public class AssetAction extends ActionSupport {
 		return SUCCESS;
 
 	}
-
-	public String repairAsset() throws Exception {
+	
+	/*
+	 * @author 林连升
+	 * 
+	 * @description 资产报修
+	 */
+	public String assetRepair() throws Exception {
+		System.out.println("assetRepair");
 		Repairs repairs = new Repairs();
 		Userinformation userinformation = new Userinformation();
 		Asset asset = new Asset();
@@ -481,9 +525,16 @@ public class AssetAction extends ActionSupport {
 		return SUCCESS;
 
 	}
-
+	
+	/*
+	 * @author 林连升
+	 * 
+	 * @description 资产维修列表
+	 * 
+	 * @problem 如果列表中价格为空就会有问题？
+	 */
 	public String repairList() {
-
+		System.out.println("repairList");
 		this.repair = assetService.getRepairsList(0);
 		List<Object> aaData = new ArrayList<Object>();
 		for (int i = 0; i < this.repair.size(); i++) {
@@ -519,9 +570,13 @@ public class AssetAction extends ActionSupport {
 		// 返回结果
 		return SUCCESS;
 	}
-
-	public String repair() throws Exception {
-
+	/*
+	 * @author 林连升
+	 * 
+	 * @description 维修完成
+	 */
+	public String repairComplete() throws Exception {
+		System.out.println("repairComplete");
 		Repairs repairs = assetService.findById(Repairs.class, rid);
 		this.assetid = repairs.getAsset().getAssetid();
 		this.beforestate = repairs.getBeforestate();
@@ -529,15 +584,20 @@ public class AssetAction extends ActionSupport {
 		repairs.setRstate(1);
 		assetService.saveOrUpdate(repairs);
 
-		Asset repairasset = assetService.findById(Asset.class, this.assetid);
-		repairasset.setUsestate(this.beforestate);
-		repairasset.setZkstate(this.beforestate);
-		assetService.saveOrUpdate(repairasset);
+		Asset asset = assetService.findById(Asset.class, this.assetid);
+		asset.setUsestate(this.beforestate);
+		asset.setZkstate(this.beforestate);
+		assetService.saveOrUpdate(asset);
 		return SUCCESS;
 
 	}
-
-	public String transferAsset() throws Exception {
+	/*
+	 * @author 林连升
+	 * 
+	 * @description 资产调拨
+	 */
+	public String assetTransfer() throws Exception {
+		System.out.println("assetTransfer");
 		Transbill transbill = new Transbill();
 		Userinformation userinformationByDcuid = new Userinformation();
 		Asset asset = new Asset();
@@ -562,9 +622,14 @@ public class AssetAction extends ActionSupport {
 		return SUCCESS;
 
 	}
-
+	
+	/*
+	 * @author 林连升
+	 * 
+	 * @description 资产调出列表
+	 */
 	public String transferList() {
-
+		System.out.println("transferList");
 		this.transbills = assetService.getTransbillList(0);
 		List<Object> aaData = new ArrayList<Object>();
 		for (int i = 0; i < this.transbills.size(); i++) {
@@ -604,9 +669,14 @@ public class AssetAction extends ActionSupport {
 		// 返回结果
 		return SUCCESS;
 	}
-
+	
+	/*
+	 * @author 林连升
+	 * 
+	 * @description 资产调入
+	 */
 	public String transferIn() throws Exception {
-
+		System.out.println("transferIn");
 		Transbill transbill = assetService.findById(Transbill.class, tbid);
 		this.assetid = transbill.getAsset().getAssetid();
 		Userinformation userinformationByDruid = new Userinformation();
