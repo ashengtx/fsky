@@ -8,7 +8,7 @@ import java.util.List;
  * */
 public interface IBaseService {
 	
-	public <T>boolean create(T t);
+	public <T> boolean create(T t);
 
 	public <T> void doCreate(T t);
 

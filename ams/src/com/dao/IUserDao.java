@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.model.Userinformation;
 
-public interface IUserDao {
+public interface IUserDao extends IBaseDao {
 
 	public Userinformation get(int id);
 
@@ -15,4 +15,9 @@ public interface IUserDao {
 	public List<Userinformation> findUserLikeName(String name);
 
 	public Userinformation getUser(Integer userid);
+
+	public List<Userinformation> userSearch(String username);
+
+	public List<Userinformation> getUserList(String username,
+			Integer userstate, Integer departmentid,Integer roleid);
 }

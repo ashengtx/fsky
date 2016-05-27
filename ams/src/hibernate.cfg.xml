@@ -17,11 +17,13 @@
 			com.mysql.jdbc.Driver
 		</property>
 		<property name="hibernate.show_sql">true</property>
+		<property name="connection.useUnicode">true</property> 
+		<property name="connection.characterEncoding">UTF-8</property> 
 		<property name="myeclipse.connection.profile">mysql</property>
         <property name="hibernate.connection.autocommit">true</property>
-        <property name="connection.useUnicode">true</property> 
-        <property name="connection.characterEncoding">UTF-8</property> 
-        
+		<property name="connection.useUnicode">true</property> 
+		<property name="connection.characterEncoding">UTF-8</property>
+		
 		<mapping resource="com/model/Asset.hbm.xml" />
 		<mapping resource="com/model/Assetclass.hbm.xml" />
 		<mapping resource="com/model/Baofei.hbm.xml" />

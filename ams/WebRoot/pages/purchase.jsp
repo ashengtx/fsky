@@ -22,6 +22,15 @@
 <title>采购入库</title>
 
 <jsp:include page="../header.jsp" />
+<!-- stylesheet here -->
+
+<!-- stylesheet end -->
+
+</head>
+
+<body>
+
+	<div id="wrapper">
 <jsp:include page="../navigation.jsp" />
 
 <!-- Page Content -->
@@ -29,7 +38,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">添加采购单</h1>
+				<h1 class="page-header">查看采购单</h1>
 			</div>
 			<!-- /.col-lg-12 -->
 		</div>
@@ -40,41 +49,47 @@
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-lg-12">
-							<form action="purchase.action" role="form" method="post">
+							<form role="form">
+							<input name=purid type="hidden" value="<%=request.getParameter("purid")%>"></input>
+      						<input name=departmentid type="hidden" 
+      							value="<s:property value="purchase.department.departmentid"/>"></input>
 							<fieldset>
 								<div class="form-group">
 									<label>经办人</label> 
 									<input class="form-control" type="text"	name="userid" 
-										placeholder="" /> 
+										value="<s:property value="purchase.userinformation.userid"/>" /> 
 								</div>
 								<div class="form-group">
 									<label>采购日期</label> 
-									<input class="form-control" onclick="laydate()" name="buydate" /> 
+									<%-- <input class="form-control" onclick="laydate()" name="buydate" 
+										value="<s:date name="purchase.buydate" format="yyyy-MM-dd" />"/>  --%>
+									<input class="form-control" name="buydate" 
+										value="<s:date name="purchase.buydate" format="yyyy-MM-dd" />"/> 
 								</div>
 								<div class="form-group">
 									<label>采购用途</label> 
 									<input class="form-control" type="text" name="cgyt"
-										placeholder="" />
+										value="<s:property value="purchase.cgyt"/>" />
 								</div>
-								<div class="form-group">
+						<%-- 		<div class="form-group">
 									<label>采购部门</label> 
 										<select class="form-control" name="departmentid">
 											<option value="1">市场部</option>
 											<option value="2">财务部</option>
 										</select>
-								</div>
+								</div> --%>
 								<div class="form-group">
 									<label style="width: 70px;">采购状态</label>
                                     <label class="radio-inline">
-                                    	<input type="radio" name="purstate" id="purstate1" value="1">采购完成
+                                    	<input type="radio" name="purstate" id="purstate1" value="1" checked />采购完成
                                     </label>
                                     <label class="radio-inline">
-                                    	<input type="radio" name="purstate" id="purstate2" value="0">尚未采购
+                                    	<input type="radio" name="purstate" id="purstate2" value="0" disabled />尚未采购
                                     </label>
                                 </div>
                                 <div class="form-actions">
-									<button type="submit" class="btn btn-primary">提交</button>
-                                	<button type="reset" class="btn btn-default">重置</button>
+									<a href="<%=basePath %>pages/purchase-list.jsp">
+										<button type="button" class="btn btn-primary">返回</button></a>
                                 </div>
                             </fieldset>
 							</form>
@@ -97,4 +112,10 @@
 </div>
 <!-- /#wrapper -->
 
+
 <jsp:include page="../footer.jsp" />
+	<!-- script here -->
+	<script type="text/javascript" src="../laydate/laydate.js"></script> 
+	<!-- script end -->
+</body>
+</html>

@@ -1,5 +1,6 @@
 package com.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -72,6 +73,47 @@ public class UserDao extends BaseDao implements IUserDao {
 		// TODO Auto-generated method stub
 		return (Userinformation) this.getHibernateTemplate().get(
 				Userinformation.class, userid);
+	}
+
+	@Override
+	public List<Userinformation> userSearch(String username) {
+		List<Object> condList = new ArrayList<Object>();
+		condList.add("%" + username + "%");
+		Object o[] = condList.toArray();
+		return this
+				.getHibernateTemplate()
+				.find("select userinformation from Userinformation as userinformation where userinformation.username like ?",
+						o);
+
+	}
+
+	@Override
+	public List<Userinformation> getUserList(String username,
+			Integer userstate, Integer departmentid, Integer roleid) {
+		List<Object> condList = new ArrayList<Object>();
+		condList.add(3);
+		String selection = "select userinformation from Userinformation as userinformation where userinformation.userstate!=?";
+		if (userstate != null  && !userstate.equals("")) {
+			condList.add(userstate);
+			selection = selection + " and userinformation.userstate=? ";
+		}
+		if (departmentid != null  && !departmentid.equals("")) {
+			condList.add(departmentid);
+			selection = selection
+					+ " and userinformation.department.departmentid=? ";
+		}
+		if (roleid != null  && !roleid.equals("") ) {
+			condList.add(roleid);
+			selection = selection + " and userinformation.roletype.roleid=? ";
+		}
+		if (username != null  && !username.equals("")) {
+
+			condList.add("%" + username + "%");
+			selection = selection + " and userinformation.username like ?";
+		}
+		Object o[] = condList.toArray();
+		System.out.println("sql:"+selection);
+		return this.getHibernateTemplate().find(selection, o);
 	}
 
 }

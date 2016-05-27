@@ -25,4 +25,9 @@ public interface IUserService extends IBaseService {
 	public List<Userinformation> getLikeName(String name);
 
 	public Userinformation getUser(Integer userid);
+	
+	public List<Userinformation> userSearch( String username);
+	
+	public List<Userinformation> getUserList(String username,
+			Integer userstate, Integer departmentid,Integer roleid);
 }

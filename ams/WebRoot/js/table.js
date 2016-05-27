@@ -36,7 +36,14 @@ $(document)
 										"ajax" : {
 											"url" : "userList.action",
 											"data" : function(data) {
-
+												data.username = $("#username")
+														.val();
+												data.departmentid = $(
+														"#departmentid").val();
+												data.roleid = $("#roleid")
+														.val();
+												data.userstate = $("#userstate")
+														.val();
 											}
 										},
 										// "aaSorting": [[ 1, "asc" ]],
@@ -111,7 +118,9 @@ $(document)
 														case 2:
 															department_str = "财务部";
 															break;
-
+														case 3:
+															department_str = "运营部";
+															break;
 														default:
 															break;
 														}
@@ -125,12 +134,14 @@ $(document)
 														var roletype_str = "";
 														switch (row.roletype.roleid) {
 														case 1:
-															roletype_str = "管理员";
+															roletype_str = "系统管理员";
 															break;
 														case 2:
-															roletype_str = "用户";
+															roletype_str = "普通员工";
 															break;
-
+														case 3:
+															roletype_str = "财务人员";
+															break;
 														default:
 															break;
 														}
@@ -143,45 +154,30 @@ $(document)
 															type, val) {
 														var userstate_btn = "";
 
-														switch (row.userstate) {
-														case 0:
-															userstate_btn += '<a href="/ams/getUser.action?userid='
-																	+ row.userid
-																	+ '" class="text-info support-details" title="编辑" data-id="'
-																	+ row.userid
-																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 编辑</a>';
-															userstate_btn += '<a href="/ams/deleteUser.action?userid='
-																	+ row.userid
-																	+ '" class="text-info support-details" title="删除" data-id="'
-																	+ row.userid
-																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 删除</a>';
-/*															userstate_btn += '<a href="/myasset/ableUser.action?userid='
-																	+ row.userid
-																	+ '" class="text-info support-details" title="解禁" data-id="'
-																	+ row.userid
-																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 解禁</a>';*/
-															break;
-														case 1:
-															userstate_btn += '<a href="/myasset/getUser.action?userid='
-																	+ row.userid
-																	+ '" class="text-info support-details" title="编辑" data-id="'
-																	+ row.userid
-																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 编辑</a>';
-															userstate_btn += '<a href="/myasset/deleteUser.action?userid='
-																	+ row.userid
-																	+ '" class="text-info support-details" title="删除" data-id="'
-																	+ row.userid
-																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 删除</a>';
-/*															userstate_btn += '<a href="/myasset/disableUser.action?userid='
-																	+ row.userid
-																	+ '" class="text-info support-details" title="禁用" data-id="'
-																	+ row.userid
-																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 禁用</a>';*/
-															break;
+														userstate_btn += '<a href="/ams/pages/getUser.action?userid='
+																+ row.userid
+																+ '" class="text-info support-details" title="编辑" data-id="'
+																+ row.userid
+																+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 编辑</a>';
+														userstate_btn += '<a href="/ams/pages/deleteUser.action?userid='
+																+ row.userid
+																+ '" class="text-info support-details" title="删除" data-id="'
+																+ row.userid
+																+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 删除</a>';
+														/*
+														 * userstate_btn += '<a
+														 * href="/myasset/ableUser.action?userid=' +
+														 * row.userid + '"
+														 * class="text-info
+														 * support-details"
+														 * title="解禁" data-id="' +
+														 * row.userid + '"
+														 * data-toggle="modal"><i
+														 * class="fa
+														 * fa-file-text-o"></i>
+														 * 解禁</a>';
+														 */
 
-														default:
-															break;
-														}
 														return '<div class="toolmenu">'
 																+ userstate_btn
 																+ '</div>';
@@ -195,15 +191,15 @@ $(document)
 												iDisplayIndex) {
 										}
 									});
-					// $(document).on("click", ".refresh", function () {
-					// tableReload();
-					// });
-					// function tableReload() {
-					// datatables.ajax.reload();
-					// }
-					//
-					// $("#investor_search_btn").bind("click", function () {
-					// datatables.ajax.reload();
-					// });
+					$(document).on("click", ".refresh", function() {
+						tableReload();
+					});
+					function tableReload() {
+						datatables.ajax.reload();
+					}
+
+					$("#users_search_btn").bind("click", function() {
+						datatables.ajax.reload();
+					});
 
 				});

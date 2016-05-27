@@ -1,6 +1,7 @@
 package com.action;
 
 import com.model.Userinformation;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.service.impl.UserService;
 
@@ -23,6 +24,7 @@ public class LoginAction extends ActionSupport{
 			System.out.println(user.getUserpwd());
 			System.out.println("user input: " + this.getPassword());
 			if (user.getUserpwd().equals(this.getPassword())) {
+				ActionContext.getContext().getSession().put("loginuser", user);
 				return SUCCESS;
 			}				
 		}

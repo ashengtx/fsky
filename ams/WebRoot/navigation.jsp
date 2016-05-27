@@ -15,7 +15,7 @@
 			<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
 			<span class="icon-bar"></span> <span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="<%=basePath %>pages/dashboard.jsp">资产管理系统</a>
+		<a class="navbar-brand" href="<%=basePath%>pages/dashboard.jsp">资产管理系统</a>
 	</div>
 	<!-- /.navbar-header -->
 
@@ -211,14 +211,14 @@
 				<li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>资产管理<span
 						class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
-						<li><a href="<%=basePath %>pages/purchase.jsp">采购入库</a></li>
-						<li><a href="#">财务入账</a></li>
-						<li><a href="<%=basePath %>pages/asset.jsp">资产列表</a></li>
-						<li><a href="#">资产归还</a></li>
-						<li><a href="#">资产调拨</a></li>
-						<li><a href="#">资产报废</a></li>
-						<li><a href="#">资产维修</a></li>
-						<li><a href="#">资产移交</a></li>
+						<li><a href="<%=basePath%>pages/add-purchase.jsp">添加采购单</a></li>
+						<li><a href="<%=basePath%>pages/purchase-list.jsp">采购单列表</a></li>
+						<li><a href="<%=basePath%>pages/assetlist.jsp">资产列表</a></li>
+						<li><a href="<%=basePath%>pages/return-list.jsp">资产归还</a></li>
+						<li><a href="<%=basePath%>pages/transfer-list.jsp">资产调拨</a></li>
+						<li><a href="<%=basePath%>pages/scrap-list.jsp">资产报废</a></li>
+						<li><a href="<%=basePath%>pages/repair-list.jsp">资产维修</a></li>
+						<li><a href="<%=basePath%>pages/assetlchange.jsp">资产移交</a></li>
 						<li><a href="#">资产盘点</a></li>
 					</ul> <!-- /.nav-second-level --></li>
 				<li><a href="#"><i class="fa fa-wrench fa-fw"></i>统计报表<span
@@ -229,13 +229,23 @@
 				<li><a href="#"><i class="fa fa-sitemap fa-fw"></i>系统配置<span
 						class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
-						<li><a href="#">部门配置</a></li>
+						<li><a href="#">部门配置<span class="fa arrow"></span></a>
+							<ul class="nav nav-third-level">
+								<li><a href="department.jsp">部门添加</a></li>
+								<li><a href="departments.jsp">部门列表</a></li>
+							</ul></li>
 						<li><a href="#">资产类别配置</a></li>
-						<li><a href="addparameter.jsp">参数信息配置</a></li>
+						<li><a href="#">参数信息配置</a></li>
+							<ul class="nav nav-third-level">
+								<li><a href="addparameter.jsp">添加参数</a></li>
+								<li><a href="parameterInfo.jsp">参数列表</a></li>
+
+							</ul></li>
 						<li><a href="#">人员管理<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
-								<li><a href="users.jsp">用户管理</a></li>
-								<li><a href="#">角色管理</a></li>
+								<li><a href="users.jsp">用户列表</a></li>
+								<li><a href="adduser.jsp">添加用户</a></li>
+
 							</ul></li>
 					</ul> <!-- /.nav-second-level --></li>
 			</ul>
