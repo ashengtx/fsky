@@ -164,7 +164,6 @@
 	<bean id="UserList" class="com.action.UserManageAction" scope="prototype">
 		<property name="iUserService" ref="iUserService" />
 	</bean>
-	
 	<!-- 参数信息管理 start-->
 	<bean id="addParaInfo" class="com.action.ParamInfoAction" scope="prototype">
 	    <property name="paramInfoService" ref="paramInfoService"/>
@@ -186,7 +185,6 @@
 	    <property name="paramInfoService" ref="paramInfoService"/>
 	</bean>
 	<!-- 参数信息管理 end-->
-	
 	<bean id="UserSearch" class="com.action.UserManageAction" scope="prototype">
 		<property name="iUserService" ref="iUserService" />
 	</bean>
