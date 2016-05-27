@@ -231,7 +231,7 @@
 					<ul class="nav nav-second-level">
 						<li><a href="#">部门配置</a></li>
 						<li><a href="#">资产类别配置</a></li>
-						<li><a href="#">参数信息配置</a></li>
+						<li><a href="addparameter.jsp">参数信息配置</a></li>
 						<li><a href="#">人员管理<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
 								<li><a href="users.jsp">用户管理</a></li>
