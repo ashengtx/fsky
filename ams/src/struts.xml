@@ -35,8 +35,8 @@
 			<result name="success" type="redirect">/pages/purchase-list.jsp</result>
 		</action>
 		<action name="getPur" class="Purchase" method="getPur">
-			<result name="update" type="redirect">/pages/update-purchase.jsp</result>
-			<result name="check" type="redirect">/pages/purchase.jsp</result>
+			<result name="update">/pages/update-purchase.jsp</result>
+			<result name="check">/pages/purchase.jsp</result>
 		</action>
 		<action name="updatePurchase" class="Purchase" method="updatePurchase">
 			<result name="success" type="redirect">/pages/purchase-list.jsp</result>
@@ -46,11 +46,14 @@
                 <param name="root">dataMap</param>  
             </result> 
 		</action>
+		<action name="confirmPur" class="Purchase" method="confirmPur">
+			<result name="success" type="redirect">/pages/purchase-list.jsp</result>
+		</action> 
 		<action name="addPurchasedetail" class="Purchase" method="addPurchasedetail">
 			<result name="success" type="redirect">/pages/purchase-detail-list.jsp</result>
 		</action> 
 		<action name="getPurD" class="Purchase" method="getPurD">
-			<result name="success" type="redirect">/pages/purchase-detail.jsp</result>
+			<result name="success">/pages/purchase-detail.jsp</result>
 		</action>
 		<action name="purchasedetailList" class="Purchase" method="purchasedetailList">
 			<result type="json">  

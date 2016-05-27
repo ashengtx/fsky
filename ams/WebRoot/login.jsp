@@ -66,7 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </label>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
-                                <button class="btn btn-lg btn-success btn-block" type="submit">登陆</button>
+                                <button class="btn btn-lg btn-primary btn-block" type="submit">登陆</button>
                             </fieldset>
                         </form>
                     </div>

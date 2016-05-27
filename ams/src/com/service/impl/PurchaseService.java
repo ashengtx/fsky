@@ -23,6 +23,10 @@ public class PurchaseService extends BaseService implements IPurchaseService {
 	public void setPurchaseDao(PurchaseDao purchaseDao) {
 		this.purchaseDao = purchaseDao;
 	}
+	
+	public List<Purchase> getAllPurchases(Class<Purchase> cls){
+		return this.purchaseDao.getList(cls);
+	}
 
 	@Override
 	public List<Purchase> findPurchase(Integer departmentid, Integer purstate) {

@@ -213,7 +213,7 @@
 					<ul class="nav nav-second-level">
 						<li><a href="<%=basePath %>pages/add-purchase.jsp">添加采购单</a></li>
 						<li><a href="<%=basePath %>pages/purchase-list.jsp">采购单列表</a></li>
-						<li><a href="<%=basePath %>pages/asset.jsp">资产列表</a></li>
+						<li><a href="<%=basePath %>pages/assetlist.jsp">资产列表</a></li>
 						<li><a href="<%=basePath %>pages/return-list.jsp">资产归还</a></li>
 						<li><a href="<%=basePath %>pages/transfer-list.jsp">资产调拨</a></li>
 						<li><a href="<%=basePath %>pages/scrap-list.jsp">资产报废</a></li>

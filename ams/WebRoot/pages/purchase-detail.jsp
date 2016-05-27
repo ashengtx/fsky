@@ -49,38 +49,37 @@
 							<div class="panel-body">
 								<div class="row">
 									<div class="col-lg-12">
-										<form action="addPurchaseDetail.action" role="form"
-											method="post">
+										<form role="form">
 											<fieldset>
-												<input name="purid" type="hidden"
-													value="<%=request.getParameter("purid")%>"></input>
+												<%-- <input name="purid" type="hidden"
+													value="<%=request.getParameter("purid")%>"></input> --%>
 
 												<div class="col-lg-12">
 													<div class="col-lg-6">
 
 														<div class="form-group">
 															<label>资产类别id</label> <input class="form-control" type="text" name="assetclassid" 
-															value="<s:property value="purchaseDetail.assetclassByAssetclassid.assetclassid"/>" />
+															value="<s:property value="purchasedetail.assetclassByAssetclassid.assetclassid"/>" />
 														</div>
 														<div class="form-group">
 															<label>保管人id</label> <input class="form-control" type="text" name="userid" 
-															value="<s:property value="purchaseDetail.userinformation.userid"/>"/>
+															value="<s:property value="purchasedetail.userinformation.userid"/>"/>
 														</div>
 														<div class="form-group">
 															<label>上级资产类别id</label> <input class="form-control" type="text" name="passetclassid" 
-															value="<s:property value="purchaseDetail.assetclassByPassetclassid.assetclassid"/>" />
+															value="<s:property value="purchasedetail.assetclassByPassetclassid.assetclassid"/>" />
 														</div>
 														<div class="form-group">
 															<label>单位</label> <input class="form-control" type="text" name="punit" 	
-															value="<s:property value="purchaseDetail.punit"/>" />
+															value="<s:property value="purchasedetail.punit"/>" />
 														</div>
 														<div class="form-group">
 															<label>资产型号</label> <input class="form-control" type="text" name="zcxh" 
-															value="<s:property value="purchaseDetail.zcxh"/>" />
+															value="<s:property value="purchasedetail.zcxh"/>" />
 														</div>
 														<div class="form-group">
 															<label>资产名称</label> <input class="form-control" type="text" name="assetname" 
-															value="<s:property value="purchaseDetail.assetname"/>" />
+															value="<s:property value="purchasedetail.assetname"/>" />
 														</div>
 
 													</div>
@@ -89,23 +88,23 @@
 
 														<div class="form-group">
 															<label>数量</label> <input class="form-control" type="text" name="amount" 
-															value="<s:property value="purchaseDetail.amount"/>" />
+															value="<s:property value="purchasedetail.amount"/>" />
 														</div>
 														<div class="form-group">
 															<label>备注</label> <input class="form-control" type="text" name="remark" 
-															value="<s:property value="purchaseDetail.remart"/>" />
+															value="<s:property value="purchasedetail.remart"/>" />
 														</div>
 														<div class="form-group">
 															<label>制造商</label> <input class="form-control"	type="text" name="manufacturer" 
-															value="<s:property value="purchaseDetail.manufacturer"/>" />
+															value="<s:property value="purchasedetail.manufacturer"/>" />
 														</div>
 														<div class="form-group">
 															<label>供应商</label> <input class="form-control" type="text" name="provider" 
-															value="<s:property value="purchaseDetail.provider"/>" />
+															value="<s:property value="purchasedetail.provider"/>" />
 														</div>
 														<div class="form-group">
 															<label>单价</label> <input class="form-control" type="text" name="price" 
-															value="<s:property value="purchaseDetail.price"/>" />
+															value="<s:property value="purchasedetail.price"/>" />
 														</div>
 
 													</div>
