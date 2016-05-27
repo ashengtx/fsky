@@ -188,9 +188,9 @@ public class AssetAction extends ActionSupport {
 			Assetclass assetclass = new Assetclass();
 			Assetclass passetclass = new Assetclass();
 			Department department = new Department();
-			Userinformation userinformationByUseruid = new Userinformation();
+/*			Userinformation userinformationByUseruid = new Userinformation();*/
 			Userinformation userinformationByUserid = new Userinformation();
-			Userinformation userinformationByCwuid = new Userinformation();
+//			Userinformation userinformationByCwuid = new Userinformation();
 			Purchasedetail purchasedetail = new Purchasedetail();
 
 			assetclass.setAssetclassid(this.assets.get(i)
@@ -199,20 +199,20 @@ public class AssetAction extends ActionSupport {
 					.getAssetclassByAssetclassid().getAssetclassname());
 			// System.out.println("assetclassname：" + this.assets.get(i)
 			// .getAssetclassByAssetclassid().getAssetclassname());
-			passetclass.setAssetclassid(this.assets.get(i)
-					.getAssetclassByPassetclassid().getAssetclassid());
+//			passetclass.setAssetclassid(this.assets.get(i)
+//					.getAssetclassByPassetclassid().getAssetclassid());
 			// passetclass.setAssetclassname(this.assetList.get(i)
 			// .getAssetclassByPassetclassid().getAssetclassname());
 
-			department.setDepartmentid(this.assets.get(i).getDepartment()
-					.getDepartmentid());
-			department.setDepartmentname(this.assets.get(i).getDepartment()
-					.getDepartmentname());
+//			department.setDepartmentid(this.assets.get(i).getDepartment()
+//					.getDepartmentid());
+//			department.setDepartmentname(this.assets.get(i).getDepartment()
+//					.getDepartmentname());
 			// System.out.println("departmentname：" +
 			// this.assets.get(i).getDepartment()
 			// .getDepartmentname());
-			userinformationByUseruid.setUserid(this.assets.get(i)
-					.getUserinformationByUseruid().getUserid());
+//			userinformationByUseruid.setUserid(this.assets.get(i)
+//					.getUserinformationByUseruid().getUserid());
 			// userinformationByUseruid.setUsername(this.assetList.get(i)
 			// .getUserinformationByUseruid().getUsername());
 
@@ -221,40 +221,40 @@ public class AssetAction extends ActionSupport {
 			// userinformationByUserid.setUsername(this.assetList.get(i)
 			// .getUserinformationByUserid().getUsername());
 
-			userinformationByCwuid.setUserid(this.assets.get(i)
-					.getUserinformationByCwuid().getUserid());
+//			userinformationByCwuid.setUserid(this.assets.get(i)
+//					.getUserinformationByCwuid().getUserid());
 			// userinformationByCwuid.setUsername(this.assetList.get(i)
 			// .getUserinformationByCwuid().getUsername());
 
-			purchasedetail.setPdid(this.assets.get(i).getPurchasedetail()
-					.getPdid());
+//			purchasedetail.setPdid(this.assets.get(i).getPurchasedetail()
+//					.getPdid());
 
 			asset.setAssetid(this.assets.get(i).getAssetid());
 			asset.setAssetclassByAssetclassid(assetclass);
-			asset.setAssetclassByPassetclassid(passetclass);
-			asset.setDepartment(department);
-			asset.setUserinformationByCwuid(userinformationByCwuid);
+//			asset.setAssetclassByPassetclassid(passetclass);
+//			asset.setDepartment(department);
+//			asset.setUserinformationByCwuid(userinformationByCwuid);
 			asset.setUserinformationByUserid(userinformationByUserid);
-			asset.setUserinformationByUseruid(userinformationByUseruid);
-			asset.setPurchasedetail(purchasedetail);
+//			asset.setUserinformationByUseruid(userinformationByUseruid);
+//			asset.setPurchasedetail(purchasedetail);
 
 			asset.setCardnum(this.assets.get(i).getCardnum());
-			asset.setZkstate(this.assets.get(i).getZkstate());
+//			asset.setZkstate(this.assets.get(i).getZkstate());
 			asset.setAssetname(this.assets.get(i).getAssetname());
-			asset.setCwcoding(this.assets.get(i).getCwcoding());
+//			asset.setCwcoding(this.assets.get(i).getCwcoding());
 			asset.setAssetcoding(this.assets.get(i).getAssetcoding());
-			asset.setCwstate(this.assets.get(i).getCwstate());
-			asset.setGgxh(this.assets.get(i).getGgxh());
+//			asset.setCwstate(this.assets.get(i).getCwstate());
+//			asset.setGgxh(this.assets.get(i).getGgxh());
 			asset.setPrice(this.assets.get(i).getPrice());
 			asset.setCgbid(this.assets.get(i).getCgbid());
-			asset.setUsestate(this.assets.get(i).getUsestate());
-			asset.setIntodate(this.assets.get(i).getIntodate());
+//			asset.setUsestate(this.assets.get(i).getUsestate());
+//			asset.setIntodate(this.assets.get(i).getIntodate());
 			asset.setInsertdate(this.assets.get(i).getInsertdate());
-			asset.setManufacturer(this.assets.get(i).getManufacturer());
-			asset.setProvider(this.assets.get(i).getProvider());
-			asset.setAunit(this.assets.get(i).getAunit());
-			asset.setAmount(this.assets.get(i).getAmount());
-			asset.setRemark(this.assets.get(i).getRemark());
+//			asset.setManufacturer(this.assets.get(i).getManufacturer());
+//			asset.setProvider(this.assets.get(i).getProvider());
+//			asset.setAunit(this.assets.get(i).getAunit());
+//			asset.setAmount(this.assets.get(i).getAmount());
+//			asset.setRemark(this.assets.get(i).getRemark());
 
 			data.add(asset);
 		}

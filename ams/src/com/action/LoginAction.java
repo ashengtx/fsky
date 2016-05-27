@@ -24,7 +24,7 @@ public class LoginAction extends ActionSupport{
 			System.out.println(user.getUserpwd());
 			System.out.println("user input: " + this.getPassword());
 			if (user.getUserpwd().equals(this.getPassword())) {
-				ActionContext.getContext().getSession().put("loginUser", user);
+				ActionContext.getContext().getSession().put("loginuser", user);
 				return SUCCESS;
 			}				
 		}

@@ -62,23 +62,9 @@ public class PurchaseDao extends BaseDao implements IPurchaseDao {
 
 	@Override
 	public List<Purchasedetail> getPurchasedetailList(Integer purid) {
-		List<Object> condList = new ArrayList<Object>();
 		String selection = "from Purchasedetail as purchasedetail";
-		/*if (purid != null) {
-			condList.add(purid);
-			selection += "where purchasedetail.purchase.purid=?";
-		}*/
 		System.out.println("PurchaseDao getPurchasedetailList");
-/*		Session session = sessionFactory.openSession();
-		System.out.println(session);
-		Criteria criteria = session.createCriteria(Purchasedetail.class);
-		
-		criteria.add(Restrictions.eq("purid", purid));
-		return criteria.list();*/
-		
 		return this.getHibernateTemplate().find(selection);
-		/*return this.getHibernateTemplate().find(
-			"select purchasedetail from Purchasedetail as purchasedetail where purchasedetail.purchase.purid=? ", o);*/
 	}
 
 	@Override

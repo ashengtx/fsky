@@ -92,12 +92,13 @@ $(document).ready(function () {
               switch (row.purstate) {
                   case 0:
                 	  pur_btn += '<a href="/ams/pages/getPur.action?purid=' + row.purid + '" class="text-info support-details" title="修改" data-id="' + row.purid + '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 修改</a>';
-                	  pur_btn += '<a href="/ams/pages/add-purchase-detail.jsp?purid=' + row.purid + '" class="text-info support-details" title="添加采购单明细" data-id="' + row.purid + '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 添加采购单明细</a>';
+                	  pur_btn += '<a href="/ams/pages/confirmPur.action?purid=' + row.purid + '" class="text-info support-details" title="确认入库" data-id="' + row.purid + '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 确认入库</a></br>';
+                	  pur_btn += '<a href="/ams/pages/add-purchase-detail.jsp?purid=' + row.purid + '" class="text-info support-details" title="添加采购单明细" data-id="' + row.purid + '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 添加采购单明细</a></br>';
                 	  pur_btn += '<a href="/ams/pages/purchase-detail-list.jsp?purid=' + row.purid + '" class="text-info support-details" title="查看采购单明细列表" data-id="' + row.purid + '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 查看采购单明细列表</a>';
                 	  break;
                   case 1:
-                	  pur_btn += '<a href="/ams/pages/getPur.action?purid=' + row.purid + '" class="text-info support-details" title="查看" data-id="' + row.purid + '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 查看</a>';
-                	  pur_btn += '<a href="/ams/pages/add-purchase-detail.jsp?purid=' + row.purid + '" class="text-info support-details" title="添加采购单明细" data-id="' + row.purid + '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 添加采购单明细</a>';
+                	  pur_btn += '<a href="/ams/pages/getPur.action?purid=' + row.purid + '" class="text-info support-details" title="查看" data-id="' + row.purid + '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 查看</a></br>';
+                	  //pur_btn += '<a href="/ams/pages/add-purchase-detail.jsp?purid=' + row.purid + '" class="text-info support-details" title="添加采购单明细" data-id="' + row.purid + '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 添加采购单明细</a></br>';
                 	  pur_btn += '<a href="/ams/pages/purchase-detail-list.jsp?purid=' + row.purid + '" class="text-info support-details" title="查看采购单明细列表" data-id="' + row.purid + '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 查看采购单明细列表</a>';
                 	  break;
                   default :
@@ -114,14 +115,14 @@ $(document).ready(function () {
         "fnRowCallback": function (nRow, aData, iDisplayIndex) {
         }
     });
-    $(document).on("click", ".refresh", function () {
+    /*$(document).on("click", ".refresh", function () {
         tableReload();
     });
     function tableReload() {
         datatables.ajax.reload();
     }
 
-    /*$("#purchase_table_filter").click(function (event) {
+    $("#purchase_table_filter").click(function (event) {
     	datatables['bServerSide'] = false;
     });*/
    
