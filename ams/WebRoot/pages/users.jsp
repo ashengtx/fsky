@@ -41,15 +41,28 @@
 		<!-- /#page-wrapper -->
 		<h1 class="page-header">用户管理</h1>
 		<div class="form-group">
-			<form action="userSearch.action">
-				<label>用户名：</label> <input type="text" name="username" style="width: 120px"/>
-				<label>部 门：</label> <select style="width: 120px"
-													name="departmentid">
-													<option value="1">市场部</option>
-													<option value="2">财务部</option>
-													<option value="3">运营部</option>
-												</select>
-				<button type="submit" class="btn btn-primary">搜索</button>
+			<form onSubmit="return false;">
+				<label>用户名：</label> <input type="text" name="username" id="username"
+					style="width: 120px" /> <label>部 门：</label> <select
+					style="width: 120px" name="departmentid" id="departmentid">
+					<option value="">请选择</option>
+					<option value="1">市场部</option>
+					<option value="2">财务部</option>
+					<option value="3">运营部</option>
+				</select> <label>用户状态：</label> <select style="width: 120px" name="userstate"
+					id="userstate">
+					<option value="">请选择</option>
+					<option value="1">正常</option>
+					<option value="0">禁用</option>
+				</select> <label>角色：</label> <select style="width: 120px" name="roleid"
+					id="roleid">
+					<option value="">请选择</option>
+					<option value="1">系统管理员</option>
+					<option value="2">普通员工</option>
+					<option value="3">财务人员</option>
+				</select>
+				<button type="button" class="btn btn-primary" id="users_search_btn"
+					name="users_search_btn">搜索</button>
 			</form>
 		</div>
 		<table class="table table-striped m-b-none" id="user_table">

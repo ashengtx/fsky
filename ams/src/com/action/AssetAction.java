@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.json.annotations.JSON;
+import org.aspectj.weaver.patterns.ThisOrTargetAnnotationPointcut;
 import org.springframework.util.Assert;
 
 import com.model.Assetclass;
@@ -161,66 +162,102 @@ public class AssetAction extends ActionSupport {
 
 	public String assetList() {
 
-		/* this.assets = assetService.getList(Asset.class); */
-		this.assets = assetService.getAssetList(0, assetname);
-
-		List<Object> aaData = new ArrayList<Object>();
-		for (int i = 0; i < this.assets.size(); i++) {
+		System.out.println("资产列表！");
+		System.out.println("assetname"+assetname);
+		System.out.println("assetcoding"+assetcoding);
+		//this.assets = assetService.getList(Asset.class);
+		this.assets = assetService.getAssetList(assetname, assetcoding);
+		List<Asset> data = new ArrayList<Asset>();
+		for (int i = 0; i < assets.size(); i++) {
 			Asset asset = new Asset();
-			Purchasedetail purchasedetail = new Purchasedetail();
-			// Userinformation userinformationByUseruid = new Userinformation();
-			Userinformation userinformationByUserid = new Userinformation();
-			// Userinformation userinformationByCwuid = new Userinformation();
-			// Department department = new Department();
 			Assetclass assetclass = new Assetclass();
 			Assetclass passetclass = new Assetclass();
+			Department department = new Department();
+			Userinformation userinformationByUseruid = new Userinformation();
+			Userinformation userinformationByUserid = new Userinformation();
+			Userinformation userinformationByCwuid = new Userinformation();
+			Purchasedetail purchasedetail = new Purchasedetail();
 
-			// userinformationByUseruid.setUserid(this.assets.get(i).getUserinformationByUseruid().getUserid());
-			userinformationByUserid.setUserid(this.assets.get(i)
-					.getUserinformationByUserid().getUserid());
-			// userinformationByCwuid.setUserid(this.assets.get(i).getUserinformationByCwuid().getUserid());
-			// department.setDepartmentid(this.assets.get(i).getDepartment().getDepartmentid());
 			assetclass.setAssetclassid(this.assets.get(i)
 					.getAssetclassByAssetclassid().getAssetclassid());
+			assetclass.setAssetclassname(this.assets.get(i)
+					.getAssetclassByAssetclassid().getAssetclassname());
+			// System.out.println("assetclassname：" + this.assets.get(i)
+			// .getAssetclassByAssetclassid().getAssetclassname());
 			passetclass.setAssetclassid(this.assets.get(i)
 					.getAssetclassByPassetclassid().getAssetclassid());
+			// passetclass.setAssetclassname(this.assetList.get(i)
+			// .getAssetclassByPassetclassid().getAssetclassname());
+
+			department.setDepartmentid(this.assets.get(i).getDepartment()
+					.getDepartmentid());
+			department.setDepartmentname(this.assets.get(i).getDepartment()
+					.getDepartmentname());
+			// System.out.println("departmentname：" +
+			// this.assets.get(i).getDepartment()
+			// .getDepartmentname());
+			userinformationByUseruid.setUserid(this.assets.get(i)
+					.getUserinformationByUseruid().getUserid());
+			// userinformationByUseruid.setUsername(this.assetList.get(i)
+			// .getUserinformationByUseruid().getUsername());
+
+			userinformationByUserid.setUserid(this.assets.get(i)
+					.getUserinformationByUserid().getUserid());
+			// userinformationByUserid.setUsername(this.assetList.get(i)
+			// .getUserinformationByUserid().getUsername());
+
+			userinformationByCwuid.setUserid(this.assets.get(i)
+					.getUserinformationByCwuid().getUserid());
+			// userinformationByCwuid.setUsername(this.assetList.get(i)
+			// .getUserinformationByCwuid().getUsername());
+
 			purchasedetail.setPdid(this.assets.get(i).getPurchasedetail()
 					.getPdid());
 
+			asset.setAssetid(this.assets.get(i).getAssetid());
 			asset.setAssetclassByAssetclassid(assetclass);
 			asset.setAssetclassByPassetclassid(passetclass);
-			// asset.setDepartment(department);
-			// asset.setUserinformationByCwuid(userinformationByCwuid);
+			asset.setDepartment(department);
+			asset.setUserinformationByCwuid(userinformationByCwuid);
 			asset.setUserinformationByUserid(userinformationByUserid);
-			// asset.setUserinformationByUseruid(userinformationByUseruid);
+			asset.setUserinformationByUseruid(userinformationByUseruid);
 			asset.setPurchasedetail(purchasedetail);
 
-			asset.setAssetid(this.assets.get(i).getAssetid());
 			asset.setCardnum(this.assets.get(i).getCardnum());
+			asset.setZkstate(this.assets.get(i).getZkstate());
 			asset.setAssetname(this.assets.get(i).getAssetname());
-			// asset.setCwcoding(this.assets.get(i).getCwcoding());
+			asset.setCwcoding(this.assets.get(i).getCwcoding());
 			asset.setAssetcoding(this.assets.get(i).getAssetcoding());
+			asset.setCwstate(this.assets.get(i).getCwstate());
+			asset.setGgxh(this.assets.get(i).getGgxh());
 			asset.setPrice(this.assets.get(i).getPrice());
+			asset.setCgbid(this.assets.get(i).getCgbid());
 			asset.setUsestate(this.assets.get(i).getUsestate());
+			asset.setIntodate(this.assets.get(i).getIntodate());
+			asset.setInsertdate(this.assets.get(i).getInsertdate());
+			asset.setManufacturer(this.assets.get(i).getManufacturer());
+			asset.setProvider(this.assets.get(i).getProvider());
+			asset.setAunit(this.assets.get(i).getAunit());
+			asset.setAmount(this.assets.get(i).getAmount());
+			asset.setRemark(this.assets.get(i).getRemark());
 
-			aaData.add(asset);
+			data.add(asset);
 		}
-		int recordsTotal;
-		int recordsFiltered;
+		System.out.println("assetList大小：" + assets.size());
 		// dataMap中的数据将会被Struts2转换成JSON字符串，所以这里要先清空其中的数据
 		dataMap = new HashMap<String, Object>();
-		recordsTotal = aaData.size();
-		recordsFiltered = recordsTotal;
-		if (start + length > recordsTotal) {
-			dataMap.put("aaData", aaData.subList(start, recordsTotal));
-		} else {
-			dataMap.put("aaData", aaData.subList(start, length));
-		}
+		int total = data.size();
+		System.out.println(total);
+		int filter = total;
+		if (start + length > total) {
+			dataMap.put("aaData", data.subList(start, total));
 
+		} else {
+			dataMap.put("aaData", data.subList(start, length));
+		}
 		/* dataMap.put("aaData", aaData); */
-		dataMap.put("recordsTotal", recordsTotal);
-		dataMap.put("recordsFiltered", recordsFiltered);
-		// 返回结果
+		dataMap.put("recordsTotal", total);
+		dataMap.put("recordsFiltered", filter);
 		return SUCCESS;
 	}
 
@@ -325,18 +362,38 @@ public class AssetAction extends ActionSupport {
 
 	}
 
-	public String getOneAsset() throws Exception {
+	public String getAssetDetail() throws Exception {
+		System.out.println("assetid" + assetid);
 		this.asset = assetService.findById(Asset.class, assetid);
+		System.out.println("查看资产详情");
+		System.out.println(this.asset.getAssetname());
 		return SUCCESS;
 	}
 
-	public String updateAsset() {
+	public String getAssetByAssetId() throws Exception {
+		System.out.println("assetid" + assetid);
+		this.asset = assetService.findById(Asset.class, assetid);
+		System.out.println("修资产");
+		System.out.println(this.asset.getAssetname());
+		return SUCCESS;
+	}
+
+	public String updateAsset() throws Exception {
+		System.out.println("改资产"+assetid);
 		Asset asset = new Asset();
 		Purchasedetail purchasedetail = new Purchasedetail();
-
+		
+        asset = assetService.findById(Asset.class, assetid);
+		
 		Userinformation userinformationByUserid = new Userinformation();
 		Userinformation userinformationByCwuid = new Userinformation();
+		
+		
+		
 		// Department department = new Department();
+		
+		
+		
 		Assetclass assetclass = new Assetclass();
 		Assetclass passetclass = new Assetclass();
 
@@ -346,6 +403,8 @@ public class AssetAction extends ActionSupport {
 		userinformationByCwuid.setUserid(cwuid);
 		assetclass.setAssetclassid(assetclassid);
 		passetclass.setAssetclassid(passetclassid);
+		
+		
 		// department.setDepartmentid(departmentid);
 
 		asset.setAssetid(assetid);
@@ -356,7 +415,7 @@ public class AssetAction extends ActionSupport {
 		asset.setCardnum(cardnum);
 		asset.setCgbid(cgbid);
 		asset.setCwcoding(cwcoding);
-		asset.setCwstate(cwstate);
+//		asset.setCwstate(cwstate);
 		asset.setGgxh(ggxh);
 		asset.setInsertdate(insertdate);
 		asset.setIntodate(intodate);

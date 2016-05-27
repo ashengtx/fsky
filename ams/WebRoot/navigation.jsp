@@ -219,7 +219,7 @@
 							</ul>
 						</li>
 						<li><a href="#">财务入账</a></li>
-						<li><a href="<%=basePath %>pages/asset.jsp">资产列表</a></li>
+						<li><a href="<%=basePath %>pages/assetlist.jsp">资产列表</a></li>
 						<li><a href="<%=basePath %>pages/return-list.jsp">资产归还</a></li>
 						<li><a href="#">资产调拨</a></li>
 						<li><a href="#">资产报废</a></li>
@@ -246,8 +246,7 @@
 							<ul class="nav nav-third-level">
 								<li><a href="users.jsp">用户列表</a></li>
 								<li><a href="adduser.jsp">添加用户</a></li>
-								<li><a href="#">角色列表</a></li>
-								<li><a href="#">添加角色</a></li>
+		
 							</ul></li>
 					</ul> <!-- /.nav-second-level --></li>
 			</ul>

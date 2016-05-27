@@ -51,4 +51,9 @@ public class AssetService extends BaseService implements IAssetService {
 	public List<Zctrans> getZctransList(Integer yjuserid){
 		return this.assetDao.getZctransList(yjuserid);
 	}
+
+	@Override
+	public List<Asset> getAssetList(String assetname, String assetcoding) {
+		return this.assetDao.getAssetList(assetname, assetcoding);
+	}
 }

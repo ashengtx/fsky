@@ -60,7 +60,7 @@
 	<bean id="assetDao" class="com.dao.impl.AssetDao">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	
+
 	<bean id="userDao" class="com.dao.impl.UserDao" parent="iBaseDao">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
@@ -112,7 +112,7 @@
 		parent="baseService">
 		<property name="assetClassDao" ref="assetClassDao" />
 	</bean>
-	
+
 	<!-- Action -->
 	<!-- lls -->
 	<bean id="Login" class="com.action.LoginAction" autowire="byName">
@@ -127,7 +127,7 @@
 	<bean id="Asset" class="com.action.AssetAction" autowire="byName">
 		<property name="assetService" ref="assetService"></property>
 	</bean>
-	
+
 	<!-- dh -->
 	<bean id="AddUser" class="com.action.UserManageAction" scope="prototype">
 		<property name="iUserService" ref="iUserService" />
@@ -150,6 +150,10 @@
 	<bean id="UserSearch" class="com.action.UserManageAction" scope="prototype">
 		<property name="iUserService" ref="iUserService" />
 	</bean>
+	<bean id="AssetList" class="com.action.AssetAction" scope="prototype">
+		<property name="assetService" ref="assetService"></property>
+	</bean>
+	
 
 
 	<!-- fyy -->

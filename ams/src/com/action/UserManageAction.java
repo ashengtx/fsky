@@ -237,9 +237,10 @@ public class UserManageAction extends ActionSupport {
 	}
 
 	public String userList() throws Exception {
-		this.users = iUserService.getList(Userinformation.class);
+//		this.users = iUserService.getList(Userinformation.class);
 		System.out.println("用户列表！");
-
+		this.users = iUserService.getUserList(username, userstate, departmentid,roleid);
+		System.out.println("users"+users.size());
 		List<Userinformation> data = new ArrayList<Userinformation>();
 		for (int i = 0; i < users.size(); i++) {
 			Userinformation user = new Userinformation();
@@ -277,50 +278,5 @@ public class UserManageAction extends ActionSupport {
 		return SUCCESS;
 	}
 
-	public String userSearch() throws Exception {
-		Userinformation userinformation = new Userinformation();
-		userinformation.setUsername(username);
-		Department department1 = new Department();
-		department1.setDepartmentid(departmentid);
-		userinformation.setDepartment(department1);
-		this.users = iUserService.userSearch(userinformation);
-		System.out.println("获取搜索用户列表！");
-
-		List<Userinformation> data = new ArrayList<Userinformation>();
-		for (int i = 0; i < users.size(); i++) {
-			Userinformation user = new Userinformation();
-			Department department = new Department();
-			Roletype roletype = new Roletype();
-			user.setUserid(this.users.get(i).getUserid());
-			user.setUsername(this.users.get(i).getUsername());
-			user.setUserpwd(this.users.get(i).getUserpwd());
-			user.setUsersex(this.users.get(i).getUsersex());
-			user.setUserstate(this.users.get(i).getUserstate());
-			department.setDepartmentid(this.users.get(i).getDepartment()
-					.getDepartmentid());
-			roletype.setRoleid(this.users.get(i).getRoletype().getRoleid());
-			user.setDepartment(department);
-			user.setRoletype(roletype);
-
-			data.add(user);
-		}
-
-		// dataMap中的数据将会被Struts2转换成JSON字符串，所以这里要先清空其中的数据
-		dataMap = new HashMap<String, Object>();
-		total = data.size();
-		System.out.println(total);
-		filter = total;
-		if (start + length > total) {
-			dataMap.put("aaData", data.subList(start, total));
-
-		} else {
-			dataMap.put("aaData", data.subList(start, length));
-		}
-		/* dataMap.put("aaData", aaData); */
-		dataMap.put("recordsTotal", total);
-		dataMap.put("recordsFiltered", filter);
-		// 返回结果
-		return SUCCESS;
-	}
 
 }
