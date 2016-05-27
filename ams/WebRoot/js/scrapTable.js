@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-    var datatables = $("#return_table").DataTable({
+    var datatables = $("#scrap_table").DataTable({
         "oLanguage": { // 汉化
             "sProcessing": "正在加载数据...",
             "sLengthMenu": "显示 _MENU_ 条 ",
@@ -21,7 +21,7 @@ $(document).ready(function () {
         "bServerSide": true,
 
         "ajax": {
-            "url": "returnList.action",
+            "url": "scrapList.action",
             "data": function (data) {
                 
             }
@@ -29,27 +29,29 @@ $(document).ready(function () {
 
         "aoColumns": [
       
-            {"mData": "lyghid"},
-            {"mData": "userinformationByLyuserid.userid"},
+            {"mData": "bfid"},
+            {"mData": "userinformationByUserid.userid"},
             {"mData": "asset.assetid"},
+           
             {
-                "mData": function (row, type, val) {
-                    if (row.lydate){
-                        var date = new Date(row.lydate);
-                        return date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
-                    }
-                    else
-                    return;
-                }
+            	"mData": function (row, type, val) {
+	                if (row.bfdate){
+	                    var date = new Date(row.bfdate);
+	                    return date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
+	                }
+	                else{
+	                	return;
+	                }
+            	}
             },
             
-         {
-          "mData": function (row, type, val) {
-              var lyghstate_btn = "";
-              lyghstate_btn += '<a href="/ams/pages/asset-return.jsp?lyghid=' + row.lyghid + '" class="text-info support-details" title="归还" data-id="' + row.lyghid + '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 归还</a>';
-              return '<div class="toolmenu">' + lyghstate_btn + '</div>';
-          }
-      },
+	        {
+            	"mData": function (row, type, val) {
+            		var usestate_btn = "";
+            		usestate_btn += '<a href="/ams/pages/scrap-check.jsp?bfid=' + row.bfid + '" class="text-info support-details" title="审核" data-id="' + row.bfid + '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 审核</a>';
+            		return '<div class="toolmenu">' + usestate_btn + '</div>';
+            	}
+		    },
          
         ],
         "fnInitComplete": function () {

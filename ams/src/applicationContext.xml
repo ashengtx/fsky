@@ -79,7 +79,11 @@
 			<ref local="sessionFactory" />
 		</property>
 	</bean>
-
+	<bean id="checkedDao" class="com.dao.impl.CheckedDao" parent="baseDao">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+	</bean>
 	<!-- Service -->
 	<bean id="baseService" class="com.service.impl.BaseService"
 		autowire="byName">
@@ -106,6 +110,10 @@
 	<bean id="iDepartmentService" class="com.service.impl.DepartmentService"
 		parent="baseService">
 		<property name="departmentDao" ref="departmentDao" />
+	</bean>
+	<bean id="checkedService" class="com.service.impl.CheckedService"
+		parent="baseService">
+		<property name="iCheckedDao" ref="checkedDao" />
 	</bean>
 	<!-- fyy -->
 	<bean id="assetClassService" class="com.service.impl.AssetClassService"
@@ -153,8 +161,10 @@
 	<bean id="AssetList" class="com.action.AssetAction" scope="prototype">
 		<property name="assetService" ref="assetService"></property>
 	</bean>
-	
-
+	<bean id="checked" class="com.action.CheckAction" scope="prototype">
+		<property name="iCheckedService" ref="checkedService" />
+		<property name="iAssetService" ref="assetService" />
+	</bean>
 
 	<!-- fyy -->
 	<bean id="AddAssetClass" class="com.action.AssetClassAction"

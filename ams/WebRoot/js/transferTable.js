@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-    var datatables = $("#return_table").DataTable({
+    var datatables = $("#transfer_table").DataTable({
         "oLanguage": { // 汉化
             "sProcessing": "正在加载数据...",
             "sLengthMenu": "显示 _MENU_ 条 ",
@@ -21,7 +21,7 @@ $(document).ready(function () {
         "bServerSide": true,
 
         "ajax": {
-            "url": "returnList.action",
+            "url": "transferList.action",
             "data": function (data) {
                 
             }
@@ -29,13 +29,15 @@ $(document).ready(function () {
 
         "aoColumns": [
       
-            {"mData": "lyghid"},
-            {"mData": "userinformationByLyuserid.userid"},
+            {"mData": "tbid"},
+            {"mData": "userinformationByDcuid.userid"},
+            {"mData": "departmentByDcdid.departmentid"},
             {"mData": "asset.assetid"},
+            {"mData": "outnote"},
             {
                 "mData": function (row, type, val) {
-                    if (row.lydate){
-                        var date = new Date(row.lydate);
+                    if (row.outdate){
+                        var date = new Date(row.outdate);
                         return date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
                     }
                     else
@@ -43,13 +45,13 @@ $(document).ready(function () {
                 }
             },
             
-         {
-          "mData": function (row, type, val) {
-              var lyghstate_btn = "";
-              lyghstate_btn += '<a href="/ams/pages/asset-return.jsp?lyghid=' + row.lyghid + '" class="text-info support-details" title="归还" data-id="' + row.lyghid + '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 归还</a>';
-              return '<div class="toolmenu">' + lyghstate_btn + '</div>';
-          }
-      },
+            {
+	          "mData": function (row, type, val) {
+	              var lyghstate_btn = "";
+	              lyghstate_btn += '<a href="/ams/pages/transfer-in.jsp?tbid=' + row.tbid + '" class="text-info support-details" title="调入" data-id="' + row.tbid + '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 调入</a>';
+	              return '<div class="toolmenu">' + lyghstate_btn + '</div>';
+	          }
+            },
          
         ],
         "fnInitComplete": function () {

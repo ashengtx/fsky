@@ -61,29 +61,43 @@ public class AssetDao extends BaseDao implements IAssetDao {
 
 	}
 
-	public List<Baofei> getBaofeiList(Integer bfstate) {
-		Object o[] = { bfstate };
-		return this.getHibernateTemplate().find(
-				"select baofei from Baofei as baofei where baofei.bfstate=? ",
-				o);
-
+	public List<Baofei> getBaofeiList(Integer bfstate){
+		System.out.println("AssetDao getTransbillList");
+		String hql = "from Baofei where bfstate=" + bfstate;
+		System.out.println(hql);
+		try {
+			Query query = super.getSession().createQuery(hql);
+			return query.list();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
-
-	public List<Repairs> getRepairsList(Integer rstate) {
-		Object o[] = { rstate };
-		return this
-				.getHibernateTemplate()
-				.find("select repairs from Repairs as repairs where repairs.rstate=? ",
-						o);
-
+	
+	public List<Repairs> getRepairsList(Integer rstate){
+		System.out.println("AssetDao getRepairsList");
+		String hql = "from Repairs where rstate=" + rstate;
+		System.out.println(hql);
+		try {
+			Query query = super.getSession().createQuery(hql);
+			return query.list();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
-
-	public List<Transbill> getTransbillList(Integer tbstate) {
-		Object o[] = { tbstate };
-		return this
-				.getHibernateTemplate()
-				.find("select transbill from Transbill as transbill where transbill.tbstate=? ",
-						o);
+	
+	public List<Transbill> getTransbillList(Integer tbstate){
+		System.out.println("AssetDao getTransbillList");
+		String hql = "from Transbill where tbstate=" + tbstate;
+		System.out.println(hql);
+		try {
+			Query query = super.getSession().createQuery(hql);
+			return query.list();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 
 	}
 

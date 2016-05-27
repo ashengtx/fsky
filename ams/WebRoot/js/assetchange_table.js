@@ -4,7 +4,7 @@
 $(document)
 		.ready(
 				function() {
-					var datatables = $("#assetlisttable")
+					var datatables = $("#assetchangetable")
 							.DataTable(
 									{
 										"oLanguage" : { // 汉化
@@ -27,14 +27,10 @@ $(document)
 										"aLengthMenu" : [ [ 10, 20, 30 ],
 												[ 10, 20, 30 ] ],
 										"bServerSide" : true,
-		
+
 										"ajax" : {
-											"url" : "assetList.action",
+											"url" : "assetChangeList.action",
 											"data" : function(data) {
-												data.assetname = $("#assetname")
-														.val();
-												data.assetcoding = $(
-														"#assetcoding").val();
 											}
 										},
 										// "aaSorting": [[ 1, "asc" ]],
@@ -49,32 +45,7 @@ $(document)
 												{
 													"mData" : "assetclassByAssetclassid.assetclassname",
 												},
-												{
-													"mData" : "cardnum",
 
-												},
-
-												{
-													"mData" : function(row,
-															type, val) {
-														var usersex_str = "";
-														switch (row.cgbid) {
-														case 1:
-															usersex_str = "市场部";
-															break;
-														case 2:
-															usersex_str = "财务部";
-															break;
-														case 3:
-															usersex_str = "运营部";
-															break;
-														default:
-															break;
-														}
-														return usersex_str;
-													},
-												/* "mData" : "cgbid", */
-												},
 												{
 													"mData" : "assetcoding",
 												},
@@ -99,8 +70,31 @@ $(document)
 
 												},
 												{
-													"mData" : "price",
+													"mData" : function(row,
+															type, val) {
+														var zkstate_str = "";
+														switch (row.zkstate) {
+														case 1:
+															zkstate_str = "在用";
+															break;
+														case 2:
+															zkstate_str = "库存";
+															break;
+														case 3:
+															zkstate_str = "故障";
+															break;
+														case 4:
+															zkstate_str = "报废";
+															break;
+														case 5:
+															zkstate_str = "调拨";
+															break;
 
+														default:
+															break;
+														}
+														return zkstate_str;
+													}
 												},
 
 												{

@@ -39,16 +39,19 @@
 	<!-- Page Content -->
 	<div id="page-wrapper">
 		<!-- /#page-wrapper -->
-		<h1 class="page-header">资产列表</h1>
-		<div class="form-group">
+		<h1 class="page-header">盘点列表</h1>
+		<label class="control-label pandian"></label> <label
+			class="col-lg-4 control-label">盘点状态</label>
+		<!-- 		<div class="form-group">
 			<form onSubmit="return false;">
 				<label>资产名称：</label> <input type="text" name="assetname"
 					id="assetname" style="width: 120px" /> <label>资产编码：</label> <input
-					type="text" name="assetcoding" id="assetcoding" style="width: 120px" />
+					type="text" name="assetcoding" id="assetcoding"
+					style="width: 120px" />
 				<button type="button" class="btn btn-primary" id="asset_search_btn"
 					name="asset_search_btn">搜索</button>
 			</form>
-		</div>
+		</div> -->
 		<table class="table table-striped m-b-none" id="assetlisttable">
 
 			<!-- 标签定义表格的表头。该标签用于组合 HTML 表格的表头内容。 thead 元素应该与 tbody 和
@@ -56,15 +59,12 @@
 					表格中的表注（页脚）内容进行分组。 -->
 			<thead>
 				<tr>
-					<th class="text-center" width="100px">资产id</th>
-					<th class="text-center" width="100px">资产名称</th>
-					<th class="text-center" width="100px">资产类别</th>
-					<th class="text-center" width="100px">卡片编号</th>
-					<th class="text-center" width="100px">采购部门</th>
-					<th class="text-center" width="100px">资产编码</th>
-					<th class="text-center" width="100px">入库时间</th>
-					<th class="text-center" width="100px">单价</th>
-					<th class="text-center" width="160px">操作</th>
+					<th width="15%">盘点明细编号</th>
+					<th width="15%">确认盘点日期</th>
+					<th width="15%">盘点资产编号</th>
+					<th width="15%">盘点资产名称</th>
+					<th width="15%">盘点结果</th>
+					<th width="25%">操作</th>
 				</tr>
 			</thead>
 			<tfoot>

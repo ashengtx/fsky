@@ -32,14 +32,14 @@
 			<result name="success">/pages/dashboard.jsp</result>
 		</action>
 		<action name="addPurchase" class="Purchase" method="addPurchase">
-			<result name="success">/pages/purchase-list.jsp</result>
+			<result name="success" type="redirect">/pages/purchase-list.jsp</result>
 		</action>
 		<action name="getPur" class="Purchase" method="getPur">
-			<result name="update">/pages/update-purchase.jsp</result>
-			<result name="check">/pages/purchase.jsp</result>
+			<result name="update" type="redirect">/pages/update-purchase.jsp</result>
+			<result name="check" type="redirect">/pages/purchase.jsp</result>
 		</action>
 		<action name="updatePurchase" class="Purchase" method="updatePurchase">
-			<result name="success">/pages/purchase-list.jsp</result>
+			<result name="success" type="redirect">/pages/purchase-list.jsp</result>
 		</action>
 		<action name="purchaseList" class="Purchase" method="purchaseList">
 			<result type="json">
@@ -47,15 +47,21 @@
 			</result>
 		</action>
 		<action name="addPurchasedetail" class="Purchase" method="addPurchasedetail">
-			<result name="success">/pages/purchase-detail-list.jsp</result>
+			<result name="success" type="redirect">/pages/purchase-detail-list.jsp
+			</result>
 		</action>
+
 		<action name="getPurD" class="Purchase" method="getPurD">
-			<result name="success">/pages/purchase-detail.jsp</result>
+			<result name="success" type="redirect">/pages/purchase-detail.jsp
+			</result>
 		</action>
 		<action name="purchasedetailList" class="Purchase" method="purchasedetailList">
 			<result type="json">
 				<param name="root">dataMap</param>
 			</result>
+		</action>
+		<action name="assetUse" class="Asset" method="assetUse">
+			<result name="success" type="redirect">/pages/assetlist.jsp</result>
 		</action>
 		<action name="returnList" class="Asset" method="returnList">
 			<result type="json">
@@ -63,7 +69,40 @@
 			</result>
 		</action>
 		<action name="assetReturn" class="Asset" method="assetReturn">
-			<result name="success">/pages/return-list.jsp</result>
+			<result name="success" type="redirect">/pages/return-list.jsp</result>
+		</action>
+		<action name="assetTransfer" class="Asset" method="assetTransfer">
+			<result name="success" type="redirect">/pages/assetlist.jsp</result>
+		</action>
+		<action name="transferList" class="Asset" method="transferList">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="transferIn" class="Asset" method="transferIn">
+			<result name="success" type="redirect">/pages/transfer-list.jsp</result>
+		</action>
+		<action name="assetScrap" class="Asset" method="assetScrap">
+			<result name="success" type="redirect">/pages/assetlist.jsp</result>
+		</action>
+		<action name="scrapList" class="Asset" method="scrapList">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="scrapCheck" class="Asset" method="scrapCheck">
+			<result name="success" type="redirect">/pages/scrap-list.jsp</result>
+		</action>
+		<action name="assetRepair" class="Asset" method="assetRepair">
+			<result name="success" type="redirect">/pages/assetlist.jsp</result>
+		</action>
+		<action name="repairList" class="Asset" method="repairList">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="repairComplete" class="Asset" method="repairComplete">
+			<result name="success" type="redirect">/pages/repair-list.jsp</result>
 		</action>
 
 		<!-- dh -->
@@ -105,9 +144,36 @@
 			<result type="redirect">/pages/assetlist.jsp</result>
 		</action>
 
-
-
-
+		<action name="assetChangeList" class="AssetList" method="assetChangeList">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<!-- dh资产盘点-->
+		<action name="confirmCheckedDetail" class="checked"
+			method="confirmCheckedDetail">
+			<result type="redirect">/checkedlist.jsp</result>
+		</action>
+		<action name="getCheckdetailList" class="checked" method="getCheckdetailList">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="addChecked" class="checked" method="addChecked">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="getLastestChecked" class="checked" method="getLastestChecked">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="endChecked" class="checked" method="endChecked">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
 		<!-- Guohui Li -->
 		<action name="addDepartment" class="AddDepartment" method="addDepartment">
 			<result type="redirect">/pages/success.jsp</result>
