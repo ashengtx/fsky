@@ -12,7 +12,7 @@ $(document).ready(function () {
 //        	alert(result.checked.cstate);
         	var checkid = result.checked.checkid;
         	if (result.checked.cstate == 0){
-        		$(".pandian").after('<div class="col-lg-4"> <button class="btn btn-s-md btn-warning" id="endChecked" >结束盘点</button></div>');
+        		$(".pandian").after('<div class="col-lg-4"> <button class="btn btn-s-md btn-primary" id="endChecked" >结束盘点</button></div>');
         		//结束盘点
         		$("#endChecked").bind("click",function(){
 //        			alert("test");
@@ -25,7 +25,7 @@ $(document).ready(function () {
         		        error: function () {
         		        },
         		        success: function (result) {
-        		        	window.location.href = '/myasset/checkedlist.jsp';
+        		        	window.location.href = '/ams/pages/checklist.jsp';
         		        }
         		    });
         		});
@@ -42,7 +42,7 @@ $(document).ready(function () {
         		        error: function () {
         		        },
         		        success: function (result) {
-        		        	window.location.href = '/myasset/checkedlist.jsp';
+        		        	window.location.href = '/ams/pages/checklist.jsp';
         		        }
         		    });
         		});
@@ -117,8 +117,8 @@ $(document).ready(function () {
                 	var result_str ="-";
                 	if (row.cresult !=""||row.crsult != "undefine"){
                 		switch (row.cresult){
-                		case 0:result_str = "账实相符";break;
-                		case 1:result_str = "账实不符";break;
+                		case 0:result_str = "符合";break;
+                		case 1:result_str = "不符";break;
                 		case -1:result_str = "待盘点";break;
                 		default:
                 		}
@@ -131,8 +131,8 @@ $(document).ready(function () {
           "mData": function (row, type, val) {
               var btn = "";
               if (row.cresult == -1){
-            	  btn += '<a href="/myasset/confirmCheckedDetail.action?cdid=' + row.cdid + '&cresult=0" class="text-info support-details" title="确认盘点"  data-toggle="modal"><i class="fa fa-file-text-o"></i> 账实相符&nbsp;&nbsp;</a>';
-                  btn += '<a href="/myasset/confirmCheckedDetail.action?cdid=' + row.cdid + '&cresult=1" class="text-info support-details" title="确认盘点"  data-toggle="modal"><i class="fa fa-file-text-o"></i> 账实不符&nbsp;&nbsp;</a>';
+            	  btn += '<a href="/ams/pages/confirmCheckedDetail.action?cdid=' + row.cdid + '&cresult=0" class="text-info support-details" title="确认盘点"  data-toggle="modal"><i class="fa fa-file-text-o"></i> 符合&nbsp;&nbsp;</a>';
+                  btn += '<a href="/ams/pages/confirmCheckedDetail.action?cdid=' + row.cdid + '&cresult=1" class="text-info support-details" title="确认盘点"  data-toggle="modal"><i class="fa fa-file-text-o"></i> 不符&nbsp;&nbsp;</a>';
               }
               
               return '<div class="toolmenu">' + btn + '</div>';

@@ -219,7 +219,7 @@
 						<li><a href="<%=basePath%>pages/scrap-list.jsp">资产报废</a></li>
 						<li><a href="<%=basePath%>pages/repair-list.jsp">资产维修</a></li>
 						<li><a href="<%=basePath%>pages/assetlchange.jsp">资产移交</a></li>
-						<li><a href="#">资产盘点</a></li>
+						<li><a href="<%=basePath%>pages/checklist.jsp">资产盘点</a></li>
 					</ul> <!-- /.nav-second-level --></li>
 				<li><a href="#"><i class="fa fa-wrench fa-fw"></i>统计报表<span
 						class="fa arrow"></span></a>

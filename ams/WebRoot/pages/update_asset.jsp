@@ -128,8 +128,10 @@
 															<label>使用状态</label><select class="form-control"
 																name="usestate" id="usestate">
 																<option value="1">使用中</option>
-																<option value="2">维修中</option>
-																<option value="3">报废</option>
+																<option value="2">库存</option>
+																<option value="3">故障</option>
+																<option value="4">报废</option>
+																<option value="5">调拨</option>
 															</select>
 														</div>
 														<div class="form-group">

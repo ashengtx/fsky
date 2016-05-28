@@ -29,15 +29,15 @@ $(document)
 										"bServerSide" : true,
 										"bStateSave" : false,
 										"bProcessing" : true,
-						
+
 										"sDom" : "t<'row'<'col-sm-4'i><'col-sm-2'l><'col-sm-6'p>>",
 										"sPaginationType" : "full_numbers",
-									
+
 										sServerMethod : "POST",
 										"ajax" : {
 											"url" : "assetList.action",
 											"data" : function(data) {
-												
+
 												data.assetname = $("#assetname")
 														.val();
 												data.assetcoding = $(
@@ -113,26 +113,167 @@ $(document)
 												{
 													"mData" : function(row,
 															type, val) {
-														var userstate_btn = "";
+														var usestate_btn = "";
+														console.log(row.usestate);
+														switch (row.usestate) {
+														case 1:
+															usestate_btn += '<a href="/ams/pages/getAssetByAssetId.action?assetid='
+																	+ row.assetid
+																	+ '" class="text-info support-details" title="修改" data-id="'
+																	+ row.assetid
+																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 修改</a>';
+															usestate_btn += '<a href="/ams/pages/.action?assetid='
+																	+ row.assetid
+																	+ '" class="text-info support-details" title="查看" data-id="'
+																	+ row.assetid
+																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 查看</a>';
+															usestate_btn += '<a href="/ams/pages/deleteAsset.action?assetid='
+																	+ row.assetid
+																	+ '" class="text-info support-details" title="删除" data-id="'
+																	+ row.assetid
+																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 删除</a>';
 
-														userstate_btn += '<a href="/ams/pages/getAssetDetail.action?assetid='
+															usestate_btn += '<a href="/ams/pages/asset-scrap.jsp?assetid='
+																	+ row.assetid
+																	+ '" class="text-info support-details" title="报废" data-id="'
+																	+ row.assetid
+																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 报废</a>';
+															usestate_btn += '<a href="/ams/pages/asset-repair.jsp?assetid='
+																	+ row.assetid
+																	+ '" class="text-info support-details" title="维修" data-id="'
+																	+ row.assetid
+																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 维修</a>';
+															usestate_btn += '<a href="/ams/pages/transfer-list.jsp?assetid='
+																	+ row.assetid
+																	+ '" class="text-info support-details" title="调拨记录" data-id="'
+																	+ row.assetid
+																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 调拨记录</a>';
+															break;
+														case 2:
+															usestate_btn += '<a href="/ams/pages/getAssetByAssetId.action?assetid='
+																	+ row.assetid
+																	+ '" class="text-info support-details" title="修改" data-id="'
+																	+ row.assetid
+																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 修改</a>';
+															usestate_btn += '<a href="/ams/pages/getOneAsset.action?assetid='
+																	+ row.assetid
+																	+ '" class="text-info support-details" title="查看" data-id="'
+																	+ row.assetid
+																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 查看</a>';
+															usestate_btn += '<a href="/ams/pages/deleteAsset.action?assetid='
+																	+ row.assetid
+																	+ '" class="text-info support-details" title="删除" data-id="'
+																	+ row.assetid
+																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 删除</a>';
+															usestate_btn += '<a href="/ams/pages/asset-use.jsp?assetid='
+																	+ row.assetid
+																	+ '" class="text-info support-details" title="领用" data-id="'
+																	+ row.assetid
+																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 领用</a>';
+															usestate_btn += '<a href="/ams/pages/asset-scrap.jsp?assetid='
+																	+ row.assetid
+																	+ '" class="text-info support-details" title="报废" data-id="'
+																	+ row.assetid
+																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 报废</a>';
+															usestate_btn += '<a href="/ams/pages/asset-repair.jsp?assetid='
+																	+ row.assetid
+																	+ '" class="text-info support-details" title="维修" data-id="'
+																	+ row.assetid
+																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 维修</a>';
+															usestate_btn += '<a href="/ams/pages/asset-transfer.jsp?assetid='
+																	+ row.assetid
+																	+ '" class="text-info support-details" title="调拨" data-id="'
+																	+ row.assetid
+																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 调拨</a>';
+															usestate_btn += '<a href="/ams/pages/transfer-list.jsp?assetid='
+																	+ row.assetid
+																	+ '" class="text-info support-details" title="调拨记录" data-id="'
+																	+ row.assetid
+																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 调拨记录</a>';
+															break;
+														case 3:
+															usestate_btn += '<a href="/ams/pages/getAssetByAssetId.action?assetid='
+																	+ row.assetid
+																	+ '" class="text-info support-details" title="修改" data-id="'
+																	+ row.assetid
+																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 修改</a>';
+															usestate_btn += '<a href="/ams/pages/getOneAsset.action?assetid='
+																	+ row.assetid
+																	+ '" class="text-info support-details" title="查看" data-id="'
+																	+ row.assetid
+																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 查看</a>';
+															usestate_btn += '<a href="/ams/pages/deleteAsset.action?assetid='
+																	+ row.assetid
+																	+ '" class="text-info support-details" title="删除" data-id="'
+																	+ row.assetid
+																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 删除</a>';
+															usestate_btn += '<a href="/ams/pages/asset-scrap.jsp?assetid='
+																	+ row.assetid
+																	+ '" class="text-info support-details" title="报废" data-id="'
+																	+ row.assetid
+																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 报废</a>';
+															usestate_btn += '<a href="/ams/pages/transfer-list.jsp?assetid='
+																	+ row.assetid
+																	+ '" class="text-info support-details" title="调拨记录" data-id="'
+																	+ row.assetid
+																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 调拨记录</a>';
+
+															break;
+														case 4:
+															usestate_btn += '<a href="/ams/pages/getOneAsset.action?assetid='
+																	+ row.assetid
+																	+ '" class="text-info support-details" title="查看" data-id="'
+																	+ row.assetid
+																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 查看</a>';
+															usestate_btn += '<a href="/ams/pages/deleteAsset.action?assetid='
+																	+ row.assetid
+																	+ '" class="text-info support-details" title="删除" data-id="'
+																	+ row.assetid
+																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 删除</a>';
+															usestate_btn += '<a href="/ams/pages/transfer-list.jsp?assetid='
+																	+ row.assetid
+																	+ '" class="text-info support-details" title="调拨记录" data-id="'
+																	+ row.assetid
+																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 调拨记录</a>';
+															break;
+														case 5:
+															usestate_btn += '<a href="/ams/pages/getOneAsset.action?assetid='
+																	+ row.assetid
+																	+ '" class="text-info support-details" title="查看" data-id="'
+																	+ row.assetid
+																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 查看</a>';
+															usestate_btn += '<a href="/ams/pages/deleteAsset.action?assetid='
+																	+ row.assetid
+																	+ '" class="text-info support-details" title="删除" data-id="'
+																	+ row.assetid
+																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 删除</a>';
+															usestate_btn += '<a href="/ams/pages/transfer-list.jsp?assetid='
+																	+ row.assetid
+																	+ '" class="text-info support-details" title="调拨记录" data-id="'
+																	+ row.assetid
+																	+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 调拨记录</a>';
+															break;
+														default:
+															break;
+														}
+/*														usestate_btn += '<a href="/ams/pages/.action?assetid='
 																+ row.assetid
 																+ '" class="text-info support-details" title="详情" data-id="'
 																+ row.assetid
 																+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 详情</a>';
-														userstate_btn += '<a href="/ams/pages/getAssetByAssetId.action?assetid='
+														usestate_btn += '<a href="/ams/pages/getAssetByAssetId.action?assetid='
 																+ row.assetid
 																+ '" class="text-info support-details" title="编辑" data-id="'
 																+ row.assetid
 																+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 编辑</a>';
-														userstate_btn += '<a href="/ams/pages/deleteAsset.action?assetid='
+														usestate_btn += '<a href="/ams/pages/deleteAsset.action?assetid='
 																+ row.assetid
 																+ '" class="text-info support-details" title="删除" data-id="'
 																+ row.assetid
-																+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 删除</a>';
-
+																+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 删除</a>';*/
+console.log(usestate_btn);
 														return '<div class="toolmenu">'
-																+ userstate_btn
+																+ usestate_btn
 																+ '</div>';
 													},
 													"bSortable" : false

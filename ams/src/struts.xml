@@ -50,7 +50,7 @@
 			<result name="success" type="redirect">/pages/purchase-list.jsp</result>
 		</action> 
 		<action name="addPurchasedetail" class="Purchase" method="addPurchasedetail">
-			<result name="success" type="redirect">/pages/purchase-detail-list.jsp
+			<result name="success" type="redirect">/pages/purchase-list.jsp
 			</result>
 		</action>
 
@@ -154,7 +154,7 @@
 		<!-- dh资产盘点-->
 		<action name="confirmCheckedDetail" class="checked"
 			method="confirmCheckedDetail">
-			<result type="redirect">/checkedlist.jsp</result>
+			<result type="redirect">/pages/checklist.jsp</result>
 		</action>
 		<action name="getCheckdetailList" class="checked" method="getCheckdetailList">
 			<result type="json">

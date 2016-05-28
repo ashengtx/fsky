@@ -39,32 +39,32 @@
 	<!-- Page Content -->
 	<div id="page-wrapper">
 		<!-- /#page-wrapper -->
-		<h1 class="page-header">盘点列表</h1>
-		<label class="control-label pandian"></label> <label
-			class="col-lg-4 control-label">盘点状态</label>
-		<!-- 		<div class="form-group">
-			<form onSubmit="return false;">
-				<label>资产名称：</label> <input type="text" name="assetname"
-					id="assetname" style="width: 120px" /> <label>资产编码：</label> <input
-					type="text" name="assetcoding" id="assetcoding"
-					style="width: 120px" />
-				<button type="button" class="btn btn-primary" id="asset_search_btn"
-					name="asset_search_btn">搜索</button>
-			</form>
-		</div> -->
-		<table class="table table-striped m-b-none" id="assetlisttable">
+		<h1 class="page-header">资产盘点</h1>
+		<form class="form-horizontal" action="#" onSubmit="return false;">
+			<fieldset class="search-fieldset">
+				<div class="form-group col-lg-5">
+					<label class="control-label pandian"></label> 
+				</div>
+			</fieldset>
+
+
+
+
+		</form>
+		
+		<table class="table table-striped m-b-none" id="checked_table">
 
 			<!-- 标签定义表格的表头。该标签用于组合 HTML 表格的表头内容。 thead 元素应该与 tbody 和
 					tfoot 元素结合起来使用。 tbody 元素用于对 HTML 表格中的主体内容进行分组，而 tfoot 元素用于对 HTML
 					表格中的表注（页脚）内容进行分组。 -->
 			<thead>
 				<tr>
-					<th width="15%">盘点明细编号</th>
-					<th width="15%">确认盘点日期</th>
-					<th width="15%">盘点资产编号</th>
-					<th width="15%">盘点资产名称</th>
-					<th width="15%">盘点结果</th>
-					<th width="25%">操作</th>
+					<th class="text-center" width="100px">明细编号</th>
+					<th class="text-center" width="100px">盘点日期</th>
+					<th class="text-center" width="100px">资产编号</th>
+					<th class="text-center" width="100px">资产名称</th>
+					<th class="text-center" width="100px">盘点结果</th>
+					<th class="text-center" width="150px">操作</th>
 				</tr>
 			</thead>
 			<tfoot>
@@ -82,7 +82,7 @@
 
 	<script src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
 
-	<script type="text/javascript" src="../js/asset_table.js"></script>
+	<script type="text/javascript" src="../js/checkedTable.js"></script>
 
 </body>
 </html>
