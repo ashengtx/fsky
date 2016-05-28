@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
-<meta name="author" content="dingh">
+<meta name="author" content="胡景霖">
 <title>资产管理系统</title>
 <!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
@@ -39,32 +39,22 @@
 	<!-- Page Content -->
 	<div id="page-wrapper">
 		<!-- /#page-wrapper -->
-		<h1 class="page-header">资产列表</h1>
-		<div class="form-group">
-			<form onSubmit="return false;">
-				<label>资产名称：</label> <input type="text" name="assetname"
-					id="assetname" style="width: 120px" /> <label>资产编码：</label> <input
-					type="text" name="assetcoding" id="assetcoding" style="width: 120px" />
-				<button type="button" class="btn btn-primary" id="asset_search_btn"
-					name="asset_search_btn">搜索</button>
-			</form>
-		</div>
-		<table class="table table-striped m-b-none" id="assetlisttable">
+		<h1 class="page-header">参数管理</h1>
+		
+		<table class="table table-striped m-b-none" id="paramInfoTable">
 
 			<!-- 标签定义表格的表头。该标签用于组合 HTML 表格的表头内容。 thead 元素应该与 tbody 和
 					tfoot 元素结合起来使用。 tbody 元素用于对 HTML 表格中的主体内容进行分组，而 tfoot 元素用于对 HTML
 					表格中的表注（页脚）内容进行分组。 -->
 			<thead>
 				<tr>
-					<th class="text-center" width="100px">资产id</th>
-					<th class="text-center" width="100px">资产名称</th>
-					<th class="text-center" width="100px">资产类别</th>
-					<th class="text-center" width="100px">卡片编号</th>
-					<th class="text-center" width="100px">采购部门</th>
-					<th class="text-center" width="100px">资产编码</th>
-					<th class="text-center" width="100px">入库时间</th>
-					<th class="text-center" width="100px">单价</th>
-					<th class="text-center" width="160px">操作</th>
+				    <th width="10%">参数信息Id</th>
+					<th width="10%">参数名</th>
+					<th width="10%">参数值</th>
+					<th width="10%">参数类型id</th>
+					<th width="10%">参数类型</th>
+					<th width="10%">操作</th>
+					
 				</tr>
 			</thead>
 			<tfoot>
@@ -82,7 +72,8 @@
 
 	<script src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
 
-	<script type="text/javascript" src="../js/asset_table.js"></script>
+	<script type="text/javascript" src="../js/paramInfo.js"></script>
 
 </body>
 </html>
+

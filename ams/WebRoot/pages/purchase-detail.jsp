@@ -58,6 +58,7 @@
 													<div class="col-lg-6">
 
 														<div class="form-group">
+
 															<label>资产类别id</label> <input class="form-control" type="text" name="assetclassid" 
 															value="<s:property value="purchasedetail.assetclassByAssetclassid.assetclassid"/>" />
 														</div>
@@ -111,8 +112,10 @@
 												</div>
 
 												<div class="form-actions text-center">
-													<a href="<%=basePath %>pages/purchase-detail-list.jsp?purid=<%=request.getParameter("purid")%>">
-														<button type="button" class="btn btn-primary">返回</button></a>
+													<a
+														href="<%=basePath%>pages/purchase-detail-list.jsp?purid=<%=request.getParameter("purid")%>">
+														<button type="button" class="btn btn-primary">返回</button>
+													</a>
 												</div>
 
 											</fieldset>
@@ -138,7 +141,7 @@
 
 	<jsp:include page="../footer.jsp" />
 	<!-- script here -->
-	
+
 	<!-- script end -->
 </body>
 </html>
