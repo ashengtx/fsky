@@ -20,7 +20,7 @@ public class BaseService implements IBaseService {
 	@Override
 	public <T> boolean create(T t) {
 		System.out.println("BaseService Create");
-		return baseDao.create(t);
+		return iBaseDao.create(t);
 	}
 
 	public BaseDao getBaseDao() {

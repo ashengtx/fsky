@@ -40,7 +40,16 @@
 	<div id="page-wrapper">
 		<!-- /#page-wrapper -->
 		<h1 class="page-header">资产列表</h1>
-		<table class="table table-striped m-b-none" id="asset_table">
+		<div class="form-group">
+			<form onSubmit="return false;">
+				<label>资产名称：</label> <input type="text" name="assetname"
+					id="assetname" style="width: 120px" /> <label>资产编码：</label> <input
+					type="text" name="assetcoding" id="assetcoding" style="width: 120px" />
+				<button type="button" class="btn btn-primary" id="asset_search_btn"
+					name="asset_search_btn">搜索</button>
+			</form>
+		</div>
+		<table class="table table-striped m-b-none" id="assetlisttable">
 
 			<!-- 标签定义表格的表头。该标签用于组合 HTML 表格的表头内容。 thead 元素应该与 tbody 和
 					tfoot 元素结合起来使用。 tbody 元素用于对 HTML 表格中的主体内容进行分组，而 tfoot 元素用于对 HTML
@@ -48,28 +57,14 @@
 			<thead>
 				<tr>
 					<th class="text-center" width="100px">资产id</th>
-					<th class="text-center" width="100px">资产类别id</th>
-					<th class="text-center" width="100px">使用人部门id</th>
-					<th class="text-center" width="100px">保管人id</th>
-					<th class="text-center" width="100px">使用人id</th>
-					<th class="text-center" width="120px">上级资产类别id</th>
+					<th class="text-center" width="100px">资产名称</th>
+					<th class="text-center" width="100px">资产类别</th>
 					<th class="text-center" width="100px">卡片编号</th>
-					<th class="text-center" width="100px">财务是否入账</th>
-					<th class="text-center" width="100px">规格型号</th>
-					<th class="text-center" width="100px">使用状态</th>
-					<th class="text-center" width="160px">资产名称</th>
 					<th class="text-center" width="100px">采购部门</th>
-					<th class="text-center" width="160px">财务入账日期</th>
-					<th class="text-center" width="100px">财务编码</th>
 					<th class="text-center" width="100px">资产编码</th>
-					<th class="text-center" width="100px">制造商</th>
-					<th class="text-center" width="100px">供应商</th>
-					<th class="text-center" width="160px">入库时间</th>
-					<th class="text-center" width="100px">单位</th>
-					<th class="text-center" width="100px">数量</th>
-					<th class="text-center" width="100px">备注</th>
+					<th class="text-center" width="100px">入库时间</th>
 					<th class="text-center" width="100px">单价</th>
-					<th class="text-center" width="100px">操作</th>
+					<th class="text-center" width="160px">操作</th>
 				</tr>
 			</thead>
 			<tfoot>

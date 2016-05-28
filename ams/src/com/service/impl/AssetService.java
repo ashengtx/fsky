@@ -107,4 +107,8 @@ public class AssetService extends BaseService implements IAssetService {
 			return assetDao.getList(Asset.class);
 		}
 	}
+
+	public List<Asset> getAssetList(String assetname, String assetcoding) {
+		return this.assetDao.getAssetList(assetname, assetcoding);
+	}
 }

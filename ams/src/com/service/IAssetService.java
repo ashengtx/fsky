@@ -25,4 +25,5 @@ public interface IAssetService extends IBaseService {
 	 */
 	public List<Asset> getBigAssetList(Integer iassetclassid);
 	public List<Asset> getSmallAssetList(Integer assetclassid);
+	public List<Asset> getAssetList(String assetname,String assetcoding);
 }

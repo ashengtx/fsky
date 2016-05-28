@@ -32,23 +32,27 @@
 			<result name="success">/pages/dashboard.jsp</result>
 		</action>
 		<action name="addPurchase" class="Purchase" method="addPurchase">
-			<result name="success">/pages/purchase-list.jsp</result>
+			<result name="success" type="redirect">/pages/purchase-list.jsp</result>
 		</action>
 		<action name="getPur" class="Purchase" method="getPur">
 			<result name="update">/pages/update-purchase.jsp</result>
 			<result name="check">/pages/purchase.jsp</result>
 		</action>
 		<action name="updatePurchase" class="Purchase" method="updatePurchase">
-			<result name="success">/pages/purchase-list.jsp</result>
+			<result name="success" type="redirect">/pages/purchase-list.jsp</result>
 		</action>
 		<action name="purchaseList" class="Purchase" method="purchaseList">
 			<result type="json">
 				<param name="root">dataMap</param>
 			</result>
 		</action>
+		<action name="confirmPur" class="Purchase" method="confirmPur">
+			<result name="success" type="redirect">/pages/purchase-list.jsp</result>
+		</action> 
 		<action name="addPurchasedetail" class="Purchase" method="addPurchasedetail">
 			<result name="success">/pages/purchase-detail-list.jsp</result>
 		</action>
+		
 		<action name="getPurD" class="Purchase" method="getPurD">
 			<result name="success">/pages/purchase-detail.jsp</result>
 		</action>
@@ -57,13 +61,49 @@
 				<param name="root">dataMap</param>
 			</result>
 		</action>
+		<action name="assetUse" class="Asset" method="assetUse">
+			<result name="success" type="redirect">/pages/assetlist.jsp</result>
+		</action>
 		<action name="returnList" class="Asset" method="returnList">
 			<result type="json">
 				<param name="root">dataMap</param>
 			</result>
 		</action>
 		<action name="assetReturn" class="Asset" method="assetReturn">
-			<result name="success">/pages/return-list.jsp</result>
+			<result name="success" type="redirect">/pages/return-list.jsp</result>
+		</action>
+		<action name="assetTransfer" class="Asset" method="assetTransfer">
+			<result name="success" type="redirect">/pages/assetlist.jsp</result>
+		</action>
+		<action name="transferList" class="Asset" method="transferList">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="transferIn" class="Asset" method="transferIn">
+			<result name="success" type="redirect">/pages/transfer-list.jsp</result>
+		</action>
+		<action name="assetScrap" class="Asset" method="assetScrap">
+			<result name="success" type="redirect">/pages/assetlist.jsp</result>
+		</action>
+		<action name="scrapList" class="Asset" method="scrapList">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="scrapCheck" class="Asset" method="scrapCheck">
+			<result name="success" type="redirect">/pages/scrap-list.jsp</result>
+		</action>
+		<action name="assetRepair" class="Asset" method="assetRepair">
+			<result name="success" type="redirect">/pages/assetlist.jsp</result>
+		</action>
+		<action name="repairList" class="Asset" method="repairList">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="repairComplete" class="Asset" method="repairComplete">
+			<result name="success" type="redirect">/pages/repair-list.jsp</result>
 		</action>
 
 		<!-- dh -->
@@ -84,8 +124,12 @@
 				<param name="root">dataMap</param>
 			</result>
 		</action>
-
-
+		<action name="getAssetDetail" class="AssetList" method="getAssetDetail">
+			<result>/pages/assetdetail.jsp</result>
+		</action>
+		<action name="getAssetByAssetId" class="AssetList" method="getAssetByAssetId">
+			<result>/pages/update_asset.jsp</result>
+		</action>
 		<action name="userSearch" class="UserSearch" method="userSearch">
 			<result type="redirect">/pages/searchusers.jsp</result>
 		</action>
@@ -94,8 +138,43 @@
 				<param name="root">dataMap</param>
 			</result>
 		</action>
+		<action name="updateAsset" class="AssetList" method="updateAsset">
+			<result>/pages/assetlist.jsp</result>
+		</action>
+		<action name="deleteAsset" class="AssetList" method="deleteAsset">
+			<result type="redirect">/pages/assetlist.jsp</result>
+		</action>
 
-
+		<action name="assetChangeList" class="AssetList" method="assetChangeList">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<!-- dh资产盘点-->
+		<action name="confirmCheckedDetail" class="checked"
+			method="confirmCheckedDetail">
+			<result type="redirect">/pages/checklist.jsp</result>
+		</action>
+		<action name="getCheckdetailList" class="checked" method="getCheckdetailList">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="addChecked" class="checked" method="addChecked">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="getLastestChecked" class="checked" method="getLastestChecked">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="endChecked" class="checked" method="endChecked">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
 		<!-- Guohui Li -->
 		<!-- 统计报表 -->
 		<action name="getStatistics" class="GetStatistics" method="getStatistics">
@@ -162,6 +241,37 @@
 			<result name="createSuccess">/success.jsp</result>
 			<result name="createFail">/index.jsp</result>
 		</action>
+		
+		
+		<!-- hujinglin -->	
+		<!-- 参数信息Action -->
+            <!-- 增加参数信息 -->
+			<action name="addParaInfo" class="addParaInfo" method="addParaInfo">
+				<result type="json">  
+                    <param name="root">msg</param>  
+            	</result> 
+			</action>
+			<!-- 获取参数信息列表 -->
+            <action name="getParaInfoList" class="getParaInfoList" method="getParaInfoList">
+				<result type="json">  
+                    <param name="root">dataMap</param>  
+            	</result> 
+			</action> 
+			<!-- 更新 -->
+			<action name="saveOrUpdateParaInfo" class="saveOrUpdateParaInfo" method="saveOrUpdateParaInfo">
+				<result >/pages/success.jsp</result>
+			</action>
+			<!-- 删除参数信息 -->
+			<action name="deleteParaInfo" class="deleteParaInfo" method="deleteParaInfo">
+				<result type="redirect">/pages/success.jsp</result>
+			</action>
+			<!-- 获取参数信息ById -->
+			<action name="getParaInfoById" class="getParaInfoById" method="getParaInfoById">
+				<result>/pages/updateparameter.jsp</result>
+				
+			</action>
+		
+		
 	</package>
 
 	<package name="ajax" namespace="/" extends="json-default">

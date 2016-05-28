@@ -71,7 +71,8 @@
 												</label>
 											</div>
 											<div class="form-group">
-												<label>角色</label> <select class="form-control" name="roleid">
+												<label>角色</label> <select class="form-control"
+													name="roleid">
 													<option value="1">系统管理员</option>
 													<option value="2">普通员工</option>
 													<option value="3">财务人员</option>

@@ -1,17 +1,21 @@
 package com.action;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.model.Asset;
 import com.model.Assetclass;
 import com.model.Department;
 import com.model.Purchase;
 import com.model.Purchasedetail;
 import com.model.Userinformation;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.service.impl.AssetService;
 import com.service.impl.PurchaseService;
 
 
@@ -22,6 +26,7 @@ import com.service.impl.PurchaseService;
 public class PurchaseAction extends ActionSupport{
 	
 	private PurchaseService purchaseService;
+	private AssetService assetService;
 	private Purchase purchase;
 	private Purchasedetail purchasedetail;
 	private Userinformation userinformation;
@@ -30,6 +35,7 @@ public class PurchaseAction extends ActionSupport{
 	
 	private List<Purchase> purchases;
 	private List<Purchasedetail> purchasedetails;
+	private List<Asset> assets;
 	private int start;  
     private int length; 
 	private Map<String,Object> dataMap;  
@@ -85,6 +91,105 @@ public class PurchaseAction extends ActionSupport{
 			return "check";
 		}
 	}
+	
+	public String confirmPur() throws Exception{
+		String did;
+		String str;
+		String zizeng;
+		Purchase purchase = new Purchase();
+		purchase = purchaseService.findById(Purchase.class, purid);
+		purchase.setPurstate(1);
+		
+		//purchaseService.saveOrUpdate(purchase); 这一步要在入库成功之后再执行
+		
+		this.purchasedetails = purchaseService.getPurchasedetailList(purid);
+		
+		// 获得登录用户的id
+		Userinformation user = new Userinformation();
+		user=(Userinformation)ActionContext.getContext().getSession().get("loginuser");
+		userid=user.getUserid();
+		
+		for(int i = 0; i < this.purchasedetails.size(); i++){
+			for(int j = 0; j < this.purchasedetails.get(i).getAmount(); j++){
+				Asset asset = new Asset();
+				Purchasedetail purchasedetail = new Purchasedetail();
+				Userinformation userinformationByUserid = new Userinformation();
+				Assetclass assetclass = new Assetclass();
+				Assetclass passetclass = new Assetclass();
+				
+				purchasedetail.setPdid(this.purchasedetails.get(i).getPdid());
+				userinformationByUserid.setUserid(userid);
+				assetclass.setAssetclassid(this.purchasedetails.get(i).getAssetclassByAssetclassid().getAssetclassid());
+				passetclass.setAssetclassid(this.purchasedetails.get(i).getAssetclassByPassetclassid().getAssetclassid());
+
+				assetclassid=this.purchasedetails.get(i).getAssetclassByAssetclassid().getAssetclassid();
+				asset.setAmount(1);
+				Date nowTime = new Date(System.currentTimeMillis());
+				SimpleDateFormat sdFormatter = new SimpleDateFormat("yyyyMMdd");
+				String retStrFormatNowDate = sdFormatter.format(nowTime);
+				
+				if(purchase.getDepartment().getDepartmentid()<10){
+					did="0"+purchase.getDepartment().getDepartmentid();
+				}
+				else{
+					did=purchase.getDepartment().getDepartmentid()+"";
+				}
+				
+				assets = assetService.getList(Asset.class);
+				if(assets.size()>0){
+					
+					str=assets.get(assets.size()-1).getAssetcoding();
+					//System.out.print(str+"========1");
+					zizeng=str.substring(13,str.length());
+					//System.out.print(zizeng+"========2");
+					int str_int = Integer.parseInt(zizeng)+1;
+					//System.out.print(str_int+"========3");
+					str=str_int+"";
+					while(4-str.length()>0){
+						str="0"+str;
+					}
+					zizeng=str;
+					System.out.print(zizeng+"========4");
+					
+							
+				}
+				else{
+					zizeng="0001";
+				}
+				
+				System.out.print(assetService.findById(Assetclass.class , assetclassid).getAssetclasscoding()+"========3");
+				asset.setAssetcoding(assetService.findById(Assetclass.class , assetclassid).getAssetclasscoding()+retStrFormatNowDate+zizeng);//
+				asset.setAssetname(this.purchasedetails.get(i).getAssetname());//
+				asset.setAunit(this.purchasedetails.get(i).getPunit());//
+				asset.setCardnum(assetService.findById(Assetclass.class , assetclassid).getAssetclasscoding()+retStrFormatNowDate+did+zizeng);//
+				asset.setCgbid(purchase.getDepartment().getDepartmentid());//
+				
+				asset.setInsertdate(nowTime);//
+				
+				asset.setManufacturer(this.purchasedetails.get(i).getManufacturer());//
+				asset.setPrice(this.purchasedetails.get(i).getPrice());//
+				asset.setProvider(this.purchasedetails.get(i).getProvider());//
+				
+				asset.setZkstate(2);//
+				asset.setUsestate(2);//
+			
+				asset.setAssetclassByAssetclassid(assetclass);
+				asset.setAssetclassByPassetclassid(passetclass);
+
+				
+				asset.setUserinformationByUserid(userinformationByUserid);
+				
+				asset.setPurchasedetail(purchasedetail);
+				
+				assetService.create(asset);
+				
+				
+			}
+		}
+		purchaseService.saveOrUpdate(purchase);
+		return SUCCESS;
+	}
+	
 	public String updatePurchase() {
 		System.out.println("udpatePurchase");
 		System.out.println("purid: " + purid + " buydate: " + buydate + " departmentid: " + departmentid + " userid: " + userid + " cgyt: " +
@@ -138,7 +243,7 @@ public class PurchaseAction extends ActionSupport{
 	
 	public String purchaseList(){  
 		System.out.println("purchaseList");
-	    this.purchases = purchaseService.findPurchase(departmentid, purstate);
+	    this.purchases = purchaseService.getList(Purchase.class);
 	    List<Object> aaData = new ArrayList<Object>();
 	    for(int i = 0; i < this.purchases.size(); i++)
 	    {    
@@ -222,6 +327,22 @@ public class PurchaseAction extends ActionSupport{
 	}
 	
 	
+	public List<Asset> getAssets() {
+		return assets;
+	}
+
+	public void setAssets(List<Asset> assets) {
+		this.assets = assets;
+	}
+
+	public AssetService getAssetService() {
+		return assetService;
+	}
+
+	public void setAssetService(AssetService assetService) {
+		this.assetService = assetService;
+	}
+
 	public Assetclass getAssetclass() {
 		return assetclass;
 	}

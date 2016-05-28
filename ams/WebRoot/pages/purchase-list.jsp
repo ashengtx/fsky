@@ -23,19 +23,6 @@
 
 <jsp:include page="../header.jsp" />
 <!-- styles here -->
-<!-- <link href="../css/public.css" type="text/css" rel="stylesheet">
-<link href="../css/houtai.css" type="text/css" rel="stylesheet">
-<link href="../css/smartMenu.css" type="text/css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="../css/style.css" />
-
-<link href="../css/app.css" type="text/css" rel="stylesheet">
-<link href="../css/font-awesome.css" type="text/css" rel="stylesheet">
-<link href="../css/simple-line-icons.css" type="text/css"
-	rel="stylesheet">
-<link href="../css/font-awesome.min.css" type="text/css"
-	rel="stylesheet">
-<link href="../css/font.css" type="text/css" rel="stylesheet"> -->
-
 <link href="../datatable/jquery.dataTables.min.css" type="text/css" rel="stylesheet">
 <!-- styles end -->
 </head>
@@ -124,41 +111,8 @@
 
 <jsp:include page="../footer.jsp" />
 <!-- script here -->
-
-<%-- <script type="text/javascript" src="../js/contabs.js"></script>
-<script type="text/javascript" src="../js/maintabs.js"></script>
-<script type="text/javascript" src="../js/jquery-smartMenu-min.js"></script>
-<script type="text/javascript" src="../js/jquery.nicescroll.min.js"></script> --%>
 <script type="text/javascript" src="../datatable/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="../js/purchaseTable.js"></script>
-<script type="text/javascript"
-	src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
-<script type="text/javascript">
-
-	/* $(function(){
-		$("#purchase_table_filter").click(function (event) {
-    		alert("success");
-		});
-	})  */
-	/* $(function() {
-		$(".ad-menu").niceScroll({
-			cursorborder : "0 none",
-			cursorcolor : "#1a1a19",
-			cursoropacitymin : "0",
-			boxzoom : false
-		});
-	});
-	$(function() {
-		$("#breadcrumbs-three li a").text("采购单列表");
-		$("#breadcrumbs-three li").attr("title", "采购单列表");
-	});
-	$(function() {
-		var li = document.getElementById('asset');
-		var dd = document.getElementById('purchase2');
-		li.setAttribute("class", "over2 over");
-		dd.setAttribute("class", "on");
-	}); */
-</script>
 
 <!-- script end -->
 </body>

@@ -24,8 +24,8 @@ $(document)
 												"sLast" : " <i class=\"fa fa-angle-double-right\"></i> "
 											}
 										},
-										"aLengthMenu" : [ [10, 15, 20 ],
-												[10, 15, 20 ] ],
+										"aLengthMenu" : [ [ 10, 15, 20 ],
+												[ 10, 15, 20 ] ],
 										"bStateSave" : false,
 										"bProcessing" : true,
 										"bServerSide" : true,
@@ -36,7 +36,14 @@ $(document)
 										"ajax" : {
 											"url" : "userList.action",
 											"data" : function(data) {
-
+												data.username = $("#username")
+														.val();
+												data.departmentid = $(
+														"#departmentid").val();
+												data.roleid = $("#roleid")
+														.val();
+												data.userstate = $("#userstate")
+														.val();
 											}
 										},
 										// "aaSorting": [[ 1, "asc" ]],
@@ -111,7 +118,9 @@ $(document)
 														case 2:
 															department_str = "财务部";
 															break;
-
+														case 3:
+															department_str = "运营部";
+															break;
 														default:
 															break;
 														}
@@ -125,12 +134,14 @@ $(document)
 														var roletype_str = "";
 														switch (row.roletype.roleid) {
 														case 1:
-															roletype_str = "管理员";
+															roletype_str = "系统管理员";
 															break;
 														case 2:
-															roletype_str = "用户";
+															roletype_str = "普通员工";
 															break;
-
+														case 3:
+															roletype_str = "财务人员";
+															break;
 														default:
 															break;
 														}
@@ -142,7 +153,6 @@ $(document)
 													"mData" : function(row,
 															type, val) {
 														var userstate_btn = "";
-
 
 														userstate_btn += '<a href="/ams/pages/getUser.action?userid='
 																+ row.userid
@@ -181,15 +191,15 @@ $(document)
 												iDisplayIndex) {
 										}
 									});
-					// $(document).on("click", ".refresh", function () {
-					// tableReload();
-					// });
-					// function tableReload() {
-					// datatables.ajax.reload();
-					// }
-					//
-					// $("#investor_search_btn").bind("click", function () {
-					// datatables.ajax.reload();
-					// });
+					$(document).on("click", ".refresh", function() {
+						tableReload();
+					});
+					function tableReload() {
+						datatables.ajax.reload();
+					}
+
+					$("#users_search_btn").bind("click", function() {
+						datatables.ajax.reload();
+					});
 
 				});

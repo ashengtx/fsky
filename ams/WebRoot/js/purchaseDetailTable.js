@@ -25,7 +25,7 @@ $(document).ready(function () {
             "url": "purchasedetailList.action",
             "data": function (data) {
             	data.purid=$("#purid").val();
-            	//data.assetname=$("#assetname").val();
+            	data.assetname=$("#assetname").val();
             }
         },
         
@@ -42,7 +42,7 @@ $(document).ready(function () {
 	        {
 	          "mData": function (row, type, val) {
 	              var purdet_btn = "";
-	              purdet_btn += '<a href="/ams/getPurD.action?pdid=' + row.pdid + '" class="text-info support-details" title="查看采购单明细" data-id="' + row.pdid + '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 查看采购单明细</a>';
+	              purdet_btn += '<a href="/ams/pages/getPurD.action?pdid=' + row.pdid + '&purid=' + $("#purid").val() + '" class="text-info support-details" title="查看采购单明细" data-id="' + row.pdid + '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 查看采购单明细</a>';
 	              return '<div class="toolmenu">' + purdet_btn + '</div>';
 	          }
 	        },

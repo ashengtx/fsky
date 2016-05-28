@@ -46,7 +46,7 @@ $(document).ready(function () {
          {
           "mData": function (row, type, val) {
               var lyghstate_btn = "";
-              lyghstate_btn += '<a href="/ams/asset-return.jsp?lyghid=' + row.lyghid + '" class="text-info support-details" title="归还" data-id="' + row.lyghid + '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 归还</a>';
+              lyghstate_btn += '<a href="/ams/pages/asset-return.jsp?lyghid=' + row.lyghid + '" class="text-info support-details" title="归还" data-id="' + row.lyghid + '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 归还</a>';
               return '<div class="toolmenu">' + lyghstate_btn + '</div>';
           }
       },

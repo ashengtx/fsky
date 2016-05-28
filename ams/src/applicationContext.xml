@@ -64,6 +64,9 @@
 	<bean id="userDao" class="com.dao.impl.UserDao" parent="iBaseDao">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
+	<bean id="ParamInfoDao" class="com.dao.impl.ParamInfoDao" parent="iBaseDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
 
 	<bean id="departmentDao" class="com.dao.impl.DepartmentDao"
 		parent="iBaseDao">
@@ -79,7 +82,11 @@
 			<ref local="sessionFactory" />
 		</property>
 	</bean>
-
+	<bean id="checkedDao" class="com.dao.impl.CheckedDao" parent="baseDao">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+	</bean>
 	<!-- Service -->
 	<bean id="baseService" class="com.service.impl.BaseService"
 		autowire="byName">
@@ -94,7 +101,13 @@
 		autowire="byName">
 		<property name="purchaseDao" ref="purchaseDao"></property>
 	</bean>
+	
+	
+	<bean id="paramInfoService" class="com.service.impl.ParamInfoService" scope="prototype">
+		<property name="iBaseDao" ref="iBaseDao"/>
+	</bean>
 
+	
 	<bean id="iUserService" class="com.service.impl.UserService"
 		parent="baseService">
 		<property name="userDao" ref="userDao" />
@@ -106,6 +119,10 @@
 	<bean id="iDepartmentService" class="com.service.impl.DepartmentService"
 		parent="baseService">
 		<property name="departmentDao" ref="departmentDao" />
+	</bean>
+	<bean id="checkedService" class="com.service.impl.CheckedService"
+		parent="baseService">
+		<property name="iCheckedDao" ref="checkedDao" />
 	</bean>
 	<!-- fyy -->
 	<bean id="assetClassService" class="com.service.impl.AssetClassService"
@@ -147,10 +164,37 @@
 	<bean id="UserList" class="com.action.UserManageAction" scope="prototype">
 		<property name="iUserService" ref="iUserService" />
 	</bean>
+	<!-- 参数信息管理 start-->
+	<bean id="addParaInfo" class="com.action.ParamInfoAction" scope="prototype">
+	    <property name="paramInfoService" ref="paramInfoService"/>
+	</bean>
+	
+	<bean id="getParaInfoList" class="com.action.ParamInfoAction" scope="prototype">
+	    <property name="paramInfoService" ref="paramInfoService"/>
+	</bean>
+	
+	<bean id="saveOrUpdateParaInfo" class="com.action.ParamInfoAction" scope="prototype">
+	    <property name="paramInfoService" ref="paramInfoService"/>
+	</bean>
+	
+	<bean id="deleteParaInfo" class="com.action.ParamInfoAction" scope="prototype">
+	    <property name="paramInfoService" ref="paramInfoService"/>
+	</bean>
+	
+	<bean id="getParaInfoById" class="com.action.ParamInfoAction" scope="prototype">
+	    <property name="paramInfoService" ref="paramInfoService"/>
+	</bean>
+	<!-- 参数信息管理 end-->
 	<bean id="UserSearch" class="com.action.UserManageAction" scope="prototype">
 		<property name="iUserService" ref="iUserService" />
 	</bean>
-
+	<bean id="AssetList" class="com.action.AssetAction" scope="prototype">
+		<property name="assetService" ref="assetService"></property>
+	</bean>
+	<bean id="checked" class="com.action.CheckAction" scope="prototype">
+		<property name="iCheckedService" ref="checkedService" />
+		<property name="iAssetService" ref="assetService" />
+	</bean>
 
 	<!-- fyy -->
 	<bean id="AddAssetClass" class="com.action.AssetClassAction" scope="prototype">

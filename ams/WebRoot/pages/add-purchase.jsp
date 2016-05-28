@@ -75,10 +75,10 @@
 								<div class="form-group">
 									<label style="width: 70px;">采购状态</label>
                                     <label class="radio-inline">
-                                    	<input type="radio" name="purstate" id="purstate1" value="1">采购完成
+                                    	<input type="radio" name="purstate" id="purstate1" value="1" disabled>采购完成
                                     </label>
                                     <label class="radio-inline">
-                                    	<input type="radio" name="purstate" id="purstate2" value="0">尚未采购
+                                    	<input type="radio" name="purstate" id="purstate2" value="0" checked>尚未采购
                                     </label>
                                 </div>
                                 <div class="form-actions">

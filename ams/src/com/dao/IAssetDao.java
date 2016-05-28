@@ -20,4 +20,6 @@ public interface IAssetDao extends IBaseDao {
 	public List<Asset> getTransAssetList(Integer zkstate,Integer userid);
 	public List<Zctransdetail> getZctransdetailList(Integer userid);
 	public List<Zctrans> getZctransList(Integer yjuserid);
+	
+	public List<Asset> getAssetList(String assetname,String assetcoding);
 }
