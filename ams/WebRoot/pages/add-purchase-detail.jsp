@@ -49,7 +49,7 @@
 							<div class="panel-body">
 								<div class="row">
 									<div class="col-lg-12">
-										<form action="addPurchaseDetail.action" role="form"
+										<form action="addPurchasedetail.action" role="form"
 											method="post">
 											<fieldset>
 												<input name="purid" type="hidden"

@@ -50,7 +50,7 @@
 			<result name="success" type="redirect">/pages/purchase-list.jsp</result>
 		</action> 
 		<action name="addPurchasedetail" class="Purchase" method="addPurchasedetail">
-			<result name="success" type="redirect">/pages/purchase-detail-list.jsp</result>
+			<result name="success" type="redirect">/pages/purchase-list.jsp</result>
 		</action> 
 		<action name="getPurD" class="Purchase" method="getPurD">
 			<result name="success">/pages/purchase-detail.jsp</result>
