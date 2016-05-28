@@ -75,7 +75,7 @@ $(document)
 														var zkstate_str = "";
 														switch (row.zkstate) {
 														case 1:
-															zkstate_str = "在用";
+															zkstate_str = "使用中";
 															break;
 														case 2:
 															zkstate_str = "库存";

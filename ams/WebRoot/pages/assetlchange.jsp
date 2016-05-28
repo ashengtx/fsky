@@ -39,7 +39,7 @@
 	<!-- Page Content -->
 	<div id="page-wrapper">
 		<!-- /#page-wrapper -->
-		<h1 class="page-header">资产列表</h1>
+		<h1 class="page-header">用户资产列表</h1>
 		<table class="table table-striped m-b-none" id="assetchangetable">
 
 			<!-- 标签定义表格的表头。该标签用于组合 HTML 表格的表头内容。 thead 元素应该与 tbody 和

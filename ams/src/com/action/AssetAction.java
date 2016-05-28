@@ -819,37 +819,26 @@ public class AssetAction extends ActionSupport {
 	public String assetChangeList() {
 		Userinformation userinformation = new Userinformation();
 		userinformation = (Userinformation) ActionContext.getContext()
-				.getSession().get("loginUser");
+				.getSession().get("loginuser");
 		userid = userinformation.getUserid();
-		System.out.println("userid:" + userid);
+		System.out.println("userid11:" + userid);
 		// this.assets = assetService.getList(Asset.class);
-		this.assets = assetService.getTransAssetList(3, userid);
+		this.assets = assetService.getTransAssetList(10, userid);
 
 		List<Asset> data = new ArrayList<Asset>();
 		for (int i = 0; i < assets.size(); i++) {
 			Asset asset = new Asset();
 			Assetclass assetclass = new Assetclass();
-			Assetclass passetclass = new Assetclass();
-	
-			Userinformation userinformationByUserid = new Userinformation();
-			Purchasedetail purchasedetail = new Purchasedetail();
 
 			assetclass.setAssetclassid(this.assets.get(i)
 					.getAssetclassByAssetclassid().getAssetclassid());
 			assetclass.setAssetclassname(this.assets.get(i)
 					.getAssetclassByAssetclassid().getAssetclassname());
-			userinformationByUserid.setUserid(this.assets.get(i)
-					.getUserinformationByUserid().getUserid());
 			asset.setAssetid(this.assets.get(i).getAssetid());
-			asset.setUsestate(this.assets.get(i).getUsestate());
 			asset.setAssetclassByAssetclassid(assetclass);
-			asset.setUserinformationByUserid(userinformationByUserid);
-			asset.setCardnum(this.assets.get(i).getCardnum());
 			asset.setZkstate(this.assets.get(i).getZkstate());
 			asset.setAssetname(this.assets.get(i).getAssetname());
 			asset.setAssetcoding(this.assets.get(i).getAssetcoding());
-			asset.setPrice(this.assets.get(i).getPrice());
-			asset.setCgbid(this.assets.get(i).getCgbid());
 			asset.setInsertdate(this.assets.get(i).getInsertdate());
 			data.add(asset);
 		}
