@@ -18,17 +18,8 @@
 <!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-<link href="../css/smartMenu.css" type="text/css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="../css/style.css" />
+
 <link href="../css/datatables.css" type="text/css" rel="stylesheet">
-<link href="../css/bootstrap.css" type="text/css" rel="stylesheet">
-<link href="../css/app.css" type="text/css" rel="stylesheet">
-<link href="../css/font-awesome.css" type="text/css" rel="stylesheet">
-<link href="../css/simple-line-icons.css" type="text/css"
-	rel="stylesheet">
-<link href="../css/font-awesome.min.css" type="text/css"
-	rel="stylesheet">
-<link href="../css/font.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
@@ -64,12 +55,10 @@
 
 	</div>
 
-	<script type="text/javascript" src="../js/maintabs.js"></script>
-	<script type="text/javascript" src="../js/jquery-smartMenu-min.js"></script>
-	<script type="text/javascript" src="../js/jquery.nicescroll.min.js"></script>
+
 	<script type="text/javascript" src="../js/jquery.dataTables.min.js"></script>
 
-	<script src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+
 
 	<script type="text/javascript" src="../js/assetchange_table.js"></script>
 

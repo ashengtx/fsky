@@ -251,8 +251,6 @@
 					<ul class="nav nav-third-level">
 						<li><a href="users.jsp">用户列表</a></li>
 						<li><a href="adduser.jsp">添加用户</a></li>
-						<li><a href="#">角色列表</a></li>
-						<li><a href="#">添加角色</a></li>
 					</ul></li>
 			</ul>
 			<!-- /.nav-second-level -->
