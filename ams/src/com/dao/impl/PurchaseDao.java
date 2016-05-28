@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
 //import org.hibernate.Session;
@@ -62,9 +63,16 @@ public class PurchaseDao extends BaseDao implements IPurchaseDao {
 
 	@Override
 	public List<Purchasedetail> getPurchasedetailList(Integer purid) {
-		String selection = "from Purchasedetail as purchasedetail";
 		System.out.println("PurchaseDao getPurchasedetailList");
-		return this.getHibernateTemplate().find(selection);
+		String hql = "from Purchasedetail where purid=" + purid;
+		System.out.println(hql);
+		try {
+			Query query = super.getSession().createQuery(hql);
+			return query.list();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override

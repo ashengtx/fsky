@@ -50,10 +50,9 @@
 			<result name="success" type="redirect">/pages/purchase-list.jsp</result>
 		</action> 
 		<action name="addPurchasedetail" class="Purchase" method="addPurchasedetail">
-			<result name="success" type="redirect">/pages/purchase-list.jsp
-			</result>
-		</action>
-
+			<result name="success">/pages/purchase-detail-list.jsp</result>
+		</action> 
+		
 		<action name="getPurD" class="Purchase" method="getPurD">
 			<result name="success">/pages/purchase-detail.jsp</result>
 		</action>
@@ -193,6 +192,7 @@
 			<result type="redirect">/pages/departments.jsp</result>
 		</action>
 
+
 		<action name="departmentList" class="DepartmentList" method="departmentList">
 			<result type="json">
 				<param name="root">dataMap</param>
@@ -208,6 +208,37 @@
 				<param name="root">dataMap</param>
 			</result>
 		</action>
+		
+		
+		<!-- hujinglin -->	
+		<!-- 参数信息Action -->
+            <!-- 增加参数信息 -->
+			<action name="addParaInfo" class="addParaInfo" method="addParaInfo">
+				<result type="json">  
+                    <param name="root">msg</param>  
+            	</result> 
+			</action>
+			<!-- 获取参数信息列表 -->
+            <action name="getParaInfoList" class="getParaInfoList" method="getParaInfoList">
+				<result type="json">  
+                    <param name="root">dataMap</param>  
+            	</result> 
+			</action> 
+			<!-- 更新 -->
+			<action name="saveOrUpdateParaInfo" class="saveOrUpdateParaInfo" method="saveOrUpdateParaInfo">
+				<result >/pages/success.jsp</result>
+			</action>
+			<!-- 删除参数信息 -->
+			<action name="deleteParaInfo" class="deleteParaInfo" method="deleteParaInfo">
+				<result type="redirect">/pages/success.jsp</result>
+			</action>
+			<!-- 获取参数信息ById -->
+			<action name="getParaInfoById" class="getParaInfoById" method="getParaInfoById">
+				<result>/pages/updateparameter.jsp</result>
+				
+			</action>
+		
+		
 	</package>
 
 	<package name="ajax" namespace="/" extends="json-default">
