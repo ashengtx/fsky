@@ -1,5 +1,6 @@
 package com.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -81,18 +82,18 @@ public class DepartmentDao extends BaseDao implements IDepartmentDao {
 	 * @return
 	 */
 	@Override
-	public List<Department> findDepartmentLikeName(String name) {
-		String hql = "from department where departmentname like '%" + name
-				+ "%'";
-		try {
-			Query query = getSession().createQuery(hql);
-			List<Department> list = query.list();
-			if (list == null || list.size() == 0)
-				return null;
-			return list;
-		} catch (Exception e) {
-			e.printStackTrace();
+	public List<Department> findDepartmentLikeName(String departmentname) {
+
+		List<Object> condList = new ArrayList<Object>();
+		String selection = "select department from Department as department where department.deleteflag = ?";
+		condList.add(1);
+		if (departmentname != null) {
+			condList.add("%" + departmentname + "%");
+			selection = selection + " and department.departmentname like ?";
 		}
-		return null;
+		Object o[] = condList.toArray();
+		List find = this.getHibernateTemplate().find(selection, o);
+		System.out.println(find.size());
+		return find;
 	}
 }

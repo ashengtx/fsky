@@ -36,7 +36,7 @@ $(document)
 										"ajax" : {
 											"url" : "assetClassList.action",
 											"data" : function(data) {
-
+												data.assetclassname = $("#assetclassname").val();
 											}
 										},
 										// "aaSorting": [[ 1, "asc" ]],
@@ -82,17 +82,18 @@ $(document)
 															type, val) {
 														var userstate_btn = "";
 
-														userstate_btn += '<a href="/ams/getUser.action?userid='
+														userstate_btn += '<a href="/ams/pages/getAssetClass.action?assetclassid='
 																+ row.assetclassid
 																+ '" class="text-info support-details" title="编辑" data-id="'
 																+ row.assetclassid
 																+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 编辑</a>';
-														userstate_btn += '<a href="/ams/deleteUser.action?userid='
+														userstate_btn += '<a href="/ams/pages/deleteAssetClass.action?assetclassid='
 																+ row.assetclassid
 																+ '" class="text-info support-details" title="删除" data-id="'
 																+ row.assetclassid
 																+ '" data-toggle="modal"><i class="fa fa-file-text-o"></i> 删除</a>';
-
+														//userstate_btn += '<a href="/ams/pages/deleteAssetClass.action?assetclassid='
+															+ row.assetclassid
 														return '<div class="toolmenu">'
 																+ userstate_btn
 																+ '</div>';
@@ -108,15 +109,8 @@ $(document)
 												iDisplayIndex) {
 										}
 									});
-					// $(document).on("click", ".refresh", function () {
-					// tableReload();
-					// });
-					// function tableReload() {
-					// datatables.ajax.reload();
-					// }
-					//
-					// $("#investor_search_btn").bind("click", function () {
-					// datatables.ajax.reload();
-					// });
+					$("#search_btn").bind("click", function() {
+						datatables.ajax.reload();
+					});
 
 				});

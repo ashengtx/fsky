@@ -1,5 +1,10 @@
 package com.dao;
 
-public  interface IAssetClassDao {
+import java.util.List;
 
+import com.model.Assetclass;
+
+public  interface IAssetClassDao {
+	public List<Assetclass> findAssetclassLikeName(String name);
 }
+

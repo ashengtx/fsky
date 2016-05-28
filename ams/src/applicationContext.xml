@@ -60,7 +60,7 @@
 	<bean id="assetDao" class="com.dao.impl.AssetDao">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	
+
 	<bean id="userDao" class="com.dao.impl.UserDao" parent="iBaseDao">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
@@ -112,7 +112,7 @@
 		parent="baseService">
 		<property name="assetClassDao" ref="assetClassDao" />
 	</bean>
-	
+
 	<!-- Action -->
 	<!-- lls -->
 	<bean id="Login" class="com.action.LoginAction" autowire="byName">
@@ -127,7 +127,7 @@
 	<bean id="Asset" class="com.action.AssetAction" autowire="byName">
 		<property name="assetService" ref="assetService"></property>
 	</bean>
-	
+
 	<!-- dh -->
 	<bean id="AddUser" class="com.action.UserManageAction" scope="prototype">
 		<property name="iUserService" ref="iUserService" />
@@ -153,16 +153,34 @@
 
 
 	<!-- fyy -->
-	<bean id="AddAssetClass" class="com.action.AssetClassAction"
-		scope="prototype">
+	<bean id="AddAssetClass" class="com.action.AssetClassAction" scope="prototype">
 		<property name="assetClassService" ref="assetClassService" />
 	</bean>
-	<bean id="AssetClassList" class="com.action.AssetClassAction"
-		scope="prototype">
+	<bean id="AssetClassList" class="com.action.AssetClassAction" scope="prototype">
+		<property name="assetClassService" ref="assetClassService" />
+	</bean>
+	<bean id="UpdateAssetClass" class="com.action.AssetClassAction" scope="prototype">
+		<property name="assetClassService" ref="assetClassService" />
+	</bean>
+	<bean id="DeleteAssetClass" class="com.action.AssetClassAction" scope="prototype">
+		<property name="assetClassService" ref="assetClassService" />
+	</bean>
+	<bean id="GetAssetClass" class="com.action.AssetClassAction" scope="prototype">
+		<property name="assetClassService" ref="assetClassService" />
+	</bean>
+	<bean id="AssetClassSearch" class="com.action.AssetClassAction" scope="prototype">
 		<property name="assetClassService" ref="assetClassService" />
 	</bean>
 
 	<!-- Guohui Li -->
+	<bean id="GetStatistics" class="com.action.AssetAction" autowire="byName">
+		<property name="assetService" ref="assetService"></property>
+		<property name="iAssetClassService" ref="assetClassService"></property>
+	</bean>
+	<bean id="GetAssetListByClass" class="com.action.AssetAction" autowire="byName">
+		<property name="assetService" ref="assetService"></property>
+		<property name="iAssetClassService" ref="assetClassService"></property>
+	</bean>
 	<bean id="AddDepartment" class="com.action.DepartmentManageAction"
 		scope="prototype">
 		<property name="iDepartmentService" ref="iDepartmentService" />

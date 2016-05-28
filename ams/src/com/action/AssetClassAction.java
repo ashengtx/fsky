@@ -15,25 +15,35 @@ import com.service.IBaseService;
 import com.service.IUserService;
 
 public class AssetClassAction extends ActionSupport {
-	
+
 	private IAssetClassService assetClassService;
-	private String assetclassid;
-	
+	private Integer assetclassid;
+	private Assetclass assetclass;
 
 	private String assetclasscoding;
 	private String assetclassname;
 	private Integer iassetclassid;
 	private String iassetclassname;
 	private Map<String, Object> dataMap;
-	private List<Assetclass> assets;
+	public List<Assetclass> assets;
 	private int start;
 	private int length;
 	private int total;
 	private int filter;
 	private String key = "Just see see";
-	public String getAssetclassid() {
+
+	public Assetclass getAssetclass() {
+		return assetclass;
+	}
+
+	public void setAssetclass(Assetclass assetclass) {
+		this.assetclass = assetclass;
+	}
+
+	public Integer getAssetclassid() {
 		return assetclassid;
 	}
+
 	public IAssetClassService getAssetClassService() {
 		return assetClassService;
 	}
@@ -42,7 +52,7 @@ public class AssetClassAction extends ActionSupport {
 		this.assetClassService = assetClassService;
 	}
 
-	public void setAssetclassid(String assetclassid) {
+	public void setAssetclassid(Integer assetclassid) {
 		this.assetclassid = assetclassid;
 	}
 
@@ -101,6 +111,7 @@ public class AssetClassAction extends ActionSupport {
 	public void setKey(String key) {
 		this.key = key;
 	}
+
 	public String getAssetclasscoding() {
 		return assetclasscoding;
 	}
@@ -150,7 +161,7 @@ public class AssetClassAction extends ActionSupport {
 	}
 
 	public String assetClassList() throws Exception {
-		this.assets = assetClassService.getList(Assetclass.class);
+		this.assets = assetClassService.getLikeName(assetclassname);
 		System.out.println("用户列表！");
 
 		List<Assetclass> data = new ArrayList<Assetclass>();
@@ -180,6 +191,81 @@ public class AssetClassAction extends ActionSupport {
 		dataMap.put("recordsFiltered", filter);
 		// 返回结果
 		return SUCCESS;
+	}
 
+	public String updateAssetClass() throws Exception {
+		Assetclass assetclass = assetClassService.findById(Assetclass.class, assetclassid);
+		assetclass.setAssetclasscoding(assetclasscoding);
+		assetclass.setAssetclassname(assetclassname);
+		assetclass.setIassetclassid(iassetclassid);
+		assetclass.setIassetclassname(iassetclassname);
+		assetClassService.saveOrUpdate(assetclass);
+		System.out.println(assetclasscoding + "!!!" + assetclassname + "!!!"
+				+ iassetclassid + "!!!" + iassetclassname + "!!!");
+		System.out.println("修改成功！");
+		return SUCCESS;
+	}
+
+	public String deleteAssetClass() throws Exception {
+		Assetclass assetclass = assetClassService.findById(Assetclass.class, assetclassid);
+		assetClassService.doDelete(assetclass);
+		System.out.println("删除成功！");
+		return SUCCESS;
+	}
+
+	public String getAssetClass() {
+
+		System.out.println("获取用户！是多少是多少");
+		System.out.println(assetclassid);
+//		this.assetclass = assetClassService.getAssetClass(assetclassid);
+		// this.setUsername(userinformation.getUsername());
+		// this.setUserpassword(userinformation.getUserpwd());
+		/*
+		 * System.out.println("userid" + userid);
+		 * System.out.println(userinformation.getUsername());
+		 * System.out.println(userinformation.getUserpwd());
+		 */
+		// Map request = (Map) ActionContext.getContext().get("request");
+		// request.put("userinformation", userinformation);
+		return "redirect";
+	}
+
+	public String assetClassSearch() throws Exception {
+		Assetclass assetclass = new Assetclass();
+		assetclass.setAssetclassid(assetclassid);
+//		assets = assetClassService.assetClassSearch(assetclass);
+		System.out.println("获取搜索列表！");
+		return "redirect";
+		/*List<Assetclass> data = new ArrayList<Assetclass>();
+		for (int i = 0; i < assets.size(); i++) {
+
+			Assetclass asset = new Assetclass();
+			asset.setAssetclassid(this.assets.get(i).getAssetclassid());
+			asset.setAssetclasscoding(this.assets.get(i).getAssetclasscoding());
+			asset.setAssetclassname(this.assets.get(i).getAssetclassname());
+			asset.setIassetclassid(this.assets.get(i).getIassetclassid());
+			asset.setIassetclassname(this.assets.get(i).getIassetclassname());
+			data.add(asset);
+		}
+		// dataMap中的数据将会被Struts2转换成JSON字符串，所以这里要先清空其中的数据
+		dataMap = new HashMap<String, Object>();
+		total = data.size();
+		System.out.println(total);
+		filter = total;
+		if (start + length > total) {
+			dataMap.put("aaData", data.subList(start, total));
+
+		} else {
+			dataMap.put("aaData", data.subList(start, length));
+		}
+		/* dataMap.put("aaData", aaData); */
+		/*dataMap.put("recordsTotal", total);
+		dataMap.put("recordsFiltered", filter);
+		*/
+		
+		
+		
+
+		
 	}
 }
