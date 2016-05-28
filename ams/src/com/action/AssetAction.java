@@ -18,6 +18,7 @@ import com.model.Department;
 import com.model.Purchase;
 import com.model.Purchasedetail;
 import com.model.Repairs;
+import com.model.Roletype;
 import com.model.Transbill;
 import com.model.Userinformation;
 import com.model.Asset;
@@ -26,13 +27,19 @@ import com.model.Zctrans;
 import com.model.Zctransdetail;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.service.IAssetClassService;
 import com.service.IAssetService;
 import com.service.IBaseService;
+import com.service.IDepartmentService;
 import com.service.IPurchaseService;
+import com.service.IUserService;
 
 public class AssetAction extends ActionSupport {
 	private IAssetService assetService;
-
+	// private IDepartmentService iDepartmentService;
+	// private IUserService iUserService;
+	private IAssetClassService iAssetClassService;
+	// private IParametersInfoService iParametersInfoService;
 	private Integer assetid;
 	private Integer assetclassid;
 	private Integer passetclassid;
@@ -125,6 +132,22 @@ public class AssetAction extends ActionSupport {
 	private String key = "Just see see";
 	private int start;
 	private int length;
+
+	/*
+	 * @author Guohui Li
+	 * 
+	 * @description 统计报表
+	 */
+	private String typeFlag;
+	private int iassetclassid;
+
+	public IAssetClassService getiAssetClassService() {
+		return iAssetClassService;
+	}
+
+	public void setiAssetClassService(IAssetClassService iAssetClassService) {
+		this.iAssetClassService = iAssetClassService;
+	}
 
 	public String addAsset() {
 		Asset asset = new Asset();
@@ -1069,6 +1092,87 @@ public class AssetAction extends ActionSupport {
 		return SUCCESS;
 	}
 
+	/**
+	 * 统计报表
+	 * 
+	 * @return
+	 */
+	public String getStatistics() {
+		dataMap = new HashMap<String, Object>();
+		List<Assetclass> assetclasses = new ArrayList<Assetclass>();
+		assetclasses = iAssetClassService.getList(Assetclass.class);
+		for (Assetclass assetclass : assetclasses) {
+			assetclass.setAssetsForAssetclassid(null);
+			assetclass.setAssetsForPassetclassid(null);
+			assetclass.setPurchasedetailsForAssetclassid(null);
+			assetclass.setPurchasedetailsForPassetclassid(null);
+		}
+		dataMap.put("assetclasses", assetclasses);
+		return SUCCESS;
+	}
+
+	// 统计报表-按资产类别
+	public String getAssetListByClass() {
+		List<Asset> aaData = new ArrayList<Asset>();
+		List<Asset> myAssets = new ArrayList<Asset>();
+		if (typeFlag.equals("big")) {
+			myAssets = assetService.getBigAssetList(iassetclassid);
+		} else if (typeFlag.equals("small")) {
+			myAssets = assetService.getSmallAssetList(assetclassid);
+		} else {
+			myAssets = assetService.getList(Asset.class);
+		}
+
+		for (Asset asset : myAssets) {
+			Asset myAsset = new Asset();
+			Purchasedetail purchasedetail = new Purchasedetail();
+			Userinformation userinformationByUserid = new Userinformation();
+			Assetclass assetclass = new Assetclass();
+			Assetclass passetclass = new Assetclass();
+
+			userinformationByUserid.setUserid(asset
+					.getUserinformationByUserid().getUserid());
+			assetclass.setAssetclassid(asset.getAssetclassByAssetclassid()
+					.getAssetclassid());
+			if (asset.getAssetclassByPassetclassid() != null) {
+				passetclass.setAssetclassid(asset
+						.getAssetclassByPassetclassid().getAssetclassid());
+			}
+			purchasedetail.setPdid(asset.getPurchasedetail().getPdid());
+
+			myAsset.setAssetclassByAssetclassid(assetclass);
+			myAsset.setAssetclassByPassetclassid(passetclass);
+			myAsset.setUserinformationByUserid(userinformationByUserid);
+			myAsset.setPurchasedetail(purchasedetail);
+
+			myAsset.setAssetid(asset.getAssetid());
+			myAsset.setCardnum(asset.getCardnum());
+			myAsset.setAssetname(asset.getAssetname());
+			myAsset.setAssetcoding(asset.getAssetcoding());
+			myAsset.setPrice(asset.getPrice());
+			myAsset.setUsestate(asset.getUsestate());
+
+			aaData.add(myAsset);
+		}
+		int recordsTotal;
+		int recordsFiltered;
+		// dataMap中的数据将会被Struts2转换成JSON字符串，所以这里要先清空其中的数据
+		dataMap = new HashMap<String, Object>();
+		recordsTotal = aaData.size();
+		recordsFiltered = recordsTotal;
+		if (start + length > recordsTotal) {
+			dataMap.put("aaData", aaData.subList(start, recordsTotal));
+		} else {
+			dataMap.put("aaData", aaData.subList(start, start + length));
+		}
+
+		/* dataMap.put("aaData", aaData); */
+		dataMap.put("recordsTotal", recordsTotal);
+		dataMap.put("recordsFiltered", recordsFiltered);
+		// 返回结果
+		return SUCCESS;
+	}
+
 	@JSON(serialize = false)
 	public String getKey() {
 		return key;
@@ -1148,6 +1252,22 @@ public class AssetAction extends ActionSupport {
 
 	public String getCardnum() {
 		return cardnum;
+	}
+
+	public String getTypeFlag() {
+		return typeFlag;
+	}
+
+	public void setTypeFlag(String typeFlag) {
+		this.typeFlag = typeFlag;
+	}
+
+	public int getIassetclassid() {
+		return iassetclassid;
+	}
+
+	public void setIassetclassid(int iassetclassid) {
+		this.iassetclassid = iassetclassid;
 	}
 
 	public void setCardnum(String cardnum) {

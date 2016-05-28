@@ -87,8 +87,7 @@ public class DepartmentService extends BaseService implements
 
 	@Override
 	public List<Department> getLikeName(String name) {
-
-		return null;
+		return departmentDao.findDepartmentLikeName(name);
 	}
 
 	@Override

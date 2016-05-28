@@ -224,7 +224,7 @@
 				<li><a href="#"><i class="fa fa-wrench fa-fw"></i>统计报表<span
 						class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
-						<li><a href="#">按资产类型统计报表</a></li>
+						<li><a href="assetstatistics.jsp">按资产类型统计报表</a></li>
 					</ul> <!-- /.nav-second-level --></li>
 				<li><a href="#"><i class="fa fa-sitemap fa-fw"></i>系统配置<span
 						class="fa arrow"></span></a>
@@ -234,20 +234,29 @@
 								<li><a href="department.jsp">部门添加</a></li>
 								<li><a href="departments.jsp">部门列表</a></li>
 							</ul></li>
+
 						<li><a href="#">资产类别配置</a></li>
-						<li><a href="#">参数信息配置</a></li>
-							<ul class="nav nav-third-level">
-								<li><a href="addparameter.jsp">添加参数</a></li>
-								<li><a href="parameterInfo.jsp">参数列表</a></li>
+						<ul class="nav nav-third-level">
+							<li><a href="addassetclass.jsp">资产类别添加</a></li>
+							<li><a href="assetclasslist.jsp">资产类别列表</a></li>
+						</ul></li>
+				<li><a href="#">参数信息配置</a></li>
+				<ul class="nav nav-third-level">
+					<li><a href="addparameter.jsp">添加参数</a></li>
+					<li><a href="parameterInfo.jsp">参数列表</a></li>
 
-							</ul></li>
-						<li><a href="#">人员管理<span class="fa arrow"></span></a>
-							<ul class="nav nav-third-level">
-								<li><a href="users.jsp">用户列表</a></li>
-								<li><a href="adduser.jsp">添加用户</a></li>
-
-							</ul></li>
-					</ul> <!-- /.nav-second-level --></li>
+				</ul>
+				</li>
+				<li><a href="#">人员管理<span class="fa arrow"></span></a>
+					<ul class="nav nav-third-level">
+						<li><a href="users.jsp">用户列表</a></li>
+						<li><a href="adduser.jsp">添加用户</a></li>
+						<li><a href="#">角色列表</a></li>
+						<li><a href="#">添加角色</a></li>
+					</ul></li>
+			</ul>
+			<!-- /.nav-second-level -->
+			</li>
 			</ul>
 		</div>
 		<!-- /.sidebar-collapse -->

@@ -17,7 +17,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
-<meta name="author" content="李国辉">
+<meta name="author" content="LiGuohui">
 
 <title>部门配置</title>
 

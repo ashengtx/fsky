@@ -20,6 +20,10 @@ public interface IAssetService extends IBaseService {
 	public List<Asset> getTransAssetList(Integer zkstate,Integer userid);
 	public List<Zctransdetail> getZctransdetailList(Integer userid);
 	public List<Zctrans> getZctransList(Integer yjuserid);
-	
+	/**
+	 * Guohui Li
+	 */
+	public List<Asset> getBigAssetList(Integer iassetclassid);
+	public List<Asset> getSmallAssetList(Integer assetclassid);
 	public List<Asset> getAssetList(String assetname,String assetcoding);
 }

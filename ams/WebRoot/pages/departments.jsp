@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
-<meta name="author" content="dingh">
+<meta name="author" content="LiGuohui">
 <title>资产管理系统</title>
 <!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
@@ -40,10 +40,34 @@
 	<div id="page-wrapper">
 		<!-- /#page-wrapper -->
 		<h1 class="page-header">部门列表</h1>
+		<form class="form-horizontal" action="#" onSubmit="return false;">
+			<fieldset class="search-fieldset">
 
+				<div class="col-xs-12 no-padder">
+					<div class="form-group">
+					<div class="col-gl-4">
+						<span class="item_name" style="width:120px;">部门名称：</span> 
+						<input type="text" class="textbox textbox_150" name="departmentname"
+							id="departmentname" />
+					</div>
+					<div class="col-gl-8" align="right">
+						<button type="button" id="search_btn" name="search_btn"
+							class="btn btn-s-md btn-warning ">
+							<i class="fa fa-search"></i> 查询
+						</button>
+						<button type="reset" class="btn btn-s-md btn-default">
+							<i class="fa fa-refresh"></i> 重置
+						</button>
+					</div>
+					</div>
+
+				</div>
+			</fieldset>
+		</form>
+		<br>
 		<table class="table table-striped m-b-none" id="department_table">
 
-				<!-- 标签定义表格的表头。该标签用于组合 HTML 表格的表头内容。 thead 元素应该与 tbody 和
+			<!-- 标签定义表格的表头。该标签用于组合 HTML 表格的表头内容。 thead 元素应该与 tbody 和
 					tfoot 元素结合起来使用。 tbody 元素用于对 HTML 表格中的主体内容进行分组，而 tfoot 元素用于对 HTML
 					表格中的表注（页脚）内容进行分组。 -->
 			<thead>

@@ -95,7 +95,7 @@ public class DepartmentManageAction extends ActionSupport {
 	 * @return
 	 */
 	public String departmentList() {
-		this.departments = iDepartmentService.getList(Department.class);
+		this.departments = iDepartmentService.getLikeName(departmentname);
 		List<Department> data = new ArrayList<Department>();
 		for (int i = 0; i < departments.size(); i++) {
 			if(1==this.departments.get(i).getDeleteflag()){
@@ -114,12 +114,13 @@ public class DepartmentManageAction extends ActionSupport {
 		// dataMap中的数据将会被Struts2转换成JSON字符串，所以这里要先清空其中的数据
 		dataMap = new HashMap<String, Object>();
 		total = data.size();
+		System.out.println("data.size:"+data.size());
 		filter = total;
 		if (start + length > total) {
 			dataMap.put("aaData", data.subList(start, total));
 
 		} else {
-			dataMap.put("aaData", data.subList(start, length));
+			dataMap.put("aaData", data.subList(start, start+length));
 		}
 		dataMap.put("recordsTotal", total);
 		dataMap.put("recordsFiltered", filter);

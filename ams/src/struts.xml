@@ -51,7 +51,7 @@
 		</action> 
 		<action name="addPurchasedetail" class="Purchase" method="addPurchasedetail">
 			<result name="success">/pages/purchase-detail-list.jsp</result>
-		</action> 
+		</action>
 		
 		<action name="getPurD" class="Purchase" method="getPurD">
 			<result name="success">/pages/purchase-detail.jsp</result>
@@ -176,8 +176,21 @@
 			</result>
 		</action>
 		<!-- Guohui Li -->
+		<!-- 统计报表 -->
+		<action name="getStatistics" class="GetStatistics" method="getStatistics">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="getAssetListByClass" class="GetAssetListByClass"
+			method="getAssetListByClass">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<!-- 部门管理 -->
 		<action name="addDepartment" class="AddDepartment" method="addDepartment">
-			<result type="redirect">/pages/success.jsp</result>
+			<result type="redirect">/pages/departments.jsp</result>
 		</action>
 		<action name="updateDepartment" class="UpdateDepartment"
 			method="updateDepartment">
@@ -192,21 +205,41 @@
 			<result type="redirect">/pages/departments.jsp</result>
 		</action>
 
-
 		<action name="departmentList" class="DepartmentList" method="departmentList">
 			<result type="json">
 				<param name="root">dataMap</param>
 			</result>
 		</action>
 
-		<action name="addAssetClass" class="AddAssetClass" method="addAssetClass">
-			<result type="redirect">/pages/success.jsp</result>
-		</action>
 
+		<!-- fyy -->
+		<action name="addAssetClass" class="AddAssetClass" method="addAssetClass">
+			<result type="redirect">/pages/assetclasslist.jsp</result>
+		</action>
 		<action name="assetClassList" class="AssetClassList" method="assetClassList">
 			<result type="json">
 				<param name="root">dataMap</param>
 			</result>
+		</action>
+		<action name="getAssetClass" class="GetAssetClass" method="getAssetClass">
+			<result name="redirect">/pages/updateassetclass.jsp</result>
+		</action>
+		<action name="updateAssetClass" class="UpdateAssetClass"
+			method="updateAssetClass">
+			<result type="redirect">/pages/assetclasslist.jsp</result>
+		</action>
+		<action name="deleteAssetClass" class="DeleteAssetClass"
+			method="deleteAssetClass">
+			<result type="redirect">/pages/assetclasslist.jsp</result>
+		</action>
+		<action name="assetClassSearch" class="AssetClassSearch"
+			method="assetClassSearch">
+			<result name="redirect">/pages/searchassetclass.jsp</result>
+		</action>
+		<action name="section" class="sectionAction">
+			<result name="none">/none.jsp</result>
+			<result name="createSuccess">/success.jsp</result>
+			<result name="createFail">/index.jsp</result>
 		</action>
 		
 		

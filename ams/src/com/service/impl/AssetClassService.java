@@ -1,8 +1,10 @@
 package com.service.impl;
 
+import java.util.List;
+
 import com.dao.impl.AssetClassDao;
+import com.model.Assetclass;
 import com.service.IAssetClassService;
-import com.service.IUserService;
 
 public class AssetClassService extends BaseService implements IAssetClassService {
 	private AssetClassDao assetClassDao;
@@ -14,4 +16,9 @@ public class AssetClassService extends BaseService implements IAssetClassService
 	public void setAssetClassDao(AssetClassDao assetClassDao) {
 		this.assetClassDao = assetClassDao;
 	}
+	@Override
+	public List<Assetclass> getLikeName(String name) {
+		return assetClassDao.findAssetclassLikeName(name);
+	}
+
 }
