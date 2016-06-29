@@ -29,6 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!-- Custom Fonts -->
     <link href="./bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+<link rel="stylesheet" media="screen" href="particle/demo/css/style.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -40,19 +41,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <body>
 
+	<div id="particles-js"></div>
+	<h1 class="page-header text-center"
+	style="position:absolute; top:20%; left:50%; transform:translate(-50%,-50%);width:330px;font-size:48px;"
+	>资产管理系统</h1>
 
-    <div class="container">
+ <!--    <div class="container">
     	
         <div class="row">
-            <div class="col-md-4 col-md-offset-4">
+            <div class="col-md-4 col-md-offset-4"> -->
             	
-                <div class="login-panel panel panel-default">
+                <!-- <div class="login-panel panel panel-default">
                 
                     <div class="panel-heading">
-                        <h3 class="panel-title">请登录</h3>
+                        <h3 class="panel-title text-center">资产管理系统</h3>
                     </div>
-                    <div class="panel-body">
-                        <form action="pages/login.action" role="form" method="post">
+                    <div class="panel-body"> -->
+                        <form action="pages/login.action" role="form" method="post"
+                        style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);width:330px;">
                             <fieldset>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="用户名" name="username" type="text" autofocus>
@@ -66,14 +72,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </label>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
-                                <button class="btn btn-lg btn-success btn-block" type="submit">登陆</button>
+                                <button class="btn btn-lg btn-primary btn-block" type="submit">登陆</button>
                             </fieldset>
                         </form>
-                    </div>
-                </div>
-            </div>
+                   <!--  </div>
+                </div> --> -->
+            <!-- </div>
         </div>
-    </div>
+    </div> -->
+    
 
     <!-- jQuery -->
     <script src="./bower_components/jquery/dist/jquery.min.js"></script>
@@ -87,6 +94,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!-- Custom Theme JavaScript -->
     <script src="./dist/js/sb-admin-2.js"></script>
 
+	<!-- scripts -->
+	<script src="particle/particles.js"></script>
+	<script src="particle/demo/js/app.js"></script>
+
+	<!-- stats.js -->
+	<script src="particle/demo/js/lib/stats.js"></script>
 </body>
 
 </html>

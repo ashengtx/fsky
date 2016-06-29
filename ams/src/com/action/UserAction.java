@@ -1,32 +1,30 @@
 package com.action;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import org.apache.struts2.ServletActionContext;
-
-import com.model.UserInfo;
+import com.model.Userinformation;
 import com.opensymphony.xwork2.ActionSupport;
-import com.service.impl.UserInfoService;
+import com.service.impl.UserService;
 
+/*
+ * @author 林连升
+ *  
+ * */
 public class UserAction extends ActionSupport{
-	
+
 	private String username;
 	private String password;
-	private UserInfoService userInfoService;
+	private UserService userService;
 
 	public String login(){
-		//System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
-		//return SUCCESS;
-		UserInfo user = userInfoService.getByName(this.getUsername());
+
+		System.out.println("login");
+		Userinformation user = userService.getByName(this.getUsername());
 		if(user!=null){
-//			HttpServletRequest request=ServletActionContext.getRequest();
-//			HttpSession session=request.getSession();
-//			session.setAttribute("user", user);
-//			return "success";
 			System.out.println(user.getUsername());
-			System.out.println(user.getPassword());
-			return SUCCESS;
+			System.out.println(user.getUserpwd());
+			System.out.println("user input: " + this.getPassword());
+			if (user.getUserpwd().equals(this.getPassword())) {
+				return SUCCESS;
+			}				
 		}
 	
 		return "fail";
@@ -48,12 +46,11 @@ public class UserAction extends ActionSupport{
 		this.password = password;
 	}
 
-	public UserInfoService getUserInfoService() {
-		return userInfoService;
+	public UserService getUserService() {
+		return userService;
 	}
 
-	public void setUserInfoService(UserInfoService userInfoService) {
-		this.userInfoService = userInfoService;
+	public void setUserInfoService(UserService userService) {
+		this.userService = userService;
 	}
-	
 }
